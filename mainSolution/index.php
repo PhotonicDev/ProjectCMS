@@ -35,10 +35,10 @@
                 <li><a href="index.php?page=news">News</a></li>
 
             </ul>
-            <form class="navbar-form navbar-left">
+            <form  class="navbar-form navbar-left">
                 <div class="input-group">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
+                        <input type="text" name="search_text" id="search_text" class="form-control" placeholder="Search">
                     </div>
                     <span class="input-group-btn">
         <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
@@ -98,7 +98,7 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
     <div class="mainTile">
-
+        <div id="result"></div>
         <div class="containerMain">
 <?php
 	include_once("controller/Controller.php");
@@ -141,8 +141,8 @@
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-
-
+<link rel="script" href="js/jquery-3.1.1.min.js">
+<link rel="script" href="js/bootstrap.js">
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -150,5 +150,33 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="http://getbootstrap.com/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
 <script src="js/add.js" type="application/javascript"></script>
+
+
 </body>
 </html>
+
+<script>
+    $(document).ready(function(){
+        $('#search_text').keyup(function(){
+            var txt = $(this).val();
+            if(txt != '')
+            {
+                $.ajax({
+                    url:"fetch.php",
+                    method:"post",
+                    data:{search:txt},
+                    dataType:"text",
+                    success:function(data)
+                    {
+                        $('#result').html(data);
+                    }
+                });
+            }
+            else
+            {
+                $('#result').html('');
+            }
+        });
+    });
+</script>
+

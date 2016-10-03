@@ -104,4 +104,57 @@ body {
     .item .itemInformation button {
       margin-left: 10px; }
 
-/*# sourceMappingURL=main.css.map */
+.productprice {
+    border-top:1px solid #dadada;
+    padding-top:5px;
+}
+
+.duck_name{
+    font-family: Verdana;
+    font-size: 20px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    line-height: 22px;
+    text-align: center;
+}
+
+.search_price{
+    transform: rotate(-45deg);
+    top: 140px;
+    left: 210px;
+    color: white;
+    font-size: 18px;
+    font-weight: 800;
+    z-index: 20;
+    position: absolute;
+
+}
+
+.search_red{
+
+    position: absolute;
+    width: 120px;
+    height: auto;
+    top: 125px;
+    left: 180px;
+    z-index: 10;
+}
+
+.txt_stock{
+
+    font-family: Verdana;
+    font-size: 12px;
+    font-style: normal;
+    font-variant: normal;
+    line-height: 22px;
+
+}
+
+.btn-group-sm>.btn, .btn-sm {
+    padding: 10px 35px !important;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+    margin-top: -35px !important;
+}
