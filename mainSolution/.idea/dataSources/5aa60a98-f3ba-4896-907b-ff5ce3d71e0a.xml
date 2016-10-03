@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - database@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="duck">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="booklist"/>
+    <schema id="3" name="guest"/>
+    <schema id="4" name="information_schema"/>
+    <schema id="5" name="login"/>
+    <schema id="6" name="mysql"/>
+    <schema id="7" name="performance_schema"/>
+    <schema id="8" name="projects"/>
+    <schema id="9" name="sys"/>
+    <schema id="10" name="restaurant"/>
+    <schema id="11" name="rerestaurant"/>
+    <schema id="12" name="database"/>
+    <table id="13" parent="1" name="products"/>
+    <table id="14" parent="1" name="news"/>
+    <table id="15" parent="1" name="db_cms"/>
+    <column id="16" parent="13" name="ID">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="17" parent="13" name="name">
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="18" parent="13" name="manufacturer">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="19" parent="13" name="description">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="20" parent="13" name="size">
+      <mandatory>1</mandatory>
+      <data-type>varchar(7)|0</data-type>
+    </column>
+    <column id="21" parent="13" name="color">
+      <mandatory>1</mandatory>
+      <data-type>varchar(15)|0</data-type>
+    </column>
+    <column id="22" parent="13" name="price">
+      <mandatory>1</mandatory>
+      <data-type>varchar(10)|0</data-type>
+    </column>
+    <column id="23" parent="13" name="delivery_time">
+      <mandatory>1</mandatory>
+      <data-type>int(5)|0</data-type>
+    </column>
+    <column id="24" parent="13" name="on_stock">
+      <mandatory>1</mandatory>
+      <data-type>int(5)|0</data-type>
+    </column>
+    <column id="25" parent="13" name="picture">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="26" parent="13" name="likes">
+      <mandatory>1</mandatory>
+      <data-type>int(15)|0</data-type>
+    </column>
+    <key id="27" parent="13" name="PRIMARY">
+      <columns>ID</columns>
+      <primary>1</primary>
+    </key>
+    <column id="28" parent="14" name="Id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="29" parent="14" name="header">
+      <data-type>varchar(200)|0</data-type>
+    </column>
+    <column id="30" parent="14" name="picture">
+      <data-type>varchar(200)|0</data-type>
+    </column>
+    <column id="31" parent="14" name="text">
+      <data-type>varchar(500)|0</data-type>
+    </column>
+    <column id="32" parent="14" name="date">
+      <data-type>datetime(6)|0</data-type>
+    </column>
+    <column id="33" parent="14" name="upvote">
+      <data-type>int(8)|0</data-type>
+    </column>
+    <key id="34" parent="14" name="PRIMARY">
+      <columns>Id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="35" parent="15" name="C1">
+      <data-type>text|0</data-type>
+    </column>
+  </database-model>
+</dataSource>

@@ -1,0 +1,107 @@
+body {
+  overflow-x: hidden;
+  padding-top: 50px; }
+  body a {
+    cursor: pointer; }
+  body .duckLogo {
+    margin-top: -10px;
+    float: left;
+    width: 50px;
+    margin-right: 10px; }
+  body .wrapper {
+    width: 100%; }
+    body .wrapper .modal .easyLogin {
+      width: 50%; }
+    body .wrapper .modal .directLogin {
+      width: 50%; }
+    body .wrapper .modal .additionalLogin {
+      margin: 0 5px !important; }
+    body .wrapper .sideOpen {
+      width: 20% !important;
+      left: 80% !important; }
+    body .wrapper .sideNavigation {
+      position: fixed;
+      left: 100%;
+      transition-duration: 1s;
+      float: left;
+      width: 20%;
+      height: 100vh;
+      background-color: #00cc66; }
+      body .wrapper .sideNavigation ul {
+        padding-top: 25px;
+        list-style-type: none; }
+      body .wrapper .sideNavigation .sideWrap {
+        padding: 0 5%;
+        width: 90%; }
+      body .wrapper .sideNavigation .categoryTitle {
+        margin-top: 32px;
+        color: white; }
+    body .wrapper .sideClosed {
+      width: 80% !important; }
+    body .wrapper .mainTile {
+      transition-duration: 1s;
+      width: 100%;
+      height: 100vh;
+      float: left;
+      background-color: cornflowerblue; }
+      body .wrapper .mainTile .containerMain {
+        padding: 0 15px; }
+        body .wrapper .mainTile .containerMain .items {
+          margin: 10px;
+          padding: 5px;
+          float: left;
+          background-color: yellow; }
+          body .wrapper .mainTile .containerMain .items .itemInfoHide {
+            position: relative; }
+            body .wrapper .mainTile .containerMain .items .itemInfoHide .transitionInformation {
+              padding: 5px; }
+              body .wrapper .mainTile .containerMain .items .itemInfoHide .transitionInformation .stick {
+                position: absolute;
+                width: 100px;
+                height: auto;
+                top: -80px;
+                left: 150px;
+                z-index: 10; }
+              body .wrapper .mainTile .containerMain .items .itemInfoHide .transitionInformation .pricey {
+                transform: rotate(-45deg);
+                top: -75px;
+                left: 175px;
+                color: white;
+                z-index: 20;
+                position: absolute; }
+          body .wrapper .mainTile .containerMain .items .itemWhite {
+            padding: 5px;
+            border: solid white 1px;
+            border-radius: 5px;
+            background-color: white; }
+          body .wrapper .mainTile .containerMain .items .itemPicture {
+            position: relative;
+            height: auto;
+            width: 240px; }
+          body .wrapper .mainTile .containerMain .items .label {
+            float: left; }
+          body .wrapper .mainTile .containerMain .items .badge {
+            float: right; }
+
+.item {
+  margin-top: 20px; }
+  .item .itemImageFrame {
+    width: 90%;
+    height: auto;
+    margin: 20px auto; }
+    .item .itemImageFrame .itemPictureBig {
+      margin: auto;
+      position: static !important;
+      width: 100% !important;
+      height: auto !important; }
+  .item .itemInformation {
+    float: left;
+    width: 90%;
+    height: auto;
+    margin-right: 40px; }
+    .item .itemInformation .panel {
+      margin-top: 20px; }
+    .item .itemInformation button {
+      margin-left: 10px; }
+
+/*# sourceMappingURL=main.css.map */
