@@ -42,7 +42,7 @@ if(mysqli_num_rows($result) > 0)
     <div class="duck_name"> <br>'.$row["name"].' </div>
     <br>
     <div class="txt_stock">In Stock '.$row["stock"].' </div>
-    <img class="search_red" src="red.png"><div class="search_price">'.$row["price"].' DKK</div><div class="pull-right"><a href="#" class="btn btn-danger btn-sm" role="button">BUY</a> 
+    <div class="search_price">'.$row["price"].' DKK</div><div class="pull-right"><a href="#" class="btn btn-danger btn-sm" role="button">BUY</a> 
     
     </div></div>
     
