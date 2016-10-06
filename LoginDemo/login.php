@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
         // and only 1 match
         $found_user = mysqli_fetch_array($result);
         if(password_verify($password, $found_user['password'])){
-            $_SESSION['user_id'] = $found_user['id'];
+            $_SESSION['user_id'] = $found_user['customer_id'];
             $_SESSION['username'] = $found_user['name'];
             redirect_to("frontpage.php");
         } else {
