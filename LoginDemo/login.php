@@ -24,19 +24,22 @@ if (isset($_POST['submit'])) {
             $_SESSION['user_id'] = $found_user['customer_id'];
             $_SESSION['username'] = $found_user['name'];
             redirect_to("frontpage.php");
-        } else {
-            // username/password combo was not found in the database
-            $message = "Username/password combination incorrect.<br />
+        }
+        else {
+            $message = "Password is incorrect.<br />
 					Please make sure your caps lock key is off and try again.";
             echo $message;
-        }}
+        }
+    }
+
+    else {
+
+        echo "Username and password combination is incorrect" ."<br>". "Please make sure your caps lock key is off and try again.";
+    }
 
 }
-else { // Form has not been submitted.
-    if (isset($_GET['logout']) && $_GET['logout'] == 1) {
-        $message = "You are now logged out.";
-    }
-}
+
+
 
 if (isset($connection)){mysqli_close($connection);}
 ?>
