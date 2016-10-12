@@ -20,13 +20,17 @@ class Database
     }
     public function getData($query){
         $getData = $this->getConnection()->query($query);
-
         $getArray = $getData->fetch_array();
         return $getArray;
     }
-
-
-
+    public function getQuery($query){
+        $getData = $this->getConnection()->query($query);
+        return $getData;
+    }
+    public function getNothing($query) {
+        $this->getConnection()->query($query);
+        return "succesfull";
+    }
 
    /* function fetchProducts(){
         $getProducts = $this->getConnection()->query("SELECT * FROM products");

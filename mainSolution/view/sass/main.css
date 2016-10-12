@@ -59,12 +59,10 @@ body {
                 position: absolute;
                 width: 100px;
                 height: auto;
-                top: -80px;
                 left: 150px;
                 z-index: 10; }
               body .wrapper .mainTile .containerMain .items .itemInfoHide .transitionInformation .pricey {
                 transform: rotate(-45deg);
-                top: -75px;
                 left: 175px;
                 color: white;
                 z-index: 20;

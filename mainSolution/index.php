@@ -46,7 +46,17 @@
                 </div>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a data-toggle="modal" data-target=".bs-example-modal-lg" class="loginModal">Login</a></li>
+                <?php
+                 include_once("controller/session.php");
+                if(isset($_SESSION['user_id'])){
+                    echo "<li><a href='controller/logout.php' >Logout</a></li>";
+                }
+                else {
+                 echo   "<li><a data-toggle='modal' data-target='.bs-example-modal-lg' class='loginModal'>Login</a></li>";
+                }
+
+?>
+
                 <li><a class="sideClick" style="cursor:pointer;">Categories</a></li>
 
             </ul>
@@ -66,23 +76,23 @@
                 </div>
                 <div class="modal-body">
 
-                    <form class="" method="post" action="login.php">
+                    <form method="post">
                         <div class="directLogin">
                             <div class="form-group">
 
                                 <label for="User email">Email address</label>
-                                <input type="email" class="form-control" id="userEmail" placeholder="Email">
+                                <input name="username" type="text" class="form-control" id="userEmail" placeholder="Email">
                             </div>
                             <div class="form-group">
                                 <label for="User password">Password</label>
-                                <input type="password" class="form-control" id="userPassword" placeholder="Password">
+                                <input name="password" type="password" class="form-control" id="userPassword" placeholder="Password">
                             </div>
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox"> Remember me
                                 </label>
                             </div>
-                            <button type="submit" class="btn btn-default">Login</button>
+                            <button name="login" type="submit" class="btn btn-default">Login</button>
                         </div>
                         <div class="easyLogin">
 
@@ -91,8 +101,8 @@
 
                 </div>
                 <div class="modal-footer">
-                    <a class="additionalLogin" href="">Don't have an account?</a>
-                    <a class="additionalLogin" href="">Forgot your password?</a>
+                    <a class="additionalLogin" href="index.php?register=y">Don't have an account?</a>
+                    <a class="additionalLogin" href="index.php?forgot=y">Forgot your password?</a>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -129,11 +139,10 @@
             </div>
         </div>
     </div>
-</div>
 
-<script href="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 
-<script href="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" ></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" ></script>
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -149,6 +158,6 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="http://getbootstrap.com/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
-<script src="js/add.js" type="application/javascript"></script>
+<script src="controller/js/add.js" type="application/javascript"></script>
 </body>
 </html>
