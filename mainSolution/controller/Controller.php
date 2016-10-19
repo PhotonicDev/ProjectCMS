@@ -1,32 +1,33 @@
 <?php
 include_once("model/Model.php");
 
-class Controller {
-	public $model;
+class Controller
+{
+    public $model;
 
-	public function __construct()  
-    {  
-         $this->model = new Model();
+    public function __construct()
+    {
+        $this->model = new Model();
     }
-	public function invoke()
-	{
+
+    public function invoke()
+    {
 
 
-	    if(!empty($_POST)){
-	        switch($_POST) {
+        if (!empty($_POST)) {
+            switch ($_POST) {
                 default:
                     $this->homePage();
                     break;
                 case isset($_POST['login']);
-                        $this->model->Login($_POST['username'],$_POST['password']);
-                 //   header("Refresh:0; url=bussiness%20logic%20cms/mainSolution/index.php");
+                    $this->model->Login($_POST['username'], $_POST['password']);
+                    //   header("Refresh:0; url=bussiness%20logic%20cms/mainSolution/index.php");
                     break;
                 case isset($_POST['register']);
-                        $this->model->Register($_POST['username'],$_POST['password'],$_POST['email']);
+                    $this->model->Register($_POST['username'], $_POST['password'], $_POST['email']);
             }
-        }
-        elseif(!empty($_GET)){
-            switch($_GET) {
+        } elseif (!empty($_GET)) {
+            switch ($_GET) {
                 default:
                     $this->homePage();
                     break;
@@ -41,7 +42,7 @@ class Controller {
                     include "controller/logout.php";
                     break;
                 case isset($_GET['page']);
-                    switch($_GET['page']) {
+                    switch ($_GET['page']) {
                         default:
                             $this->homePage();
                             break;
@@ -51,28 +52,66 @@ class Controller {
                             break;
                     }
                     break;
-               // case $_POST['news']:
+                // case $_POST['news']:
                 //$news = $this->model->getNews();
-                  //  include 'view/newspage.php';
+                //  include 'view/newspage.php';
             }
-        }
-        else    {
-        $this->homePage();
+        } else {
+            $this->homePage();
         }
 
 
     }
-    public function homePage() {
+
+    public function homePage()
+    {
         $products = $this->model->getProductList();
         include 'view/productpage.php';
     }
-    public function Admin(){
-        if(isset($_POST['administrate'])){
-            $this->model->loginAdmin($_POST['username'],$_POST['password']);
+
+
+    public function panel()
+    {
+
+        if (isset($_POST['administrate'])) {
+            $this->model->loginAdmin($_POST['username'], $_POST['password']);
         }
-        else {
-            include_once "view/admin_login.php";
-        }
+
+        if (isset($_SESSION['admin_id'])) {
+
+
+
+                switch ($_GET) {
+                    default:
+                        include_once "view/admin_login.php";
+                        break;
+
+                    case isset($_GET['page']);
+
+                        switch ($_GET['page']) {
+                            default:
+                                include_once "admin.php";
+                                break;
+
+                            case 'products';
+                                $admin_products = $this->model->getAdminProductList();
+                                include_once "view/list_admin_products.php";
+                                break;
+
+                        }
+                        break;
+
+                }
+            }
+
+
+
+        else{
+                include_once "view/admin_login.php";
+            }
+
+
+
 
     }
 }

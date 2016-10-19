@@ -44,3 +44,32 @@ class Product {
         $this->manufacture = $manufacture;
     }
 }
+
+class Product_admin {
+    public $Product_ID;
+    public $name;
+    public $price;
+    public $description;
+    public $color;
+    public $size;
+    public $category;
+    public $images;
+    public $stock;
+    public $tags;
+    public $manufacture;
+
+    public function __construct($Product_ID, $name,$price,$description,$color,$size, $category, $images, $stock, $tags, $manufacture)
+    {
+        $this->id = $Product_ID;
+        $this->name = $name;
+        $this->price = $price;
+        $this->description = $description;
+        $this->color = $color;
+        $this->size = $size;
+        $this->category = $category;
+        $this->images = $images;
+        $this->stock = $stock;
+        $this->tags = $tags;
+        $this->manufacture = $manufacture;
+    }
+}

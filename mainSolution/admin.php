@@ -7,14 +7,17 @@
     <title>Admin panel</title>
 
     <link href="view/sass/main.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="view/sass/css/admin_panel.css">
 </head>
 <body>
+<div id="wrapper">
 <?php
     include_once("controller/Controller.php");
 
     $controller = new Controller();
-    $controller->Admin();
+    $controller->panel();
 ?>
+    </div>
 <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" ></script>

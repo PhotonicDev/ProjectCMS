@@ -142,4 +142,32 @@ if (isset($connection)){mysqli_close($connection);}
                 }
             }
         }
+
+
+
+        // ADMIN PANEL
+
+     public function getAdminProductList(){
+
+         $proData = $this->Connect()->getData("SELECT * FROM products");
+
+
+         return array(
+             $proData['name'] => new Product_admin(
+                 $proData['Product_ID'],
+                 $proData['name'],
+                 $proData['price'],
+                 $proData['description'],
+                 $proData['color'],
+                 $proData['size'],
+                 $proData['category'],
+                 $proData['images'],
+                 $proData['stock'],
+                 $proData['tags'],
+                 $proData['manufacture']
+
+             )
+         );
+
+     }
 }

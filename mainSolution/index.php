@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Jquery</title>
+    <title>Duck - Web Shop</title>
 
 
     <link href="view/sass/main.css" type="text/css" rel="stylesheet">
