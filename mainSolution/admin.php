@@ -15,19 +15,9 @@
     $controller = new Controller();
     $controller->Admin();
 ?>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 
-<div class="container jumbotron">
-    <h1>Administrator login page</h1>
-    <form action="" method="post">
-        <input placeholder="Username" type="text" name="username" /><br />
-        <input placeholder="Password" type="password" name="password" /><br />
-        <input type="submit" name="administrate"  />
-    </form>
-</div>
-
-<script href="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-
-<script href="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" ></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" ></script>
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">

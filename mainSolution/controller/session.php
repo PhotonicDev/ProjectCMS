@@ -7,6 +7,6 @@
 
 	function confirm_logged_in() {
         if (!logged_in()) {
-            redirect_to("login.php");
+            header("Location: /bussiness%20logic%20cms/mainSolution/index.php");
         }
     }

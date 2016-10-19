@@ -1,4 +1,3 @@
-
 body   {
     overflow-x: hidden;
     padding-top:50px;
@@ -16,6 +15,7 @@ body   {
         .modal {
                 .easyLogin {
                     width:50%;
+                    color: #08ebff * #ffaa00;
             }
             .directLogin {
                 width:50%;
@@ -142,6 +142,17 @@ body   {
         button {
             margin-left: 10px;
         }
+    }
+}
+.admin-row {
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+
+    .col-md-8 {
+
+    }
+    .col-md-4 {
+
     }
 }
 

@@ -19,9 +19,7 @@ class Controller {
                     break;
                 case isset($_POST['login']);
                         $this->model->Login($_POST['username'],$_POST['password']);
-                        if(logged_in()) {
-                            header("Location: /bussiness%20logic%20cms/mainSolution/index.php");
-                        }
+                 //   header("Refresh:0; url=bussiness%20logic%20cms/mainSolution/index.php");
                     break;
                 case isset($_POST['register']);
                         $this->model->Register($_POST['username'],$_POST['password'],$_POST['email']);
@@ -71,7 +69,9 @@ class Controller {
     public function Admin(){
         if(isset($_POST['administrate'])){
             $this->model->loginAdmin($_POST['username'],$_POST['password']);
-            include "view/content.php";
+        }
+        else {
+            include_once "view/admin_login.php";
         }
 
     }

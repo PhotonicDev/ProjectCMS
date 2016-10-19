@@ -11,7 +11,8 @@ body {
   body .wrapper {
     width: 100%; }
     body .wrapper .modal .easyLogin {
-      width: 50%; }
+      width: 50%;
+      color: yellow; }
     body .wrapper .modal .directLogin {
       width: 50%; }
     body .wrapper .modal .additionalLogin {
@@ -101,5 +102,9 @@ body {
       margin-top: 20px; }
     .item .itemInformation button {
       margin-left: 10px; }
+
+.admin-row {
+  padding-top: 10vh;
+  padding-bottom: 10vh; }
 
 /*# sourceMappingURL=main.css.map */

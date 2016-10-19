@@ -44,6 +44,10 @@ include_once ("model/Database.php");
                 if(password_verify($password, $found_user['password'])){
                     $_SESSION['user_id'] = $found_user['customer_id'];
                     $_SESSION['username'] = $found_user['name'];
+                    $products = $this->getProductList();
+                    include_once "view/productpage.php";
+                   // header("Refresh:0; url=bussiness%20logic%20cms/mainSolution/index.php");
+                   // header("Location: /bussiness%20logic%20cms/mainSolution/index.php");
                 } else {
                     // username/password combo was not found in the database
                     $message = "Username/password combination incorrect.<br />
@@ -113,18 +117,19 @@ if (isset($connection)){mysqli_close($connection);}
 		return $allProducts[$name];
 	}
 
-	    public function loginAdmin($username,$password)
+	    public function loginAdmin($adminName,$adminPassword)
         {
 
-            $check = $this->Connect()->getQuery("SELECT `admin_id`, `name`, `password` FROM `admin` WHERE `name` = '{$username}' LIMIT 1");
+            $check = $this->Connect()->getQuery("SELECT `admin_id`, `name`, `password` FROM `admin` WHERE `name` = '{$adminName}' LIMIT 1");
 
             if (mysqli_num_rows($check) == 1) {
                 // username/password authenticated
                 // and only 1 match
                 $found_user = mysqli_fetch_array($check);
-                if (password_verify($password, $found_user['password'])) {
+                if ($adminPassword == $found_user['password']) {
                     $_SESSION['admin_id'] = $found_user['admin_id'];
-                    $_SESSION['username'] = $found_user['name'];
+                    $_SESSION['admin_name'] = $found_user['name'];
+                    include_once "view/content.php";
                 } else {
                     // username/password combo was not found in the database
                     $message = "Username/password combination incorrect.<br />

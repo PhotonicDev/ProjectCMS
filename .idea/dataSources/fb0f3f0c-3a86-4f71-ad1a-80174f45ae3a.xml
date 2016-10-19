@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - database@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="database">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="booklist"/>
+    <schema id="3" name="duck"/>
+    <schema id="4" name="guest"/>
+    <schema id="5" name="information_schema"/>
+    <schema id="6" name="login"/>
+    <schema id="7" name="multi_data"/>
+    <schema id="8" name="mysql"/>
+    <schema id="9" name="performance_schema"/>
+    <schema id="10" name="projects"/>
+    <schema id="11" name="rerestaurant"/>
+    <schema id="12" name="restaurant"/>
+    <schema id="13" name="restaurant1"/>
+    <schema id="14" name="sys"/>
+    <table id="15" parent="1" name="address"/>
+    <table id="16" parent="1" name="admin"/>
+    <table id="17" parent="1" name="company_desc"/>
+    <table id="18" parent="1" name="contact_info"/>
+    <table id="19" parent="1" name="customers"/>
+    <table id="20" parent="1" name="daily_product"/>
+    <table id="21" parent="1" name="newspage"/>
+    <table id="22" parent="1" name="opening_hours"/>
+    <table id="23" parent="1" name="orders"/>
+    <table id="24" parent="1" name="products"/>
+    <table id="25" parent="1" name="search_history"/>
+    <table id="26" parent="1" name="social_pages"/>
+    <table id="27" parent="1" name="sold_products"/>
+    <column id="28" parent="15" name="customer_id">
+      <mandatory>1</mandatory>
+      <data-type>int(20)|0</data-type>
+    </column>
+    <column id="29" parent="15" name="Country">
+      <mandatory>1</mandatory>
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="30" parent="15" name="City">
+      <mandatory>1</mandatory>
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="31" parent="15" name="zip_code">
+      <mandatory>1</mandatory>
+      <data-type>int(10)|0</data-type>
+    </column>
+    <column id="32" parent="15" name="street">
+      <mandatory>1</mandatory>
+      <data-type>int(150)|0</data-type>
+    </column>
+    <column id="33" parent="15" name="house_no">
+      <mandatory>1</mandatory>
+      <data-type>int(10)|0</data-type>
+    </column>
+    <index id="34" parent="15" name="customer_id">
+      <columns>customer_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <foreign-key id="35" parent="15" name="address_ibfk_1">
+      <columns>customer_id</columns>
+      <ref-key>~.customers.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <column id="36" parent="16" name="admin_id">
+      <mandatory>1</mandatory>
+      <data-type>int(20)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="37" parent="16" name="name">
+      <mandatory>1</mandatory>
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="38" parent="16" name="password">
+      <mandatory>1</mandatory>
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="39" parent="16" name="email">
+      <mandatory>1</mandatory>
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <key id="40" parent="16" name="PRIMARY">
+      <columns>admin_id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="41" parent="17" name="Description">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="42" parent="17" name="pictures">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="43" parent="17" name="title">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="44" parent="18" name="Address">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="45" parent="18" name="Phone">
+      <mandatory>1</mandatory>
+      <data-type>int(50)|0</data-type>
+    </column>
+    <column id="46" parent="18" name="email">
+      <mandatory>1</mandatory>
+      <data-type>varchar(150)|0</data-type>
+    </column>
+    <column id="47" parent="18" name="description">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="48" parent="19" name="customer_id">
+      <mandatory>1</mandatory>
+      <data-type>int(20)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="49" parent="19" name="name">
+      <mandatory>1</mandatory>
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="50" parent="19" name="password">
+      <mandatory>1</mandatory>
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="51" parent="19" name="email">
+      <mandatory>1</mandatory>
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <key id="52" parent="19" name="PRIMARY">
+      <columns>customer_id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="53" parent="20" name="date">
+      <mandatory>1</mandatory>
+      <data-type>timestamp|0</data-type>
+    </column>
+    <column id="54" parent="20" name="Product_ID">
+      <mandatory>1</mandatory>
+      <data-type>int(20)|0</data-type>
+    </column>
+    <index id="55" parent="20" name="Product_ID">
+      <columns>Product_ID</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <foreign-key id="56" parent="20" name="daily_product_ibfk_1">
+      <columns>Product_ID</columns>
+      <ref-key>~.products.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <column id="57" parent="21" name="Page_ID">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="58" parent="21" name="Image">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="59" parent="21" name="Description">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="60" parent="21" name="DATE">
+      <mandatory>1</mandatory>
+      <data-type>timestamp|0</data-type>
+    </column>
+    <column id="61" parent="21" name="Header">
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <key id="62" parent="21" name="PRIMARY">
+      <columns>Page_ID</columns>
+      <primary>1</primary>
+    </key>
+    <column id="63" parent="22" name="time">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="64" parent="22" name="days">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="65" parent="23" name="Order_No">
+      <mandatory>1</mandatory>
+      <data-type>int(20)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="66" parent="23" name="BoughtID">
+      <mandatory>1</mandatory>
+      <data-type>int(20)|0</data-type>
+    </column>
+    <column id="67" parent="23" name="Date">
+      <mandatory>1</mandatory>
+      <data-type>timestamp|0</data-type>
+    </column>
+    <column id="68" parent="23" name="customer_id">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <index id="69" parent="23" name="BoughtID">
+      <columns>BoughtID</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="70" parent="23" name="customer_id">
+      <columns>customer_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="71" parent="23" name="PRIMARY">
+      <columns>Order_No</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="72" parent="23" name="orders_ibfk_2">
+      <columns>BoughtID</columns>
+      <ref-key>~.sold_products.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="73" parent="23" name="orders_ibfk_1">
+      <columns>customer_id</columns>
+      <ref-key>~.customers.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <column id="74" parent="24" name="Product_ID">
+      <mandatory>1</mandatory>
+      <data-type>int(20)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="75" parent="24" name="name">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="76" parent="24" name="price">
+      <mandatory>1</mandatory>
+      <data-type>float|0</data-type>
+    </column>
+    <column id="77" parent="24" name="description">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="78" parent="24" name="color">
+      <mandatory>1</mandatory>
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="79" parent="24" name="size">
+      <mandatory>1</mandatory>
+      <data-type>varchar(15)|0</data-type>
+    </column>
+    <column id="80" parent="24" name="category">
+      <mandatory>1</mandatory>
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="81" parent="24" name="images">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="82" parent="24" name="stock">
+      <mandatory>1</mandatory>
+      <data-type>int(255)|0</data-type>
+    </column>
+    <column id="83" parent="24" name="tags">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="84" parent="24" name="manufacture">
+      <mandatory>1</mandatory>
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <key id="85" parent="24" name="PRIMARY">
+      <columns>Product_ID</columns>
+      <primary>1</primary>
+    </key>
+    <column id="86" parent="25" name="Product_ID">
+      <mandatory>1</mandatory>
+      <data-type>int(20)|0</data-type>
+    </column>
+    <index id="87" parent="25" name="Product_ID">
+      <columns>Product_ID</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <foreign-key id="88" parent="25" name="search_history_ibfk_1">
+      <columns>Product_ID</columns>
+      <ref-key>~.products.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <column id="89" parent="26" name="Product_ID">
+      <mandatory>1</mandatory>
+      <data-type>int(20)|0</data-type>
+    </column>
+    <column id="90" parent="26" name="Likes">
+      <mandatory>1</mandatory>
+      <data-type>int(255)|0</data-type>
+    </column>
+    <column id="91" parent="26" name="Comments">
+      <mandatory>1</mandatory>
+      <data-type>int(255)|0</data-type>
+    </column>
+    <column id="92" parent="26" name="Views">
+      <mandatory>1</mandatory>
+      <data-type>int(255)|0</data-type>
+    </column>
+    <index id="93" parent="26" name="Product_ID">
+      <columns>Product_ID</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <foreign-key id="94" parent="26" name="social_pages_ibfk_1">
+      <columns>Product_ID</columns>
+      <ref-key>~.products.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <column id="95" parent="27" name="BoughtID">
+      <mandatory>1</mandatory>
+      <data-type>int(20)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="96" parent="27" name="Product_ID">
+      <mandatory>1</mandatory>
+      <data-type>int(20)|0</data-type>
+    </column>
+    <column id="97" parent="27" name="Qty">
+      <mandatory>1</mandatory>
+      <data-type>int(255)|0</data-type>
+    </column>
+    <index id="98" parent="27" name="Product_ID">
+      <columns>Product_ID</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="99" parent="27" name="PRIMARY">
+      <columns>BoughtID</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="100" parent="27" name="sold_products_ibfk_1">
+      <columns>Product_ID</columns>
+      <ref-key>~.products.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+  </database-model>
+</dataSource>
