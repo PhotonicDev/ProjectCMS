@@ -82,33 +82,31 @@ class Controller
         }
 
         if (isset($_SESSION['admin_id'])) {
-
-
-
                 switch ($_GET) {
                     default:
-                        include_once "view/admin_login.php";
+                        include_once "view/content.php";
                         break;
 
                     case isset($_GET['page']);
 
-                                $admin_products = $this->model->getAdminProductList();
-                                include_once "view/list_admin_products.php";
-                                break;
+                        $admin_products = $this->model->getAdminProductList();
+                        include_once "view/content.php";
+                        include_once "view/list_admin_products.php";
+                        break;
+                    case isset($_GET['news']);
 
-
+                        include_once "view/content.php";
+                        include_once "view/admin_newsfeed.php";
+                        break;
+                    case isset($_GET['product']);
+                        $product = $this->model->getProduct($_GET['product']);
+                        include 'view/viewproduct.php';
+                        break;
 
                 }
             }
-
-
-
-        else{
+            else {
                 include_once "view/admin_login.php";
             }
-
-
-
-
     }
 }

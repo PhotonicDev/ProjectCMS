@@ -12,7 +12,7 @@ foreach ($admin_products as $name => $product)
     <div class="itemInfoHide caption">
     <div class="transitionInformation">
          <h4>
-         <a href="index.php?product='.$product->name.'">'.$product->name.'</a>
+         <a href="admin.php?product='.$product->name.'">'.$product->name.'</a>
 			</h4>
              <img src="red.png" class="stick">
               <div class="pricey"><h4>' . $product->price . ' DKK</h4></div>

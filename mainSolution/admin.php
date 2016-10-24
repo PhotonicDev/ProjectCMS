@@ -12,6 +12,7 @@
 <body>
 <div id="wrapper">
 <?php
+    include_once("controller/session.php");
     include_once("controller/Controller.php");
 
     $controller = new Controller();

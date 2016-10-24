@@ -12,10 +12,10 @@
             </li>
             <li>
 
-                <a href="admin.php?page=products">Products <span class="glyphicon glyphicon-th" aria-hidden="true"></span> </a>
+                <a href="admin.php?page=products">Products<span class="glyphicon glyphicon-th" aria-hidden="true"></span> </a>
             </li>
             <li>
-               <a href="#">Newsfeed  </a>
+               <a href="admin.php?news=products">Newsfeed</a>
             </li>
             <li>
                 <a href="#">Description</a>
