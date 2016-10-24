@@ -18,6 +18,25 @@ class Post
 
 
 }
+
+class Contacts
+{
+    public $Address;
+    public $description;
+    public $email;
+    public $Phone;
+
+    public function __construct($Address,$description,$email, $Phone)
+    {
+        $this->Address = $Address;
+        $this->description = $description;
+        $this->email = $email;
+        $this->Phone = $Phone;
+    }
+
+
+}
+
 class Product {
     public $name;
     public $price;

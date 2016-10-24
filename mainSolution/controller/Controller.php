@@ -50,6 +50,10 @@ class Controller
                             $news = $this->model->openNews();
                             include "view/newspage.php";
                             break;
+                        case "contacts";
+                            $contact = $this->model->Contacts();
+                            include "view/contactform.php";
+                            break;
                     }
                     break;
                 // case $_POST['news']:
@@ -88,18 +92,11 @@ class Controller
 
                     case isset($_GET['page']);
 
-                        switch ($_GET['page']) {
-                            default:
-                                include_once "admin.php";
-                                break;
-
-                            case 'products';
                                 $admin_products = $this->model->getAdminProductList();
                                 include_once "view/list_admin_products.php";
                                 break;
 
-                        }
-                        break;
+
 
                 }
             }

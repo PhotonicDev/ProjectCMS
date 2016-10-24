@@ -9,6 +9,7 @@
 
 
     <link href="view/sass/main.css" type="text/css" rel="stylesheet">
+    <link rel='stylesheet' type='text/css' href='view/sass/css/contactform.css'>
 </head>
 <body>
 <nav class="navbar-fixed-top navbar navbar-default">
@@ -33,6 +34,8 @@
                 <li class="active"><a href="index.php">Home <span class="sr-only">(current)</span></a></li>
 
                 <li><a href="index.php?page=news">News</a></li>
+
+                <li><a href="index.php?page=contacts">Contact us</a></li>
 
             </ul>
             <form class="navbar-form navbar-left">

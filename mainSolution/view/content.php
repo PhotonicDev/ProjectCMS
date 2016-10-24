@@ -2,6 +2,7 @@
 
 
     <!-- Sidebar -->
+    <form method="get">
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li class="sidebar-brand">
@@ -24,6 +25,9 @@
                 <a href="#">Contacts</a>
             </li>
         </ul>
+    </form>
+
+    <form method="post">
         <div class="logout">
             <?php
             echo  " <a href='logout.php'> <button class = 'btn btn-danger btn-sm' type='button'>Logout</button></a> " ;
@@ -32,6 +36,7 @@
         </div>
 
     </div>
+    </form>
     <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->

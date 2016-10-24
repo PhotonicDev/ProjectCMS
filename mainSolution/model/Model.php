@@ -95,7 +95,7 @@ if (isset($connection)){mysqli_close($connection);}
         }
         public function openNews() {
 
-         $postData = $this->Connect()->getData("SELECT * FROM products");
+         $postData = $this->Connect()->getData("SELECT * FROM newspage");
 
 
          return array(
@@ -108,6 +108,24 @@ if (isset($connection)){mysqli_close($connection);}
          );
 
     }
+
+     public function Contacts() {
+
+         $postData = $this->Connect()->getData("SELECT * FROM contact_info");
+
+
+         return array(
+             $postData['Address'] => new Post(
+                 $postData['Address'],
+                 $postData['description'],
+                 $postData['email'],
+                 $postData['Phone']
+             )
+         );
+
+     }
+
+
 
 	    public function getProduct($name)
 	{
