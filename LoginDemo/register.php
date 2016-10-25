@@ -25,10 +25,10 @@ if(preg_match($regexp, $_POST['email'])){
         echo "This user already exists";
     } else {
 
-        $iterations = ['cost' => 15]; // encrypting password - hashing it 15 times
+        $iterations = ['cost' => 10]; // encrypting password - hashing it 10 times
         $hashed_password = password_hash($password, PASSWORD_BCRYPT, $iterations);
         //insert results from the form input
-        $query = "INSERT INTO `customers`( `name`, `password` , `email`) VALUES ('$user', '$hashed_password', '$email')";
+        $query = "INSERT INTO `admin`( `name`, `password` , `email`) VALUES ('$user', '$hashed_password', '$email')";
         $result = mysqli_query($conn, $query) or die('Error querying database.');
 
         echo "New user successfully created!";

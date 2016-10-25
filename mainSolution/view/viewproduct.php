@@ -25,7 +25,9 @@
     <li class="list-group-item">Size:<strong> ' . $product->size . '</strong></li>
     <li class="list-group-item">Delivery time:<strong> ' . $product->category . '</strong></li>
     <li class="list-group-item">On stock:<strong> ' . $product->stock . '</strong></li>
+    
   				</ul>
+  				
 		</div>
 	<button type="button" class="pull-right btn-lg btn btn-success">Add to basket<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></button>
 	<button type="button" class="pull-right btn-lg btn btn-success">' . $product->tags . '  <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></button><br/>

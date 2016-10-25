@@ -79,7 +79,7 @@ class Product_admin {
 
     public function __construct($Product_ID, $name,$price,$description,$color,$size, $category, $images, $stock, $tags, $manufacture)
     {
-        $this->id = $Product_ID;
+        $this->Product_ID = $Product_ID;
         $this->name = $name;
         $this->price = $price;
         $this->description = $description;

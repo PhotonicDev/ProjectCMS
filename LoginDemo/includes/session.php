@@ -9,5 +9,6 @@
 		if (!logged_in()) {
 			redirect_to("index.php");
 		}
+
 	}
 ?>

@@ -82,31 +82,38 @@ class Controller
         }
 
         if (isset($_SESSION['admin_id'])) {
-                switch ($_GET) {
-                    default:
-                        include_once "view/content.php";
-                        break;
 
-                    case isset($_GET['page']);
-
-                        $admin_products = $this->model->getAdminProductList();
-                        include_once "view/content.php";
-                        include_once "view/list_admin_products.php";
-                        break;
-                    case isset($_GET['news']);
-
-                        include_once "view/content.php";
-                        include_once "view/admin_newsfeed.php";
-                        break;
-                    case isset($_GET['product']);
-                        $product = $this->model->getProduct($_GET['product']);
-                        include 'view/viewproduct.php';
-                        break;
-
-                }
+            if (isset($_POST['btn_save_updates'])) {
+                $this->model->Update_products($_POST['Product_ID'],$_POST['product_name'],$_POST['product_price'],$_POST['product_description'],$_POST['product_color'],$_POST['product_size'],$_POST['product_category'],$_POST['product_stock'],$_POST['product_tags'],$_POST['product_manufacture']);
             }
-            else {
-                include_once "view/admin_login.php";
+            
+            switch ($_GET) {
+                default:
+                    include_once "view/content.php";
+                    break;
+
+                case isset($_GET['page']);
+
+                    $admin_products = $this->model->getAdminProductList();
+                    include_once "view/content.php";
+                    include_once "view/list_admin_products.php";
+                    break;
+                case isset($_GET['news']);
+
+                    include_once "view/content.php";
+                    include_once "view/admin_newsfeed.php";
+                    break;
+                case isset($_GET['product']);
+                    $product = $this->model->getProduct($_GET['product']);
+                    include 'view/view_admin_product.php';
+                    break;
+
             }
+        } else {
+            include_once "view/admin_login.php";
+        }
+
+
+
     }
 }

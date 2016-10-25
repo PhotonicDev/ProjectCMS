@@ -21,8 +21,8 @@
              From:' . $product->manufacture . '<br>
              Category:' . $product->category . '<br>
              Tags:' . $product->tags . '<br>
+             
          </div>
-         <input type="text" value="' . $product->images . '" >
     </div>
     
     </div>

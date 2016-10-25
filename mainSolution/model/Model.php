@@ -62,6 +62,8 @@ include_once ("model/Database.php");
 
 if (isset($connection)){mysqli_close($connection);}
         }
+
+
         public function Register($username,$password,$email) {
             $check = $this->Connect()->getQuery("SELECT * FROM `customers` WHERE `name` = '$username' AND `email` = '$email'");
 
@@ -144,7 +146,8 @@ if (isset($connection)){mysqli_close($connection);}
                 // username/password authenticated
                 // and only 1 match
                 $found_user = mysqli_fetch_array($check);
-                if ($adminPassword == $found_user['password']) {
+
+                if (password_verify($adminPassword,$found_user['password'])) {
                     $_SESSION['admin_id'] = $found_user['admin_id'];
                     $_SESSION['admin_name'] = $found_user['name'];
                     include_once "view/content.php";
@@ -187,5 +190,13 @@ if (isset($connection)){mysqli_close($connection);}
              )
          );
 
+     }
+
+     public function Update_products($Product_ID,$name,$price,$description,$color,$size,$category,$stock,$tags,$manufacture){
+
+         $this->Connect()->getNothing("UPDATE products SET Product_ID ='$Product_ID', name ='$name', price = '$price', description ='$description', color = '$color', size ='$size', category ='$category', stock ='$stock', tags ='$tags', manufacture ='$manufacture' WHERE Product_ID ='$Product_ID'");
+
+
+         return "Updated";
      }
 }
