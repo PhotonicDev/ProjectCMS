@@ -1,5 +1,6 @@
 <?php
 include_once("model/Model.php");
+include_once("view/error_view/note.php");
 
 class Controller
 {
@@ -21,12 +22,13 @@ class Controller
                     break;
                 case isset($_POST['login']);
                     $this->model->Login($_POST['username'], $_POST['password']);
-                    //   header("Refresh:0; url=bussiness%20logic%20cms/mainSolution/index.php");
+
                     break;
                 case isset($_POST['register']);
                     $this->model->Register($_POST['username'], $_POST['password'], $_POST['email']);
             }
-        } elseif (!empty($_GET)) {
+        }
+        elseif (!empty($_GET)) {
             switch ($_GET) {
                 default:
                     $this->homePage();
@@ -35,12 +37,13 @@ class Controller
                     include "view/register.php";
                     break;
                 case isset($_GET['product']);
-                    $product = $this->model->getProduct($_GET['product']);
+                    $productSelected = $this->model->getProduct($_GET['product']);
                     include 'view/viewproduct.php';
                     break;
                 case isset($_GET['logout']);
                     include "controller/logout.php";
                     break;
+
                 case isset($_GET['page']);
                     switch ($_GET['page']) {
                         default:
@@ -60,7 +63,8 @@ class Controller
                 //$news = $this->model->getNews();
                 //  include 'view/newspage.php';
             }
-        } else {
+        }
+        else {
             $this->homePage();
         }
 
@@ -94,7 +98,7 @@ class Controller
 
                 case isset($_GET['page']);
 
-                    $admin_products = $this->model->getAdminProductList();
+                    $productsAdmin = $this->model->getProductList();
                     include_once "view/content.php";
                     include_once "view/list_admin_products.php";
                     break;
@@ -104,7 +108,7 @@ class Controller
                     include_once "view/admin_newsfeed.php";
                     break;
                 case isset($_GET['product']);
-                    $product = $this->model->getProduct($_GET['product']);
+                    $productAdmin = $this->model->getProduct($_GET['product']);
                     include 'view/view_admin_product.php';
                     break;
 

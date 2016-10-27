@@ -2,10 +2,15 @@
 
 include_once("model/Construct.php");
 include_once ("model/Database.php");
-
+include_once("view/error_view/note.php");
 
 
  class Model {
+        public function searchProducts($search) {
+
+         $result = $this->Connect()->getQuery("SELECT * FROM products WHERE name LIKE '%" . $search . "%'");
+             return $result;
+     }
         function Connect(){
 
          $db = require('model/conn.php');
@@ -14,24 +19,10 @@ include_once ("model/Database.php");
      }
 	    public function getProductList()
 	{
-        $proData = $this->Connect()->getData("SELECT * FROM products");
+        $proData = $this->Connect()->getQuery("SELECT * FROM products");
 
+            return $proData;
 
-        return array(
-                $proData['name'] => new Product(
-                    $proData['name'],
-                    $proData['price'],
-                    $proData['description'],
-                    $proData['color'],
-                    $proData['size'],
-                    $proData['category'],
-                    $proData['images'],
-                    $proData['stock'],
-                    $proData['tags'],
-                    $proData['manufacture']
-
-                    )
-                );
         }
         public function Login($username,$password){
 
@@ -46,25 +37,28 @@ include_once ("model/Database.php");
                     $_SESSION['username'] = $found_user['name'];
                     $products = $this->getProductList();
                     include_once "view/productpage.php";
+                    note("Logged in");
                    // header("Refresh:0; url=bussiness%20logic%20cms/mainSolution/index.php");
                    // header("Location: /bussiness%20logic%20cms/mainSolution/index.php");
                 } else {
                     // username/password combo was not found in the database
-                    $message = "Username/password combination incorrect.<br />
-					Please make sure your caps lock key is off and try again.";
-                    echo $message;
+                    error("Username/password combination incorrect.
+					Please make sure your caps lock key is off and try again.");
                 }}
                  else { // Form has not been submitted.
             if (isset($_GET['logout']) && $_GET['logout'] == 1) {
-                    $message = "You are now logged out.";
+                    note("You are now logged out.");
  }
 }
 
 if (isset($connection)){mysqli_close($connection);}
         }
-
-
+        public function getComments($id){
+                $comments = $this->Connect()->getQuery("SELECT * FROM social_pages WHERE `Product_ID` = '{$id}' LIMIT 50");
+                return $comments;
+        }
         public function Register($username,$password,$email) {
+
             $check = $this->Connect()->getQuery("SELECT * FROM `customers` WHERE `name` = '$username' AND `email` = '$email'");
 
             $rowResult = mysqli_num_rows($check);
@@ -74,7 +68,7 @@ if (isset($connection)){mysqli_close($connection);}
             if(preg_match($regexp, $_POST['email'])){
 
                 if($rowResult > 0) {
-                    echo "This user already exists";
+                    error("This user already exists");
                 } else {
 
                     $iterations = ['cost' => 10]; // encrypting password - hashing it 10 times
@@ -82,7 +76,7 @@ if (isset($connection)){mysqli_close($connection);}
                     //insert results from the form input
                     $check = $this->Connect()->getNothing("INSERT INTO `customers`( `name`, `password` , `email`) VALUES ('$username', '$hashed_password', '$email')");
 
-                    echo "New user successfully created!";
+                    note("New user successfully created!");
 
                 }
 
@@ -90,7 +84,7 @@ if (isset($connection)){mysqli_close($connection);}
 
             else{
 
-                echo "Your ". "<b> " .$_POST['email'] . "</b> " . " "."email is not correct";
+                error("Your " .$_POST['email'] . "email is not correct");
 
             }
 
@@ -110,8 +104,7 @@ if (isset($connection)){mysqli_close($connection);}
          );
 
     }
-
-     public function Contacts() {
+        public function Contacts() {
 
          $postData = $this->Connect()->getData("SELECT * FROM contact_info");
 
@@ -126,17 +119,17 @@ if (isset($connection)){mysqli_close($connection);}
          );
 
      }
-
-
-
 	    public function getProduct($name)
 	{
 		// we use the previous function to get all the books and then we return the requested one.
 		// in a real life scenario this will be done through a db select command
 		$allProducts = $this->getProductList();
-		return $allProducts[$name];
-	}
+         if (mysqli_num_rows($allProducts) > 0) {
+             $proData = $this->Connect()->getQuery("SELECT * FROM products WHERE `name`  = '{$name}' LIMIT 1");
+             return $proData;
 
+         }
+	}
 	    public function loginAdmin($adminName,$adminPassword)
         {
 
@@ -164,35 +157,8 @@ if (isset($connection)){mysqli_close($connection);}
             }
         }
 
-
-
         // ADMIN PANEL
-
-     public function getAdminProductList(){
-
-         $proData = $this->Connect()->getData("SELECT * FROM products");
-
-
-         return array(
-             $proData['name'] => new Product_admin(
-                 $proData['Product_ID'],
-                 $proData['name'],
-                 $proData['price'],
-                 $proData['description'],
-                 $proData['color'],
-                 $proData['size'],
-                 $proData['category'],
-                 $proData['images'],
-                 $proData['stock'],
-                 $proData['tags'],
-                 $proData['manufacture']
-
-             )
-         );
-
-     }
-
-     public function Update_products($Product_ID,$name,$price,$description,$color,$size,$category,$stock,$tags,$manufacture){
+        public function Update_products($Product_ID,$name,$price,$description,$color,$size,$category,$stock,$tags,$manufacture){
 
          $this->Connect()->getNothing("UPDATE products SET Product_ID ='$Product_ID', name ='$name', price = '$price', description ='$description', color = '$color', size ='$size', category ='$category', stock ='$stock', tags ='$tags', manufacture ='$manufacture' WHERE Product_ID ='$Product_ID'");
 

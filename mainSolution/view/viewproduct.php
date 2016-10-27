@@ -1,10 +1,16 @@
 <?php
-	echo '
-	<div class="item thumbnail container">
+	$product = mysqli_fetch_array($productSelected);
+
+?>
+<div class="item thumbnail container" xmlns="http://www.w3.org/1999/html">
 		<div class="row">
 			<div class="col-md-6">
 				<div class="itemImageFrame">
-					<img class="itemPictureBig thumbnail" src="' . $product->images . '">
+					<img class="itemPictureBig thumbnail" src="<?php echo $product['images']; ?>">
+					<div class="btn-group productControl text-center">
+						<button type="button" class="btn-lg btn btn-success">Add to basket <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></button>
+						<button type="button" class="btn-lg btn btn-success">Up vote <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button>
+					</div>
 				</div>
 			</div>
 			<div class="col-md-6">
@@ -12,32 +18,77 @@
 	
 <div class="panel panel-default">
   <!-- Default panel contents -->
-  	<div class="panel-heading"><h3><strong>' . $product->name . '</strong></h3><br/>
+  	<div class="panel-heading"><h3><strong><?php echo $product['name']; ?></strong></h3><br/>
   	</div>
   		<div class="panel-body">
-  			<h4>Price:<strong> ' . $product->price . ' DKK</strong></h4><br/>
-				Description: ' . $product->description . '
+  			<h4>Price:<strong><?php echo $product['price']; ?> DKK</strong></h4><br/>
+					<p><?php echo $product['description']; ?></p>
 		</div>
   <!-- List group -->
   				<ul class="list-group">
-    <li class="list-group-item">Manufacturer:<strong> ' . $product->manufacture . '</strong></li>
-    <li class="list-group-item">Color:<strong> ' . $product->color . '</strong></li>
-    <li class="list-group-item">Size:<strong> ' . $product->size . '</strong></li>
-    <li class="list-group-item">Delivery time:<strong> ' . $product->category . '</strong></li>
-    <li class="list-group-item">On stock:<strong> ' . $product->stock . '</strong></li>
+    <li class="list-group-item">Manufacturer:<strong><?php echo $product['manufacture']; ?></strong></li>
+    <li class="list-group-item">Color:<strong> <?php echo $product['color']; ?></strong></li>
+    <li class="list-group-item">Size:<strong> <?php echo $product['size']; ?></strong></li>
+    <li class="list-group-item">Category:<strong> <?php echo $product['category']; ?></strong></li>
+    <li class="list-group-item">On stock:<strong> <?php echo $product['stock']; ?></strong></li>
+    <li class="list-group-item">Tags:<strong class="tags"> <?php echo $product['tags']; ?></strong></li>
     
   				</ul>
   				
 		</div>
-	<button type="button" class="pull-right btn-lg btn btn-success">Add to basket<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></button>
-	<button type="button" class="pull-right btn-lg btn btn-success">' . $product->tags . '  <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></button><br/>
-    
+
   </div>
   </div>
 	
 				</div>
+								<!--Product end-->
+		<div class="row">
+			<div class="col-md-9">
+				<div id="commentSection" data-name="<?php echo $product['Product_ID']; ?>" class="container">
+					<?php include 'controller/comments.php'; ?>
+					<div id="loader-icon"><img src="view/web_images/LoaderIcon.gif" /><div>
+				</div>
+			</div>
+			<div class="col-md-3">
+
 			</div>
 		</div>
-    </div>';
+		<script>
+			$(document).ready(function(){
+				var count = 1;
+				var win = $(window);
+				var txt = $('.commentSection').data("name");
+				win.scroll(function () {
+					if(count >= 1){
+						if (win.height() + win.scrollTop() == $(document).height()) {
+							{   $('#loader-icon').show();
+								count++;
+							$.ajax({
+								type: "GET",
+								url: "controller/comments.php",
+								data:{comment:txt,number:count},
+								cache: false,
+								dataType:"text",
+								success:function(data) {
+									$('.commentSection').append(data);
+									$('#loader-icon').hide();
 
-?>
+								}
+							});
+						}
+					}
+					});
+				});
+		</script>
+		<!--<div class="row">
+			<div class="col-md-9">
+
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="container">
+					<h5>Space For daily products or etc.</h5>
+				</div>
+			</div>-->
+
+</div>

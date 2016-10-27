@@ -1,3 +1,6 @@
+<?php
+
+echo '
 <form method="post">
 
     <div class="container jumbotron">
@@ -18,4 +21,5 @@
     </div>
 
 
-</form>
+</form>';
+?>

@@ -1,33 +1,48 @@
-	<?php
+<?php
+    $output = '';
 
-		foreach ($products as $name => $product)
-		{
-			echo '<div class="items thumbnail">  
+if(mysqli_num_rows($products) > 0){
+
+
+        $output .= '';
+    while($product = mysqli_fetch_array($products)){
+
+		$output .=	'<div class="items thumbnail">
+ <a href="index.php?product='.$product['name'].'">
            <div class="itemWhite">
            
-            <img class="itemPicture" src="' . $product->images . '">
+            <img class="itemPicture" src="' . $product['images'] . '">
             </div>
            
     <div class="itemInfoHide caption">
     <div class="transitionInformation">
          <h4>
-         <a href="index.php?product='.$product->name.'">'.$product->name.'</a>
+         <strong>'.$product['name'].'</strong>
 			</h4>
+              <div class="pricey">
+              <h4>' . $product['price'] . ' DKK</h4>
              <img src="red.png" class="stick">
-              <div class="pricey"><h4>' . $product->price . ' DKK</h4></div>
+              </div>
               <div class="otherInformation">
-             Size:' . $product->size . '<br>
-             Color:' . $product->color . '<br>
-             From:' . $product->manufacture . '<br>
-             Category:' . $product->category . '<br>
-             Tags:' . $product->tags . '<br>
+             Size:<strong>' . $product['size'] . '</strong><br>
+             Color:<strong>' . $product['color'] . '</strong><br>
+             From:<strong>' . $product['manufacture'] . '</strong><br>
+             Category:<strong>' . $product['category'] . '</strong><br>
+             Tags:<strong>' . $product['tags'] . '</strong><br>
              
-         </div>
+              </div>
     </div>
+              
     
     </div>
+    </a>
 </div>
 			';
-		}
-
-
+    }
+    echo $output;
+}
+else
+{
+    echo ' ';
+}
+?>

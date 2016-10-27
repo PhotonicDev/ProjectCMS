@@ -12,7 +12,7 @@
     <link rel='stylesheet' type='text/css' href='view/sass/css/contactform.css'>
 </head>
 <body>
-<nav class="navbar-fixed-top navbar navbar-default">
+<nav id="navigation" class="navbar-fixed-top navbar">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -38,16 +38,17 @@
                 <li><a href="index.php?page=contacts">Contact us</a></li>
 
             </ul>
-            <form class="navbar-form navbar-left">
+            <form class="navbar-form navbar-left"> <!-- search bar-->
                 <div class="input-group">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
+                        <input type="text" name="search_text" id="search_text" class="form-control" placeholder="Search">
                     </div>
                     <span class="input-group-btn">
-        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+        <button type="button" class="search_button btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                 </span>
                 </div>
-            </form>
+            </form><!-- search bar-->
+
             <ul class="nav navbar-nav navbar-right">
                 <?php
                  include_once("controller/session.php");
@@ -113,15 +114,21 @@
     <div class="mainTile">
 
         <div class="containerMain">
-<?php
-	include_once("controller/Controller.php");
+                <div id="static" class="staticItems slideAn">
+                    <?php
+                    include_once("controller/Controller.php");
 
-	$controller = new Controller();
-	$controller->invoke();
+                    $controller = new Controller();
+                    $controller->invoke();
 
 ?>
+                </div>
+                <div id="dynamic" class="staticItems slideAn">
+
+                </div>
             </div>
         </div>
+        <div class="background"></div>
 
 
         <div class="sideNavigation">
@@ -143,9 +150,16 @@
         </div>
     </div>
 
+
+
 <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" ></script>
+
+<script rel="script" src="controller/js/jquery-3.1.1.min.js"></script>
+<script rel="script" src="controller/js/bootstrap.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -153,7 +167,50 @@
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
+ <script>
+    $(document).ready(function(){
+        $('#search_text').keyup(function(){
+            var txt = $(this).val();
+            if(txt != '')
+            {
+                $.ajax({
+                    url:"controller/fetch.php",
+                    method:"get",
+                    data:{search:txt,},
+                    dataType:"text",
+                    success:function(data)
+                    {   $('#static').hide( 500 ,"swing");
+                        $('#dynamic').html(data).show( 500 ,"swing");
 
+                    }
+                });
+            }
+            else
+            {
+                $('#dynamic').hide( 500 ,"swing").html('');
+                $('#static').show( 500 ,"swing");
+            }
+        });
+    });
+</script>
+<script>
+    $(document).ready(function(){
+       var scroll_start = 0;
+        var startChange = $('.mainTile');
+        var offset = startChange.offset();
+        if(startChange.length) {
+            $(document).scroll(function(){
+                scroll_start = $(this).scrollTop();
+                if(scroll_start > offset.top) {
+                    $("#navigation").addClass("fancyNav");
+                }
+                else {
+                    $("#navigation").removeClass("fancyNav");
+                }
+            });
+        }
+    });
+</script>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

@@ -16,6 +16,6 @@
 		// 4. Destroy the session
 		session_destroy();
 
-        header("Location: admin.php");
+        header("Location: index.php");
         die();
 
