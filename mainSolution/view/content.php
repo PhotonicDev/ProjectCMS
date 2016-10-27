@@ -4,10 +4,12 @@
     <!-- Sidebar -->
     <form method="get">
     <div id="sidebar-wrapper">
+
+        <a class="navbar-brand" href="index.php"><img class="duckLogo" src="user_images/duck_blue.png">Admin Panel</a>
         <ul class="sidebar-nav">
             <li class="sidebar-brand">
 
-                    Admin Navigation
+
 
             </li>
             <li>
@@ -41,6 +43,7 @@
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
+
         <div class="container-fluid">
             <div class="row">
                 <!-- Place your content here -->

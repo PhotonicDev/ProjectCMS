@@ -3,23 +3,26 @@
 echo '
 <form method="post">
 
-    <div class="container jumbotron">
+    <div id="jmb-background" class="container jumbotron">
+    <div class="form-container">
         <label><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="username" required> <br />
+        <input class=\'form-control\' type="text" placeholder="Enter Username" name="username" required> <br />
 
         <label><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" required> <br />
+        <input class=\'form-control\' type="password" placeholder="Enter Password" name="password" required> <br />
 
         <label><b>Email</b></label>
-        <input type="text" placeholder="Enter email" name="email" required> <br />
+        <input class=\'form-control\' type="text" placeholder="Enter email" name="email" required> <br />
 
 
 
 
-        <button type="submit" name="register">Register</button>
+        <button class=\'btn btn-default\' type="submit" name="register">Register</button>
+          </div>
+            <img  class="pull-right jmb-background" height="300px" width="450px"  src="user_images/duck_green.png">
 
     </div>
 
-
+ 
 </form>';
 ?>

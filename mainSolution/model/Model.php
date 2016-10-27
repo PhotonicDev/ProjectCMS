@@ -158,11 +158,34 @@ if (isset($connection)){mysqli_close($connection);}
         }
 
         // ADMIN PANEL
-        public function Update_products($Product_ID,$name,$price,$description,$color,$size,$category,$stock,$tags,$manufacture){
 
-         $this->Connect()->getNothing("UPDATE products SET Product_ID ='$Product_ID', name ='$name', price = '$price', description ='$description', color = '$color', size ='$size', category ='$category', stock ='$stock', tags ='$tags', manufacture ='$manufacture' WHERE Product_ID ='$Product_ID'");
+       // UPDATE PRODUCTS
+        public function Update_products($Product_ID,$name,$price,$description,$manufacture,$color,$size,$category,$stock,$tags){
+
+            $query = "UPDATE `products` SET `Product_ID` ='" . $Product_ID . "', `name` ='".$name. "', `price` = '".$price."', `description` ='".$description."', `manufacture` ='" . $manufacture . "', `color` = '" .$color. "', `size` ='" .$size. "', `category` ='".$category."', `stock` ='".$stock."', `tags` ='".$tags."' WHERE `Product_ID` =".$Product_ID;
 
 
-         return "Updated";
+        // $this->Connect()->getNothing("UPDATE `products` SET `Product_ID` =' . $Product_ID . ', `name` ='.$name.', `price` = '.$price.', `description` ='.$description.', `manifacture` ='.$manufacture.', `color` = '.$color.', `size` ='.$size.', `category` ='.$category.', `stock` ='.$stock.', `tags` ='.$tags.' WHERE `Product_ID` ='.$Product_ID.'")";
+
+            $this->Connect()->getNothing($query);
+
+             echo "<div class=\"alert alert-success\">
+  <strong>Success!</strong> Data has been updated.
+</div>";
+
+
+
      }
+
+     // DELETE PRODUCTS
+
+     public function Delete_products($Product_ID){
+
+         $query = "DELETE FROM products WHERE `Product_ID` =".$Product_ID;
+         $this->Connect()->getNothing($query);
+         
+     }
+
+
 }
+

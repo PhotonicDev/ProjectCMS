@@ -25,7 +25,7 @@
             </button>
 
 
-            <a class="navbar-brand" href="index.php"><img class="duckLogo" src="low_poly_duck.png">polyDuck</a>
+            <a class="navbar-brand" href="index.php"><img class="duckLogo" src="user_images/duck_yellow.png">polyDuck</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->

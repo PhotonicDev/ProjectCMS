@@ -69,26 +69,27 @@ class Product_admin {
     public $name;
     public $price;
     public $description;
+    public $manufacture;
     public $color;
     public $size;
     public $category;
-    public $images;
     public $stock;
     public $tags;
-    public $manufacture;
 
-    public function __construct($Product_ID, $name,$price,$description,$color,$size, $category, $images, $stock, $tags, $manufacture)
+
+
+    public function __construct($Product_ID, $name,$price,$description,$manufacture,$color,$size, $category, $stock, $tags)
     {
         $this->Product_ID = $Product_ID;
         $this->name = $name;
         $this->price = $price;
         $this->description = $description;
+        $this->manufacture = $manufacture;
         $this->color = $color;
         $this->size = $size;
         $this->category = $category;
-        $this->images = $images;
         $this->stock = $stock;
         $this->tags = $tags;
-        $this->manufacture = $manufacture;
+
     }
 }

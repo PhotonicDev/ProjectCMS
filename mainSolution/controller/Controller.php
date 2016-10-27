@@ -88,9 +88,18 @@ class Controller
         if (isset($_SESSION['admin_id'])) {
 
             if (isset($_POST['btn_save_updates'])) {
-                $this->model->Update_products($_POST['Product_ID'],$_POST['product_name'],$_POST['product_price'],$_POST['product_description'],$_POST['product_color'],$_POST['product_size'],$_POST['product_category'],$_POST['product_stock'],$_POST['product_tags'],$_POST['product_manufacture']);
+
+                $this->model->Update_products($_POST['Product_ID'],$_POST['product_name'],$_POST['product_price'],$_POST['product_description'],$_POST['product_manufacture'], $_POST['product_color'],$_POST['product_size'],$_POST['product_category'],$_POST['product_stock'],$_POST['product_tags']);
+
             }
-            
+
+            if (isset($_POST['btn_delete'])) {
+
+                $this->model->Delete_products($_POST['Product_ID']);
+
+            }
+
+
             switch ($_GET) {
                 default:
                     include_once "view/content.php";
