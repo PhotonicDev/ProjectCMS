@@ -16,5 +16,5 @@
 		// 4. Destroy the session
 		session_destroy();
 
-        header("Location: /business%20logic%20cms/mainSolution/index.php");
+        header("Location: http://localhost:8888/business%20logic%20cms/mainSolution/index.php");
 
