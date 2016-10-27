@@ -12,6 +12,10 @@
 .fancyNav {
   background-color: white;
   transition: ease-in-out 1s; }
+  .fancyNav .navbar-toggle {
+    border: solid 1px white; }
+    .fancyNav .navbar-toggle span {
+      background-color: white; }
   .fancyNav a {
     color: darkgrey; }
     .fancyNav a:hover {
@@ -25,14 +29,20 @@
     .fancyNav .search_button span {
       color: darkgrey !important; }
 
-nav a {
-  color: white;
-  font-weight: 700; }
-  nav a:hover {
-    background-color: lightgrey;
-    color: darkgrey;
-    opacity: 0.8;
-    transition-duration: 0.5s; }
+nav {
+  background-color: rgba(0, 0, 0, 0.1); }
+  nav .navbar-toggle {
+    border: solid 1px white; }
+    nav .navbar-toggle span {
+      background-color: white; }
+  nav a {
+    color: white;
+    font-weight: 700; }
+    nav a:hover {
+      background-color: lightgrey;
+      color: darkgrey;
+      opacity: 0.8;
+      transition-duration: 0.5s; }
 
 ::-webkit-input-placeholder {
   color: white; }
@@ -114,19 +124,19 @@ body {
           padding: 5px;
           float: left;
           width: 250px;
-          background-color: lightgoldenrodyellow; }
+          background-color: rgba(255, 255, 255, 0.8); }
           body .wrapper .mainTile .containerMain .staticItems .items .itemInfoHide {
             position: relative; }
             body .wrapper .mainTile .containerMain .staticItems .items .itemInfoHide .transitionInformation {
               font-size: 13px;
               padding: 5px;
-              width: 75%;
+              width: 90%;
               float: left; }
               body .wrapper .mainTile .containerMain .staticItems .items .itemInfoHide .transitionInformation .pricey {
                 color: white;
                 float: right;
-                margin-top: -91px;
-                margin-right: 18px; }
+                margin-top: -122px;
+                margin-right: 77px; }
                 body .wrapper .mainTile .containerMain .staticItems .items .itemInfoHide .transitionInformation .pricey h4 {
                   position: absolute;
                   z-index: 20;
@@ -181,7 +191,7 @@ body {
   padding-bottom: 10vh; }
 
 .background {
-  opacity: 0.9;
+  opacity: 1;
   background: url(../web_images/back.gif) no-repeat;
   position: fixed;
   background-size: cover;
@@ -218,5 +228,13 @@ body {
   height: 100%;
   text-align: center;
   display: none; }
+
+.panel-custom {
+  height: 500px; }
+  .panel-custom .postImage {
+    width: 50%;
+    height: auto; }
+  .panel-custom small {
+    float: right; }
 
 /*# sourceMappingURL=main.css.map */

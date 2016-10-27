@@ -77,6 +77,9 @@ class Controller
         include 'view/productpage.php';
     }
 
+    public function carousel() {
+        $data = $this->model->carouselData();
+    }
 
     public function panel()
     {

@@ -6,6 +6,8 @@ include_once("view/error_view/note.php");
 
 
  class Model {
+     public $login;
+
         public function searchProducts($search) {
 
          $result = $this->Connect()->getQuery("SELECT * FROM products WHERE name LIKE '%" . $search . "%'");
@@ -35,8 +37,10 @@ include_once("view/error_view/note.php");
                 if(password_verify($password, $found_user['password'])){
                     $_SESSION['user_id'] = $found_user['customer_id'];
                     $_SESSION['username'] = $found_user['name'];
-                    $products = $this->getProductList();
-                    include_once "view/productpage.php";
+                   $this->login = "true";
+                    note('Logged in' . $this->login);
+                   // $products = $this->getProductList();
+                  //  include_once "view/productpage.php";
                     note("Logged in");
                    // header("Refresh:0; url=bussiness%20logic%20cms/mainSolution/index.php");
                    // header("Location: /bussiness%20logic%20cms/mainSolution/index.php");
@@ -91,18 +95,8 @@ if (isset($connection)){mysqli_close($connection);}
         }
         public function openNews() {
 
-         $postData = $this->Connect()->getData("SELECT * FROM newspage");
-
-
-         return array(
-             $postData['Header'] => new Post(
-                 $postData['Header'],
-                 $postData['Image'],
-                 $postData['Description'],
-                 $postData['DATE']
-             )
-         );
-
+         $postData = $this->Connect()->getQuery("SELECT * FROM newspage");
+            return $postData;
     }
         public function Contacts() {
 
