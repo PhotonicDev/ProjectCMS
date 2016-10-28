@@ -1,19 +1,14 @@
 
 <div class="mainProduct">
-    <?php
 
-    echo " 
- 
- <form method='post'>
- 
-<button style='margin: 8px;' name='btn-insert' type=\"submit\" class=\"pull-right btn-sm btn btn-default\">Add Product <span class=\"glyphicon glyphicon-arrow-left\" aria-hidden=\"true\"></button>
-  
-   </form>";
-    ?>
+
+
+
 <?php
 $output = '';
 
 if(mysqli_num_rows($productsAdmin) > 0){
+
 
 
     $output .= '';

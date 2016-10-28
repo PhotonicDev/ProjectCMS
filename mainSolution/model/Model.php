@@ -6,8 +6,6 @@ include_once("view/error_view/note.php");
 
 
  class Model {
-     public $login;
-
         public function searchProducts($search) {
 
          $result = $this->Connect()->getQuery("SELECT * FROM products WHERE name LIKE '%" . $search . "%'");
@@ -37,10 +35,8 @@ include_once("view/error_view/note.php");
                 if(password_verify($password, $found_user['password'])){
                     $_SESSION['user_id'] = $found_user['customer_id'];
                     $_SESSION['username'] = $found_user['name'];
-                   $this->login = "true";
-                    note('Logged in' . $this->login);
-                   // $products = $this->getProductList();
-                  //  include_once "view/productpage.php";
+                    $products = $this->getProductList();
+                    include_once "view/productpage.php";
                     note("Logged in");
                    // header("Refresh:0; url=bussiness%20logic%20cms/mainSolution/index.php");
                    // header("Location: /bussiness%20logic%20cms/mainSolution/index.php");
@@ -95,8 +91,18 @@ if (isset($connection)){mysqli_close($connection);}
         }
         public function openNews() {
 
-         $postData = $this->Connect()->getQuery("SELECT * FROM newspage");
-            return $postData;
+         $postData = $this->Connect()->getData("SELECT * FROM newspage");
+
+
+         return array(
+             $postData['Header'] => new Post(
+                 $postData['Header'],
+                 $postData['Image'],
+                 $postData['Description'],
+                 $postData['DATE']
+             )
+         );
+
     }
         public function Contacts() {
 
@@ -153,19 +159,68 @@ if (isset($connection)){mysqli_close($connection);}
 
         // ADMIN PANEL
 
-       // UPDATE PRODUCTS
-        public function Update_products($Product_ID,$name,$price,$description,$manufacture,$color,$size,$category,$stock,$tags){
 
-            $query = "UPDATE `products` SET `Product_ID` ='" . $Product_ID . "', `name` ='".$name. "', `price` = '".$price."', `description` ='".$description."', `manufacture` ='" . $manufacture . "', `color` = '" .$color. "', `size` ='" .$size. "', `category` ='".$category."', `stock` ='".$stock."', `tags` ='".$tags."' WHERE `Product_ID` =".$Product_ID;
+     // INSERT PRODUCTS
+
+
+
+
+
+     public function Add_products($name,$price,$description,$manufacture,$color,$size,$category,$stock,$tags,$filename){
+
+
+
+
+
+             $query = "INSERT INTO `products`(name, price, description, manufacture, color, size, category ,stock, tags, images)
+                                  VALUES ('$name', '$price', '$description', '$manufacture', '$color', '$size', '$category','$stock', '$tags','$filename')";
+
+         if($this->Connect() == false){
+
+             echo "<div class=\"alert alert-danger\" role=\"alert\">
+  <a href=\"#\" class=\"alert-link\">Failed to insert data or did not connected to database</a>
+</div>";
+         }
+         else{
+             echo"<div  class=\"alert alert-success\">
+  <strong>Success!</strong> New data has been added/created !.
+</div>";
+         }
+
+         $this->Connect()->getNothing($query);
+
+
+
+
+
+     }
+
+
+
+
+       // UPDATE PRODUCTS
+        public function Update_products($Product_ID,$name,$price,$description,$manufacture,$color,$size,$category,$stock,$tags,$filepath){
+
+            if($this->Connect() == false){
+
+                echo "<div class=\"alert alert-danger\" role=\"alert\">
+  <a href=\"#\" class=\"alert-link\">Failed to update or  connect to database</a>
+</div>";
+            }
+            else{
+                echo"<div class=\"alert alert-success\">
+  <strong>Success!</strong> Data has been updated.
+</div>";
+            }
+
+            $query = "UPDATE `products` SET `Product_ID` ='" . $Product_ID . "', `name` ='".$name. "', `price` = '".$price."', `description` ='".$description."', `manufacture` ='" . $manufacture . "', `color` = '" .$color. "', `size` ='" .$size. "', `category` ='".$category."', `stock` ='".$stock."', `tags` ='".$tags."', `images` ='".$filepath."' WHERE `Product_ID` =".$Product_ID;
 
 
         // $this->Connect()->getNothing("UPDATE `products` SET `Product_ID` =' . $Product_ID . ', `name` ='.$name.', `price` = '.$price.', `description` ='.$description.', `manifacture` ='.$manufacture.', `color` = '.$color.', `size` ='.$size.', `category` ='.$category.', `stock` ='.$stock.', `tags` ='.$tags.' WHERE `Product_ID` ='.$Product_ID.'")";
 
             $this->Connect()->getNothing($query);
 
-             echo "<div class=\"alert alert-success\">
-  <strong>Success!</strong> Data has been updated.
-</div>";
+
 
 
 
@@ -174,6 +229,18 @@ if (isset($connection)){mysqli_close($connection);}
      // DELETE PRODUCTS
 
      public function Delete_products($Product_ID){
+
+         if($this->Connect() == false){
+
+             echo" '<div class='alert alert-danger' role='alert'>
+  <a href='#' class='alert-link'>Error , could not delete</a>
+</div>";
+         }
+         else{
+             echo"<div class='alert alert-success'>
+  <strong>Success!</strong> Product has been deleted.
+</div>";
+         }
 
          $query = "DELETE FROM products WHERE `Product_ID` =".$Product_ID;
          $this->Connect()->getNothing($query);

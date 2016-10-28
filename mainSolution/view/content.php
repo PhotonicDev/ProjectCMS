@@ -3,7 +3,7 @@
 
     <!-- Sidebar -->
     <form method="get">
-    <div id="sidebar-wrapper">
+    <div style="background-color:#212121;"id="sidebar-wrapper">
 
         <a class="navbar-brand" href="index.php"><img class="duckLogo" src="user_images/duck_blue.png">Admin Panel</a>
         <ul class="sidebar-nav">
@@ -45,9 +45,18 @@
     <div id="page-content-wrapper">
 
         <div class="container-fluid">
-            <div class="row">
+            <div style="background-color: #212121;" class="row">
                 <!-- Place your content here -->
+                <?php
+                echo " 
+ 
+ <form method='post'>
+ 
+<button style='margin: 8px;' name='btn-insert' type=\"submit\" class=\"pull-right btn-sm btn btn-default\">Add Product <span class=\"glyphicon glyphicon-arrow-left\" aria-hidden=\"true\"></button>
+  
+   </form>";
 
+                ?>
 
             </div>
         </div>

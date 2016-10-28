@@ -44,48 +44,41 @@
 								<!--Product end-->
 		<div class="row">
 			<div class="col-md-9">
-				<div id="commentSection" data-name="" class="container">
-					<input id="input" type="text" value="<?php echo $product['name']; ?>" >
+				<div id="commentSection" data-name="<?php echo $product['Product_ID']; ?>" class="container">
 					<?php include 'controller/comments.php'; ?>
 					<div id="loader-icon"><img src="view/web_images/LoaderIcon.gif" /><div>
 				</div>
 			</div>
 			<div class="col-md-3">
-				<div id="echo"></div>
+
 			</div>
 		</div>
 		<script>
-
-
-			$(document).ready(function() {
-				var txt = $("#input").val();
+			$(document).ready(function(){
 				var count = 1;
 				var win = $(window);
-				$('#echo').html(txt);
+				var txt = $('.commentSection').data("name");
 				win.scroll(function () {
-					if (count >= 1) {
+					if(count >= 1){
 						if (win.height() + win.scrollTop() == $(document).height()) {
-							{
-								$('#loader-icon').show();
+							{   $('#loader-icon').show();
 								count++;
-								$.ajax({
-									type: "get",
-									url: "controller/comments.php",
-									data: {comment: txt},
-									cache: false,
-									dataType: "text",
-									success: function (data) {
-										$('.commentSection').append(data);
-										$('#loader-icon').hide();
+							$.ajax({
+								type: "GET",
+								url: "controller/comments.php",
+								data:{comment:txt,number:count},
+								cache: false,
+								dataType:"text",
+								success:function(data) {
+									$('.commentSection').append(data);
+									$('#loader-icon').hide();
 
-									}
-								});
-							}
+								}
+							});
 						}
 					}
+					});
 				});
-			});
-
 		</script>
 		<!--<div class="row">
 			<div class="col-md-9">

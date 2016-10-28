@@ -77,9 +77,6 @@ class Controller
         include 'view/productpage.php';
     }
 
-    public function carousel() {
-        $data = $this->model->carouselData();
-    }
 
     public function panel()
     {
@@ -90,9 +87,24 @@ class Controller
 
         if (isset($_SESSION['admin_id'])) {
 
+            if (isset($_POST['btn_insert_new'])) {
+
+
+               $filepath = 'user_images/'.$_FILES["uploadimage"]["name"];
+                move_uploaded_file($_FILES["uploadimage"]["tmp_name"],$filepath);
+
+                $this->model->Add_products($_POST['product_name'],$_POST['product_price'],$_POST['product_description'],$_POST['product_manufacture'], $_POST['product_color'],$_POST['product_size'],$_POST['product_category'],$_POST['product_stock'],$_POST['product_tags'],$filepath);
+
+            }
+
+
             if (isset($_POST['btn_save_updates'])) {
 
-                $this->model->Update_products($_POST['Product_ID'],$_POST['product_name'],$_POST['product_price'],$_POST['product_description'],$_POST['product_manufacture'], $_POST['product_color'],$_POST['product_size'],$_POST['product_category'],$_POST['product_stock'],$_POST['product_tags']);
+
+                $filepath = 'user_images/'.$_FILES["uploadimage"]["name"];
+                move_uploaded_file($_FILES["uploadimage"]["tmp_name"],$filepath);
+
+                $this->model->Update_products($_POST['Product_ID'],$_POST['product_name'],$_POST['product_price'],$_POST['product_description'],$_POST['product_manufacture'], $_POST['product_color'],$_POST['product_size'],$_POST['product_category'],$_POST['product_stock'],$_POST['product_tags'],$filepath);
 
             }
 
@@ -101,6 +113,10 @@ class Controller
                 $this->model->Delete_products($_POST['Product_ID']);
 
             }
+             if(isset($_POST['btn-insert'])){
+                 include_once 'view/admin_add_product.php';
+             }
+
 
 
             switch ($_GET) {
@@ -123,6 +139,7 @@ class Controller
                     $productAdmin = $this->model->getProduct($_GET['product']);
                     include 'view/view_admin_product.php';
                     break;
+
 
             }
         } else {

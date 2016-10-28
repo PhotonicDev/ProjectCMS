@@ -1,15 +1,3 @@
-<?php
-include_once("controller/Controller.php");
-
-    $controller = new Controller();
-
-    if($controller->model->login == "true"){
-        note("true");
-        $controller->model->login = false;
-        header("Refresh:1 url:www.google.com");
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,34 +6,18 @@ include_once("controller/Controller.php");
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Duck - Web Shop</title>
-    <script rel="script" type="text/javascript" language="JavaScript"  src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 
-    <script rel="script" type="text/javascript" language="JavaScript" src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" ></script>
-    <script rel="script" type="text/javascript" language="JavaScript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script rel="script" type="text/javascript" language="JavaScript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-    <script rel="script" src="controller/js/bootstrap.js"></script>
-
-
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-
-    <script rel="script" src="controller/js/jquery-3.1.1.min.js"></script>
 
     <link href="view/sass/main.css" type="text/css" rel="stylesheet">
     <link rel='stylesheet' type='text/css' href='view/sass/css/contactform.css'>
 </head>
 <body>
-<nav class="navbar-fixed-top navbar navigation">
+<nav id="navigation" class="navbar-fixed-top navbar">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
 
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="navbar" aria-expanded="false">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -80,18 +52,14 @@ include_once("controller/Controller.php");
             <ul class="nav navbar-nav navbar-right">
                 <?php
                  include_once("controller/session.php");
-
-
-
                 if(isset($_SESSION['user_id'])){
                     echo "<li><a href='controller/logout.php' >Logout</a></li>";
                 }
-
                 else {
-                    echo   "<li><a data-toggle='modal' data-target='.bs-example-modal-lg' class='loginModal'>Login</a></li>";
+                 echo   "<li><a data-toggle='modal' data-target='.bs-example-modal-lg' class='loginModal'>Login</a></li>";
                 }
 
-                ?>
+?>
 
                 <li><a class="sideClick" style="cursor:pointer;">Categories</a></li>
 
@@ -146,12 +114,16 @@ include_once("controller/Controller.php");
     <div class="mainTile">
 
         <div class="containerMain">
-                <div id="static" class="staticItems">
+                <div id="static" class="staticItems slideAn">
                     <?php
+                    include_once("controller/Controller.php");
+
+                    $controller = new Controller();
                     $controller->invoke();
+
 ?>
                 </div>
-                <div id="dynamic" class="staticItems">
+                <div id="dynamic" class="staticItems slideAn">
 
                 </div>
             </div>
@@ -180,7 +152,20 @@ include_once("controller/Controller.php");
 
 
 
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" ></script>
+
+<script rel="script" src="controller/js/jquery-3.1.1.min.js"></script>
+<script rel="script" src="controller/js/bootstrap.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
  <script>
     $(document).ready(function(){
@@ -191,7 +176,7 @@ include_once("controller/Controller.php");
                 $.ajax({
                     url:"controller/fetch.php",
                     method:"get",
-                    data:{search:txt},
+                    data:{search:txt,},
                     dataType:"text",
                     success:function(data)
                     {   $('#static').hide( 500 ,"swing");
@@ -217,10 +202,10 @@ include_once("controller/Controller.php");
             $(document).scroll(function(){
                 scroll_start = $(this).scrollTop();
                 if(scroll_start > offset.top) {
-                    $(".navigation").addClass("fancyNav");
+                    $("#navigation").addClass("fancyNav");
                 }
                 else {
-                    $(".navigation").removeClass("fancyNav");
+                    $("#navigation").removeClass("fancyNav");
                 }
             });
         }
@@ -228,6 +213,7 @@ include_once("controller/Controller.php");
 </script>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 
 <!-- Latest compiled and minified JavaScript -->

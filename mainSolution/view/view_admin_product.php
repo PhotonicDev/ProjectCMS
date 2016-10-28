@@ -2,14 +2,14 @@
 
 $product = mysqli_fetch_array($productAdmin);
 
-echo '<form method="post" enctype="multipart/form-data">
+echo '   <form method="post" enctype="multipart/form-data">
 	<div class="item thumbnail container">
 		<div class="row">
 			<div class="col-md-6">
 				<div class="itemImageFrame">
 					<img class="itemPictureBig thumbnail" src="' . $product['images'] . '">
 					<br>
-					<input class="input-group" type="file" name="file_img"/>
+					<input class="input-group" type="file" name="uploadimage"/>
 				</div>
 			</div>
 			<div class="col-md-6">

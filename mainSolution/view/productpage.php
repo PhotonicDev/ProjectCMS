@@ -7,7 +7,7 @@ if(mysqli_num_rows($products) > 0){
         $output .= '';
     while($product = mysqli_fetch_array($products)){
 
-		$output .=	'<div class="items">
+		$output .=	'<div class="items thumbnail">
  <a href="index.php?product='.$product['name'].'">
            <div class="itemWhite">
            

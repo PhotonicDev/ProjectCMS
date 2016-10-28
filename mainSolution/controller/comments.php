@@ -5,8 +5,6 @@ require_once("model/Model.php");
 $model = new Model();
 $perPage = 10;
 
-note($_GET['comment']);
-var_dump($_GET['comment']);
 if(!empty($_GET["comment"])) {
     $page = $_GET["comment"];
     note($page);
