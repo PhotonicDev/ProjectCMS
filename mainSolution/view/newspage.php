@@ -1,3 +1,3 @@
 <?php
 
-echo "news page!";
+echo "news!";

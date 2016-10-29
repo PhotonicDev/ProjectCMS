@@ -5,6 +5,8 @@
 
 
 <?php
+
+
 $output = '';
 
 if(mysqli_num_rows($productsAdmin) > 0){
@@ -24,20 +26,21 @@ if(mysqli_num_rows($productsAdmin) > 0){
     <div class="itemInfoHide caption">
     <div class="transitionInformation">
          <h4>
-         '.$product['name'].'
+         <strong>'.$product['name'].'</strong>
 			</h4>
+              <div class="pricey">
+              <h4>' . $product['price'] . ' DKK</h4>
              <img src="red.png" class="stick">
-              <div class="pricey"><h4>' . $product['price'] . ' DKK</h4></div>
+              </div>
               <div class="otherInformation">
-             Id: ' . $product['Product_ID'] . '<br>
-             Size:' . $product['size'] . '<br>
-             Color:' . $product['color'] . '<br>
-             From:' . $product['manufacture'] . '<br>
-             Category:' . $product['category'] . '<br>
-             Tags:' . $product['tags'] . '<br>
-             Stock:' . $product['stock'] . '<br>
+                ID<strong>' . $product['Product_ID'] . '</strong><br>
+             Size:<strong>' . $product['size'] . '</strong><br>
+             Color:<strong>' . $product['color'] . '</strong><br>
+             From:<strong>' . $product['manufacture'] . '</strong><br>
+             Category:<strong>' . $product['category'] . '</strong><br>
+             Tags:<strong>' . $product['tags'] . '</strong><br>
              
-         </div>
+              </div>
     </div>
     </a>
     </div>
@@ -52,5 +55,6 @@ else
 }
 
 echo "";
+
 ?>
 </div>

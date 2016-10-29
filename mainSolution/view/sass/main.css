@@ -109,51 +109,6 @@ body {
       float: left; }
       body .wrapper .mainTile .containerMain {
         padding: 0 15px; }
-        body .wrapper .mainTile .containerMain .staticItems .items {
-          margin: 10px;
-          padding: 5px;
-          float: left;
-          width: 250px;
-          background-color: lightgoldenrodyellow; }
-          body .wrapper .mainTile .containerMain .staticItems .items .itemInfoHide {
-            position: relative; }
-            body .wrapper .mainTile .containerMain .staticItems .items .itemInfoHide .transitionInformation {
-              font-size: 13px;
-              padding: 5px;
-              width: 75%;
-              float: left; }
-              body .wrapper .mainTile .containerMain .staticItems .items .itemInfoHide .transitionInformation .pricey {
-                color: white;
-                float: right;
-                margin-top: -91px;
-                margin-right: 18px; }
-                body .wrapper .mainTile .containerMain .staticItems .items .itemInfoHide .transitionInformation .pricey h4 {
-                  position: absolute;
-                  z-index: 20;
-                  margin-top: 40px;
-                  margin-left: 30px; }
-                body .wrapper .mainTile .containerMain .staticItems .items .itemInfoHide .transitionInformation .pricey .stick {
-                  width: 109px;
-                  height: auto;
-                  z-index: 10;
-                  position: absolute; }
-            body .wrapper .mainTile .containerMain .staticItems .items .itemInfoHide .productControl {
-              width: 95%;
-              float: left;
-              margin: 5px; }
-          body .wrapper .mainTile .containerMain .staticItems .items .itemWhite {
-            padding: 5px;
-            border: solid white 1px;
-            border-radius: 5px;
-            background-color: white; }
-          body .wrapper .mainTile .containerMain .staticItems .items .itemPicture {
-            position: relative;
-            height: auto;
-            width: 100%; }
-          body .wrapper .mainTile .containerMain .staticItems .items .label {
-            float: left; }
-          body .wrapper .mainTile .containerMain .staticItems .items .badge {
-            float: right; }
 
 .item {
   margin-top: 20px; }
@@ -219,9 +174,50 @@ body {
   text-align: center;
   display: none; }
 
-
-.jmb-background{
-  margin-top: -40vh;
-}
+.items {
+  margin: 10px;
+  padding: 5px;
+  float: left;
+  width: 250px;
+  background-color: lightgoldenrodyellow; }
+  .items .itemInfoHide {
+    position: relative; }
+    .items .itemInfoHide .transitionInformation {
+      font-size: 13px;
+      padding: 5px;
+      width: 75%;
+      float: left; }
+      .items .itemInfoHide .transitionInformation .pricey {
+        color: white;
+        float: right;
+        margin-top: -91px;
+        margin-right: 18px; }
+        .items .itemInfoHide .transitionInformation .pricey h4 {
+          position: absolute;
+          z-index: 20;
+          margin-top: 40px;
+          margin-left: 30px; }
+        .items .itemInfoHide .transitionInformation .pricey .stick {
+          width: 109px;
+          height: auto;
+          z-index: 10;
+          position: absolute; }
+    .items .itemInfoHide .productControl {
+      width: 95%;
+      float: left;
+      margin: 5px; }
+  .items .itemWhite {
+    padding: 5px;
+    border: solid white 1px;
+    border-radius: 5px;
+    background-color: white; }
+  .items .itemPicture {
+    position: relative;
+    height: auto;
+    width: 100%; }
+  .items .label {
+    float: left; }
+  .items .badge {
+    float: right; }
 
 /*# sourceMappingURL=main.css.map */

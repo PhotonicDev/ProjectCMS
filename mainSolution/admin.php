@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Admin panel</title>
-
-    <link href="view/sass/main.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="view/sass/css/admin_panel.css">
+    <link href="view/sass/main.css" type="text/css" rel="stylesheet">
+
 </head>
 <body>
 <div id="wrapper">

@@ -37,6 +37,25 @@ class Contacts
 
 }
 
+
+class Description
+{
+    public $description;
+    public $picture;
+    public $title;
+
+
+    public function __construct($description,$picture, $title)
+    {
+
+        $this->description = $description;
+        $this->picture = $picture;
+        $this->title = $title;
+    }
+
+
+}
+
 class Product {
     public $name;
     public $price;

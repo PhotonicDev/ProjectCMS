@@ -20,7 +20,7 @@
                <a href="admin.php?news=products">Newsfeed</a>
             </li>
             <li>
-                <a href="#">Description</a>
+                <a href="admin.php?description=products">Description</a>
             </li>
 
             <li>

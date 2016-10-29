@@ -129,53 +129,7 @@ body {
 
 
 
-    .items {
-        margin: 10px;
-        padding: 5px;
-        float: left;
-        background-color: #d8d8d8 !important;}
 
-    .itemInfoHide {
-        position:relative;}
-
-    .transitionInformation {
-        padding: 5px;}
-
-    .stick {
-        position:absolute;
-        width: 100px;
-        height: auto;
-        left: 150px;
-        z-index: 10;
-    }
-    .pricey {
-        transform: rotate(-45deg);
-        left: 175px;
-        color:white;
-        z-index: 20;
-        position:absolute;
-    }
-
-
-
-.itemWhite {
-    padding: 5px;
-    border: solid white 1px;
-    border-radius: 5px;
-    background-color:white;
-
-}
-.itemPicture {
-    position:relative;
-    height: auto;
-    width: 240px;
-}
-.label {
-    float:left;
-}
-.badge {
-    float:right;
-}
 
 .mainProduct{
 
@@ -190,4 +144,11 @@ body {
     width: 100%;
     border-radius: 3px;
     border: solid 1px lightgrey;
+}
+
+.descbox{
+
+    margin-left: 27vw;
+    margin-top: 10vh;
+    width:60%;
 }

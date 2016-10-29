@@ -89,6 +89,16 @@ if (isset($connection)){mysqli_close($connection);}
             }
 
         }
+
+
+     public function company_description(){
+
+         $proDesc = $this->Connect()->getQuery("SELECT * FROM company_desc");
+
+         return $proDesc;
+
+     }
+
         public function openNews() {
 
          $postData = $this->Connect()->getData("SELECT * FROM newspage");
@@ -166,14 +176,14 @@ if (isset($connection)){mysqli_close($connection);}
 
 
 
-     public function Add_products($name,$price,$description,$manufacture,$color,$size,$category,$stock,$tags,$filename){
+     public function Add_products($name,$price,$description,$manufacture,$color,$size,$category,$stock,$tags,$filepath){
 
 
 
 
 
              $query = "INSERT INTO `products`(name, price, description, manufacture, color, size, category ,stock, tags, images)
-                                  VALUES ('$name', '$price', '$description', '$manufacture', '$color', '$size', '$category','$stock', '$tags','$filename')";
+                                  VALUES ('$name', '$price', '$description', '$manufacture', '$color', '$size', '$category','$stock', '$tags','$filepath')";
 
          if($this->Connect() == false){
 
@@ -195,7 +205,13 @@ if (isset($connection)){mysqli_close($connection);}
 
      }
 
+       // UPDATE COMPANY DESCRIPTION
+     public function company_desc($title,$description,$filepath){
 
+         $query_company = "UPDATE `company_desc` SET `title` ='" . $title. "', `Description`='" .$description. "', `pictures`='" .$filepath. "'  WHERE `id` = 1" ;
+
+         $this->Connect()->getNothing($query_company);
+     }
 
 
        // UPDATE PRODUCTS
