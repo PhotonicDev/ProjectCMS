@@ -3,7 +3,7 @@
 
     <!-- Sidebar -->
     <form method="get">
-    <div style="background-color:#212121;"id="sidebar-wrapper">
+    <div id="sidebar-wrapper">
 
         <a class="navbar-brand" href="index.php"><img class="duckLogo" src="user_images/duck_blue.png">Admin Panel</a>
         <ul class="sidebar-nav">

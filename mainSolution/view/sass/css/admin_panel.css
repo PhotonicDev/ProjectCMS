@@ -24,7 +24,7 @@ body {
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
-    background: #000;
+    background-color:#212121;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -133,7 +133,7 @@ body {
         margin: 10px;
         padding: 5px;
         float: left;
-        background-color: yellow !important;}
+        background-color: #d8d8d8 !important;}
 
     .itemInfoHide {
         position:relative;}

@@ -1,5 +1,5 @@
 
-<div class="mainProduct">
+<div style="background-color: #444444" class="mainProduct">
 
 
 
