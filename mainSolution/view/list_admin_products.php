@@ -39,6 +39,7 @@ if(mysqli_num_rows($productsAdmin) > 0){
              From:<strong>' . $product['manufacture'] . '</strong><br>
              Category:<strong>' . $product['category'] . '</strong><br>
              Tags:<strong>' . $product['tags'] . '</strong><br>
+             Stock:<strong>' . $product['stock'] . '</strong><br>
              
               </div>
     </div>

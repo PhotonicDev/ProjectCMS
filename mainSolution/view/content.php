@@ -24,7 +24,7 @@
             </li>
 
             <li>
-                <a href="#">Contacts</a>
+                <a href="admin.php?contacts=products">Contacts</a>
             </li>
         </ul>
     </form>
@@ -50,7 +50,7 @@
                 <?php
                 echo " 
  
- <form method='post'>
+ <form method='get'>
  
 <button style='margin: 8px;' name='btn-insert' type=\"submit\" class=\"pull-right btn-sm btn btn-default\">Add Product <span class=\"glyphicon glyphicon-arrow-left\" aria-hidden=\"true\"></button>
   

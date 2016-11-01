@@ -114,19 +114,13 @@ if (isset($connection)){mysqli_close($connection);}
          );
 
     }
-        public function Contacts() {
+     public function get_contacts() {
 
-         $postData = $this->Connect()->getData("SELECT * FROM contact_info");
+         $proCont = $this->Connect()->getQuery("SELECT * FROM contact_info");
+
+         return $proCont;
 
 
-         return array(
-             $postData['Address'] => new Post(
-                 $postData['Address'],
-                 $postData['description'],
-                 $postData['email'],
-                 $postData['Phone']
-             )
-         );
 
      }
 	    public function getProduct($name)
@@ -212,6 +206,29 @@ if (isset($connection)){mysqli_close($connection);}
 
          $this->Connect()->getNothing($query_company);
      }
+
+     public function contact_update($Street,$description,$email,$city,$country,$Phone,$zipcode,$monday,$tuesday,$wednesday,$thursday,$friday,$saturday,$sunday)
+     {
+
+         $query_contact = "UPDATE `contact_info` 
+      SET `Street` ='" . $Street . "',
+      `description`='" . $description . "',
+      `email`='" . $email . "',
+      `city`='" . $city . "',
+      `country`='" . $country . "',
+      `Phone`='" . $Phone . "',
+      `zipcode`='" . $zipcode . "',
+      `monday`='" . $monday . "',
+      `tuesday`='" . $tuesday . "',
+      `wednesday`='" . $wednesday . "',
+      `thursday`='" . $thursday . "',
+      `friday`='" . $friday . "',
+      `saturday`='" . $saturday . "',
+      `sunday`='" . $sunday . "'
+        WHERE `id` = 1 ";
+
+         $this->Connect()->getNothing($query_contact);
+             }
 
 
        // UPDATE PRODUCTS

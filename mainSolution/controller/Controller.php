@@ -115,22 +115,32 @@ class Controller
 
             if (isset($_POST['btn_save_updates'])) {
 
-                if($_FILES['uploadimage']['size'] > 0 &&
-                    (($_FILES["uploadimage"]["type"] == "image/gif") ||
-                        ($_FILES["uploadimage"]["type"] == "image/jpeg")||
-                        ($_FILES["uploadimage"]["type"] == "image/pjpeg") ||
-                        ($_FILES["uploadimage"]["type"] == "image/png") &&
-                        ($_FILES["uploadimage"]["size"] < 2097152))){
 
-                    $filepath = 'user_images/'.$_FILES["uploadimage"]["name"];
-                    move_uploaded_file($_FILES["uploadimage"]["tmp_name"],$filepath);
-                }
 
-                if ($_FILES["uploadimage"]["error"] > 0){
-                    echo "Return Code: " . $_FILES["uploadimage"]["error"] . "<br />";
-                }
+                    if ($_FILES['uploadimage']['size'] > 0 &&
+                        (($_FILES["uploadimage"]["type"] == "image/gif") ||
+                            ($_FILES["uploadimage"]["type"] == "image/jpeg") ||
+                            ($_FILES["uploadimage"]["type"] == "image/pjpeg") ||
+                            ($_FILES["uploadimage"]["type"] == "image/png") &&
+                            ($_FILES["uploadimage"]["size"] < 2097152))
+                    ) {
 
-                $this->model->Update_products($_POST['Product_ID'],$_POST['product_name'],$_POST['product_price'],$_POST['product_description'],$_POST['product_manufacture'], $_POST['product_color'],$_POST['product_size'],$_POST['product_category'],$_POST['product_stock'],$_POST['product_tags'],$filepath);
+                        $filepath = 'user_images/' . $_FILES["uploadimage"]["name"];
+                        move_uploaded_file($_FILES["uploadimage"]["tmp_name"], $filepath);
+                    }
+
+                    if ($_FILES["uploadimage"]["error"] > 0) {
+                        echo "Return Code: " . $_FILES["uploadimage"]["error"] . "<br />";
+                    }
+
+                    $this->model->Update_products($_POST['Product_ID'], $_POST['product_name'], $_POST['product_price'], $_POST['product_description'], $_POST['product_manufacture'], $_POST['product_color'], $_POST['product_size'], $_POST['product_category'], $_POST['product_stock'], $_POST['product_tags'], $filepath);
+
+            }
+
+            if(isset($_POST['btn-contact-update'])){
+
+                $this->model->contact_update($_POST['cont_street'], $_POST['cont_text'], $_POST['cont_email'], $_POST['cont_city'], $_POST['cont_country'], $_POST['cont_phone'], $_POST['cont_code'], $_POST['cont_monday'], $_POST['cont_tuesday'], $_POST['cont_wednesday'], $_POST['cont_thursday'],$_POST['cont_friday'],$_POST['cont_saturday'],$_POST['cont_sunday']);
+
 
             }
 
@@ -160,9 +170,7 @@ class Controller
                 $this->model->Delete_products($_POST['Product_ID']);
 
             }
-             if(isset($_POST['btn-insert'])){
-                 include_once 'view/admin_add_product.php';
-             }
+
 
 
 
@@ -190,6 +198,15 @@ class Controller
                     include_once "view/content.php";
                     include "view/description.php";
                     break;
+                case isset($_GET['contacts']);
+                    $contacts = $this->model->get_contacts();
+                    include_once "view/content.php";
+                    include "view/contacts.php";
+                    break;
+                case isset ($_GET['btn-insert']);
+                    include_once 'view/admin_add_product.php';
+                    break;
+
 
 
             }
