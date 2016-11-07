@@ -16,5 +16,5 @@
 		// 4. Destroy the session
 		session_destroy();
 
-        header("Location: /mainSolution/index.php");
+        header("Location: /index.php");
 

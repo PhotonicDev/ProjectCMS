@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
--- https://www.phpmyadmin.net/
+-- version 4.5.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 01, 2016 at 03:15 PM
--- Server version: 5.7.14
--- PHP Version: 5.6.25
+-- Generation Time: Sep 29, 2016 at 09:33 AM
+-- Server version: 5.7.11
+-- PHP Version: 5.6.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -53,7 +53,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`admin_id`, `name`, `password`, `email`) VALUES
-(5, 'admin', '$2y$10$BaHvGa6UtFyItNev2a28IOSDuuuBQmIKcLWA5TZlBh94SH3rfSyo6', 'dovydastt@gmail.com');
+(1, 'admin', 'asd123', 'admin@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -64,16 +64,8 @@ INSERT INTO `admin` (`admin_id`, `name`, `password`, `email`) VALUES
 CREATE TABLE `company_desc` (
   `Description` varchar(255) NOT NULL,
   `pictures` varchar(255) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `id` int(11) NOT NULL
+  `title` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `company_desc`
---
-
-INSERT INTO `company_desc` (`Description`, `pictures`, `title`, `id`) VALUES
-('This is Description', 'user_images/dcuk-logo.png', 'This is title', 1);
 
 -- --------------------------------------------------------
 
@@ -82,29 +74,11 @@ INSERT INTO `company_desc` (`Description`, `pictures`, `title`, `id`) VALUES
 --
 
 CREATE TABLE `contact_info` (
-  `Street` varchar(255) NOT NULL,
-  `Phone` varchar(50) NOT NULL,
+  `Address` varchar(255) NOT NULL,
+  `Phone` int(50) NOT NULL,
   `email` varchar(150) NOT NULL,
-  `description` varchar(255) NOT NULL,
-  `zipcode` varchar(255) NOT NULL,
-  `city` varchar(255) NOT NULL,
-  `country` varchar(100) NOT NULL,
-  `monday` varchar(15) NOT NULL,
-  `tuesday` varchar(15) NOT NULL,
-  `wednesday` varchar(15) NOT NULL,
-  `thursday` varchar(15) NOT NULL,
-  `friday` varchar(15) NOT NULL,
-  `saturday` varchar(15) NOT NULL,
-  `sunday` varchar(15) NOT NULL,
-  `id` int(11) NOT NULL
+  `description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `contact_info`
---
-
-INSERT INTO `contact_info` (`Street`, `Phone`, `email`, `description`, `zipcode`, `city`, `country`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`, `id`) VALUES
-('Thulevej 50', '+45 50 22 77 37', 'awesomeducks@gmail.com', 'text text text text', '6715', 'Esbjerg N', 'Denmark', '08:00 - 18:00', '08:00 - 18:00', '08:00 - 18:00', '08:00 - 18:00', '09:00 - 15:00', '10:00 - 13:00', '11:00 - 13:00', 1);
 
 -- --------------------------------------------------------
 
@@ -124,8 +98,7 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`customer_id`, `name`, `password`, `email`) VALUES
-(13, 'wentox', '$2y$10$.1sBIZ9VxOppK34yIkibDe5LZiwomJ.EGe/ZQ6t6G32wf2yQYWFU6', 'dovydastt@gmail.com'),
-(14, 'anonim', '$2y$10$VioSrbFLAsnpAvn2G9xsBuKXgm.U5HVyKbZhNK7919ernqFLuhwIW', 'dsd@gmail.com');
+(5, 'admin', 'asd123', 'dovydastt@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -149,6 +122,17 @@ CREATE TABLE `newspage` (
   `Image` varchar(255) NOT NULL,
   `Description` varchar(255) NOT NULL,
   `DATE` timestamp NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `opening_hours`
+--
+
+CREATE TABLE `opening_hours` (
+  `time` varchar(255) NOT NULL,
+  `days` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -181,24 +165,8 @@ CREATE TABLE `products` (
   `images` varchar(255) NOT NULL,
   `stock` int(255) NOT NULL,
   `tags` varchar(50) NOT NULL,
-  `manufacture` varchar(100) NOT NULL
+  `manifacture` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `products`
---
-
-INSERT INTO `products` (`Product_ID`, `name`, `price`, `description`, `color`, `size`, `category`, `images`, `stock`, `tags`, `manufacture`) VALUES
-(1, '     Blue duck', 6.99, '     description of blue duck', '     bluee', '     SM small', '     small blue     ', 'user_images/duck_blue.png', 888, '   blue-sm             ', '     china'),
-(2, '  Blue duck', 6.99, '  description of blue duck', '  blue', ' SM small', '  small blue        ', 'user_images/duck_blue.png', 106, '  blue-sm        ', '  china'),
-(3, 'Green duck', 15.99, 'awesome duck description', 'green', 'Big XXL', 'Green ducks   ', 'user_images/duck_green.png', 123, 'awesome duck   ', 'germany'),
-(4, ' Purple duck', 6.99, ' description of purple duck', ' purple', ' SM small', ' small pruple ', 'user_images/duck_purple.png', 13, ' purple-sm ', ' china'),
-(5, 'Purple duck', 6.99, 'description of purple duck', 'purple', 'SM small', 'small pruple', 'user_images/duck_purple.png', 12, 'purple-sm', 'china'),
-(6, '  Green duck', 15.99, '  awesome duck description', '  green', '  Big XXL', '  Green ducks  ', 'user_images/duck_green.png', 4, '  awesome duck  ', '  china'),
-(7, '  Yellow duck', 14.99, '  awesome duck description', '  yellow', '  Big XXL', '  Yellow ducks  ', 'user_images/duck_yellow.png', 56, '  awesome duck  ', '  china'),
-(8, ' Yellow duck', 7.55, ' awesome duck description', ' yellow', ' Big XXL', ' Yellow ducks ', 'user_images/duck_yellow.png', 56, ' awesome duck ', ' china'),
-(14, ' NiceDuck', 45.99, 'Very nice but expensive duck', 'colorful', 'Tiny', 'none', 'user_images/duck_blue.png', 68, 'none', 'Portugal'),
-(15, ' Duckuyyy', 5.99, 'something awesome', 'yellow', 'big', 'asdas', 'user_images/duck_yellow.png', 455, 'sdsds', 'denmark');
 
 -- --------------------------------------------------------
 
@@ -250,18 +218,6 @@ ALTER TABLE `address`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`admin_id`);
-
---
--- Indexes for table `company_desc`
---
-ALTER TABLE `company_desc`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `contact_info`
---
-ALTER TABLE `contact_info`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `customers`
@@ -322,22 +278,12 @@ ALTER TABLE `sold_products`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `admin_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `company_desc`
---
-ALTER TABLE `company_desc`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `contact_info`
---
-ALTER TABLE `contact_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `admin_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `customer_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `newspage`
 --
@@ -352,7 +298,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `Product_ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `Product_ID` int(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `sold_products`
 --

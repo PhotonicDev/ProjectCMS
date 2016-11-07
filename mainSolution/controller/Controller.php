@@ -54,7 +54,6 @@ class Controller
                             include "view/newspage.php";
                             break;
                         case "contacts";
-                            $contact = $this->model->Contacts();
                             include "view/contactform.php";
                             break;
                     }

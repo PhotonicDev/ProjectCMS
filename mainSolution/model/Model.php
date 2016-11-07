@@ -91,13 +91,7 @@ if (isset($connection)){mysqli_close($connection);}
         }
 
 
-     public function company_description(){
 
-         $proDesc = $this->Connect()->getQuery("SELECT * FROM company_desc");
-
-         return $proDesc;
-
-     }
 
         public function openNews() {
 
@@ -114,15 +108,7 @@ if (isset($connection)){mysqli_close($connection);}
          );
 
     }
-     public function get_contacts() {
 
-         $proCont = $this->Connect()->getQuery("SELECT * FROM contact_info");
-
-         return $proCont;
-
-
-
-     }
 	    public function getProduct($name)
 	{
 		// we use the previous function to get all the books and then we return the requested one.
@@ -163,6 +149,24 @@ if (isset($connection)){mysqli_close($connection);}
 
         // ADMIN PANEL
 
+     //READ
+     public function company_description(){
+
+         $proDesc = $this->Connect()->getQuery("SELECT * FROM company_desc");
+
+         return $proDesc;
+
+     }
+
+     public function get_contacts() {
+
+         $proCont = $this->Connect()->getQuery("SELECT * FROM contact_info");
+
+         return $proCont;
+
+
+
+     }
 
      // INSERT PRODUCTS
 
@@ -206,7 +210,7 @@ if (isset($connection)){mysqli_close($connection);}
 
          $this->Connect()->getNothing($query_company);
      }
-
+     // UPDATE contact info
      public function contact_update($Street,$description,$email,$city,$country,$Phone,$zipcode,$monday,$tuesday,$wednesday,$thursday,$friday,$saturday,$sunday)
      {
 
