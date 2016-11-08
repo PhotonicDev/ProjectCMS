@@ -218,9 +218,7 @@ class Controller
 
 
             }
-        }
-
-        else {
+        } else {
             include_once "view/admin_login.php";
         }
 

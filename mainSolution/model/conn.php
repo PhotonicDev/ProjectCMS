@@ -3,8 +3,8 @@
 
  $host = "localhost";
  $user = "root";
- $pass = "123";
-// $pass = "lpokji12";
+ //$pass = "123";
+ $pass = "lpokji12";
  $dbName = "db_cms";
 
 return new Mysqli($host, $user, $pass, $dbName);
