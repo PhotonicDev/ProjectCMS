@@ -1,3 +1,10 @@
+<?php
+include_once("controller/Controller.php");
+
+$controller = new Controller();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +13,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Duck - Web Shop</title>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" ></script>
+
+    <script rel="script" src="controller/js/jquery-3.1.1.min.js"></script>
+    <script rel="script" src="controller/js/bootstrap.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="http://getbootstrap.com/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
 
 
     <link href="view/sass/main.css" type="text/css" rel="stylesheet">
@@ -116,11 +143,7 @@
         <div class="containerMain">
                 <div id="static" class="staticItems slideAn">
                     <?php
-                    include_once("controller/Controller.php");
-
-                    $controller = new Controller();
                     $controller->invoke();
-
 ?>
                 </div>
                 <div id="dynamic" class="staticItems slideAn">
@@ -152,20 +175,6 @@
 
 
 
-<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-
-<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" ></script>
-
-<script rel="script" src="controller/js/jquery-3.1.1.min.js"></script>
-<script rel="script" src="controller/js/bootstrap.js"></script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
  <script>
     $(document).ready(function(){
@@ -213,11 +222,6 @@
 </script>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="http://getbootstrap.com/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
 <script src="controller/js/add.js" type="application/javascript"></script>
 </body>
 </html>

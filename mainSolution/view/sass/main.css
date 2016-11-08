@@ -12,6 +12,10 @@
 .fancyNav {
   background-color: white;
   transition: ease-in-out 1s; }
+  .fancyNav .navbar-toggle {
+    border: solid 1px white; }
+    .fancyNav .navbar-toggle span {
+      background-color: white; }
   .fancyNav a {
     color: darkgrey; }
     .fancyNav a:hover {
@@ -25,14 +29,20 @@
     .fancyNav .search_button span {
       color: darkgrey !important; }
 
-nav a {
-  color: white;
-  font-weight: 700; }
-  nav a:hover {
-    background-color: lightgrey;
-    color: darkgrey;
-    opacity: 0.8;
-    transition-duration: 0.5s; }
+nav {
+  background-color: rgba(0, 0, 0, 0.1); }
+  nav .navbar-toggle {
+    border: solid 1px white; }
+    nav .navbar-toggle span {
+      background-color: white; }
+  nav a {
+    color: white;
+    font-weight: 700; }
+    nav a:hover {
+      background-color: lightgrey;
+      color: darkgrey;
+      opacity: 0.8;
+      transition-duration: 0.5s; }
 
 ::-webkit-input-placeholder {
   color: white; }
@@ -218,6 +228,14 @@ body {
   .items .label {
     float: left; }
   .items .badge {
+    float: right; }
+
+.panel-custom {
+  height: 500px; }
+  .panel-custom .postImage {
+    width: 200px;
+    height: auto; }
+  .panel-custom small {
     float: right; }
 
 /*# sourceMappingURL=main.css.map */

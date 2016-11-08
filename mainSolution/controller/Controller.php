@@ -26,6 +26,15 @@ class Controller
                     break;
                 case isset($_POST['register']);
                     $this->model->Register($_POST['username'], $_POST['password'], $_POST['email']);
+                    break;
+                case isset($_POST['submit_comment']);
+                    if(!empty($_POST['postName']) && !empty($_POST['comment'])) {
+                        $this->model->postComment($_POST['postName'], $_POST['comment']);
+                        $productSelected = $this->model->getProductById($_SESSION['LOC'][1]);
+                        include 'view/viewproduct.php';
+                    }
+                    //reload
+                    break;
             }
         }
         elseif (!empty($_GET)) {

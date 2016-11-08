@@ -16,6 +16,12 @@ $light : white;
 .fancyNav {
     background-color: white;
     transition:ease-in-out 1s;
+        .navbar-toggle {
+            border: solid 1px white;
+            span {
+                background-color: white;
+            }
+        }
         a {
             color: darkgrey;
             &:hover {
@@ -36,6 +42,13 @@ $light : white;
     }
 }
 nav {
+    background-color: rgba(0,0,0,0.1);
+    .navbar-toggle {
+        border: solid 1px white;
+        span {
+            background-color: white;
+        }
+    }
     a {
         color:$light;
         font-weight: 700;
@@ -275,5 +288,17 @@ $blur : 8px;
     }
     .badge {
         float: right;
+    }
+}
+.panel-custom {
+    height : 500px;
+    .postImage {
+        width: 200px;
+        height: auto;
+    }
+    .postDescription {
+    }
+    small {
+        float:right;
     }
 }

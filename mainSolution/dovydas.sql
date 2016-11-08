@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 29, 2016 at 09:33 AM
+-- Generation Time: Nov 08, 2016 at 01:17 PM
 -- Server version: 5.7.11
 -- PHP Version: 5.6.19
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_cms`
+-- Database: `dovydas`
 --
 
 -- --------------------------------------------------------
@@ -187,8 +187,10 @@ CREATE TABLE `search_history` (
 CREATE TABLE `social_pages` (
   `Product_ID` int(20) NOT NULL,
   `Likes` int(255) NOT NULL,
-  `Comments` int(255) NOT NULL,
-  `Views` int(255) NOT NULL
+  `Comments` text NOT NULL,
+  `Views` int(255) NOT NULL,
+  `comment_id` int(8) NOT NULL,
+  `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -261,6 +263,7 @@ ALTER TABLE `search_history`
 -- Indexes for table `social_pages`
 --
 ALTER TABLE `social_pages`
+  ADD PRIMARY KEY (`comment_id`),
   ADD KEY `Product_ID` (`Product_ID`);
 
 --
@@ -299,6 +302,11 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `products`
   MODIFY `Product_ID` int(20) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `social_pages`
+--
+ALTER TABLE `social_pages`
+  MODIFY `comment_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `sold_products`
 --

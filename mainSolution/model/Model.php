@@ -6,6 +6,25 @@ include_once("view/error_view/note.php");
 
 
  class Model {
+     public function postComment($user,$comment){
+         $cUser = htmlspecialchars($user);
+         $cComment = htmlspecialchars($comment);
+         $_SESSION['username'] = $cUser;
+
+         $userCheck = $this->Connect()->getQuery("SELECT `customer_id`, `name`, `password` FROM `customers` WHERE `name` = '{$cUser}' LIMIT 1");
+         if (mysqli_num_rows($userCheck) == 1) {
+             error("Someone has already used this name to comment in our website");
+         }
+         else {
+
+             $userLocation = $_SESSION["LOC"][1];
+             $check = $this->Connect()->getNothing("INSERT INTO `social_pages`( `Product_ID`, `Likes` , `Comments`, `Views`,`name`) VALUES ('$userLocation', 0 ,' $cComment ', 0 ,'$cUser')");
+             //reload
+             note("success!!!");
+         }
+
+         return "bla";
+     }
         public function searchProducts($search) {
 
          $result = $this->Connect()->getQuery("SELECT * FROM products WHERE name LIKE '%" . $search . "%'");
@@ -57,7 +76,16 @@ if (isset($connection)){mysqli_close($connection);}
                 $comments = $this->Connect()->getQuery("SELECT * FROM social_pages WHERE `Product_ID` = '{$id}' LIMIT 50");
                 return $comments;
         }
-        public function Register($username,$password,$email) {
+     public function getProductById($id)
+     {
+         $allProducts = $this->getProductList();
+         if (mysqli_num_rows($allProducts) > 0) {
+             $proData = $this->Connect()->getQuery("SELECT * FROM products WHERE `Product_ID`  = '{$id}' LIMIT 1");
+             return $proData;
+         }
+     }
+
+     public function Register($username,$password,$email) {
 
             $check = $this->Connect()->getQuery("SELECT * FROM `customers` WHERE `name` = '$username' AND `email` = '$email'");
 
@@ -95,17 +123,8 @@ if (isset($connection)){mysqli_close($connection);}
 
         public function openNews() {
 
-         $postData = $this->Connect()->getData("SELECT * FROM newspage");
-
-
-         return array(
-             $postData['Header'] => new Post(
-                 $postData['Header'],
-                 $postData['Image'],
-                 $postData['Description'],
-                 $postData['DATE']
-             )
-         );
+            $postData = $this->Connect()->getQuery("SELECT * FROM newspage");
+            return $postData;
 
     }
 

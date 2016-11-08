@@ -3,10 +3,11 @@ require "../controller/fetch.php";
 if(mysqli_num_rows($result) > 0)
 {
 
-$output .= '';
-while($product = mysqli_fetch_array($result)){
+    $output .= '';
+    while($product = mysqli_fetch_array($result)){
 
-    $output .=	'<div class="items thumbnail">  
+        $output .=	'<div class="items">  
+         <a href="index.php?product='.$product['name'].'">
            <div class="itemWhite">
            
             <img class="itemPicture" src="' . $product['images'] . '">
@@ -15,35 +16,33 @@ while($product = mysqli_fetch_array($result)){
     <div class="itemInfoHide caption">
     <div class="transitionInformation">
          <h4>
-         <a href="index.php?product='.$product['name'].'">'.$product['name'].'</a>
+         <strong>'.$product['name'].'</strong>
 			</h4>
               <div class="pricey">
               <h4>' . $product['price'] . ' DKK</h4>
              <img src="red.png" class="stick">
               </div>
               <div class="otherInformation">
-             Size:' . $product['size'] . '<br>
-             Color:' . $product['color'] . '<br>
-             From:' . $product['manufacture'] . '<br>
-             Category:' . $product['category'] . '<br>
-             Tags:' . $product['tags'] . '<br>
+             Size:<strong>' . $product['size'] . '</strong><br>
+             Color:<strong>' . $product['color'] . '</strong><br>
+             From:<strong>' . $product['manufacture'] . '</strong><br>
+             Category:<strong>' . $product['category'] . '</strong><br>
+             Tags:<strong>' . $product['tags'] . '</strong><br>
              
               </div>
     </div>
-              <div class="btn-group-vertical productControl text-center">
-              <button type="button" class="btn btn-sm btn-success ">Add to basket</button>
-              <button type="button" class="btn btn-sm btn-primary ">Upvote</button>
-              </div>
+              
     
     </div>
+    </a>
 </div>
 			';
-}
+    }
     echo $output;
 }
 else
 {
-echo '<div class="notFound jumbotron">
+    echo '<div class="notFound jumbotron">
 <div class="container">
     <h2>No items where found according to your search: ' . $q .'</h2>
 </div>
