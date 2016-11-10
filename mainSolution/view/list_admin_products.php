@@ -33,7 +33,7 @@ if(mysqli_num_rows($productsAdmin) > 0){
              <img src="red.png" class="stick">
               </div>
               <div class="otherInformation">
-                ID<strong>' . $product['Product_ID'] . '</strong><br>
+                ID: <strong>' . $product['Product_ID'] . '</strong><br>
              Size:<strong>' . $product['size'] . '</strong><br>
              Color:<strong>' . $product['color'] . '</strong><br>
              From:<strong>' . $product['manufacture'] . '</strong><br>

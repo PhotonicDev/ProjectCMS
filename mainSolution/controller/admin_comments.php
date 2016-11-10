@@ -4,6 +4,8 @@ $conn = mysqli_connect("localhost", "root", "lpokji12", "db_cms");
 if (isset($_SESSION['LOC'][1])) {   //getting product comments by id
     $q = $_SESSION['LOC'][1];
 
+
+
     /* if(!empty($_GET['current'])) {
      $commentRow = $_GET["current"];
      }
@@ -62,12 +64,16 @@ if (isset($_SESSION['LOC'][1])) {   //getting product comments by id
         $output .= '';
         while($comment = mysqli_fetch_array($result)){
 
-            $output .=	'
-        <div class="well">  
+            $output .=	'<form method="post">
+        <label style="color:#fff;">All existing comments :</label>
+        <div class="well">
+          <label>ID: '. $comment['comment_id'].'</label>
+           <input style="display:none" name="comment_id" value="'. $comment['comment_id'].'">
            <h3>'. $comment['name'] .'</h3>
            <h5>'. $comment['Comments'] .'</h5>
         </div>
-			';
+        <button  name ="delete_comment" title="Click to Delete" onclick="return confirm(\'Are you sure you want to delete it?\')" type="submit" class="pull-left btn-sm btn btn-danger">Delete <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button><br/>
+			<br><br></form>';
         }
         echo $output;
     }

@@ -123,7 +123,7 @@ class Controller
 
             if (isset($_POST['btn_save_updates'])) {
 
-
+                if (!isset($_POST['uploadimage'])) {
 
                     if ($_FILES['uploadimage']['size'] > 0 &&
                         (($_FILES["uploadimage"]["type"] == "image/gif") ||
@@ -135,13 +135,17 @@ class Controller
 
                         $filepath = 'user_images/' . $_FILES["uploadimage"]["name"];
                         move_uploaded_file($_FILES["uploadimage"]["tmp_name"], $filepath);
-                    }
 
+                    }
                     if ($_FILES["uploadimage"]["error"] > 0) {
                         echo "Return Code: " . $_FILES["uploadimage"]["error"] . "<br />";
                     }
 
                     $this->model->Update_products($_POST['Product_ID'], $_POST['product_name'], $_POST['product_price'], $_POST['product_description'], $_POST['product_manufacture'], $_POST['product_color'], $_POST['product_size'], $_POST['product_category'], $_POST['product_stock'], $_POST['product_tags'], $filepath);
+
+
+                }
+
 
             }
 
@@ -179,6 +183,11 @@ class Controller
 
             }
 
+            if(isset($_POST['delete_comment'])){
+
+                $this->model->delete_comments($_POST['comment_id']);
+            }
+
 
 
 
@@ -194,6 +203,7 @@ class Controller
                     include_once "view/list_admin_products.php";
                     break;
                 case isset($_GET['news']);
+                    $news = $this->model->openNews();
                     include_once "view/content.php";
                     include_once "view/admin_newsfeed.php";
                     break;
@@ -218,9 +228,7 @@ class Controller
 
 
             }
-        }
-
-        else {
+        } else {
             include_once "view/admin_login.php";
         }
 
