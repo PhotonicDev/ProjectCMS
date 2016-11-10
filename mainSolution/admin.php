@@ -12,11 +12,7 @@
 <body>
 <div id="wrapper">
 <?php
-session_start();
 
-function logged_in() {
-    return isset($_SESSION['admin_id']);
-}
 
     include_once("controller/session.php");
     include_once("controller/Controller.php");
