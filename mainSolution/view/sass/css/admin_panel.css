@@ -127,7 +127,22 @@ body {
         margin: 10px;
     }
 
+    #adminform{
+        background-color: #444444;
+        margin-top: -3vh;
+    }
 
+    #color2{
+        background-color: #444444;
+        margin-top: -20px;
+
+    }
+
+    #commentsection{
+
+        background-color: #444;
+        margin-left: -15px;
+    }
 
 
 

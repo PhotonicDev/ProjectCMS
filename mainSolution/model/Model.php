@@ -13,7 +13,7 @@ include_once("view/error_view/note.php");
 
          $userCheck = $this->Connect()->getQuery("SELECT `customer_id`, `name`, `password` FROM `customers` WHERE `name` = '{$cUser}' LIMIT 1");
          if (mysqli_num_rows($userCheck) == 1) {
-             error("Someone has already used this name to comment in our website");
+             error("Someone has already used this name ,please user other name");
          }
          else {
 
@@ -300,7 +300,17 @@ if (isset($connection)){mysqli_close($connection);}
 
          $query = "DELETE FROM products WHERE `Product_ID` =".$Product_ID;
          $this->Connect()->getNothing($query);
-         
+
+     }
+
+
+     public function delete_comments($comment_id){
+
+
+
+         $query = "DELETE FROM `social_pages` WHERE `social_pages`.`comment_id` = $comment_id";
+         $this->Connect()->getNothing($query);
+
      }
 
 

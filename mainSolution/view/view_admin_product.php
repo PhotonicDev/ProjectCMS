@@ -3,7 +3,7 @@
 $product = mysqli_fetch_array($productAdmin);
 $_SESSION['LOC'][0] = "index.php/viewproduct.php";
 $_SESSION['LOC'][1] = $product['Product_ID'];
-echo '   <form method="post" enctype="multipart/form-data">
+echo '   <form id="adminform" method="post" enctype="multipart/form-data">
 	<div class="item thumbnail container">
 		<div class="row">
 			<div class="col-md-6">
@@ -54,12 +54,12 @@ echo '   <form method="post" enctype="multipart/form-data">
 ?>
 
 <!--Product end-->
-<div class="row">
+<div id="color2" class="row">
     <div class="col-md-12">
         <div id="postNew" class="container">
             <form method="post">
                 <div class="form-group">
-                    <label for="userNameInput">User:</label>
+                    <label style="color:#fff;" for="userNameInput">User:</label>
                     <?php
                     if(isset($_SESSION['user_id'])) {
                         echo '<input type="text" id="userNameInput" class="form-control" name="postName" required value="' . $_SESSION['username'] . '">';
@@ -70,33 +70,37 @@ echo '   <form method="post" enctype="multipart/form-data">
                     ?>
                 </div>
                 <div class="form-group">
-                    <label for="userComment">Comment:</label>
+                    <label style="color:#fff;" for="userComment">Comment:</label>
                     <textarea class="form-control" id="userComment" rows="4" name="comment" placeholder="What do you think about product?"></textarea>
                 </div>
                 <input type="submit" class="btn btn-primary" name="submit_comment">
             </form>
+
+            <div class="row" id="commentsection">
+                <div class="col-md-9">
+                    <div id="commentSection" class="container">
+                        <div id="loader-icon">
+                            <img src="view/web_images/LoaderIcon.gif" />
+                        </div>
+                        <div id="rowcount">
+
+                        </div>
+                        <div id="echo">
+                            <?php require 'controller/admin_comments.php'; ?>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+
+                </div>
+            </div>
+
         </div>
     </div>
+
 </div>
-<div class="row">
-    <div class="col-md-9">
-        <div id="commentSection" class="container">
-            <div id="loader-icon">
-                <img src="view/web_images/LoaderIcon.gif" />
-            </div>
-            <div id="rowcount">
 
-            </div>
-            <div id="echo">
-                <?php require 'controller/comments.php'; ?>
-            </div>
-
-        </div>
-    </div>
-    <div class="col-md-3">
-
-    </div>
-</div>
 <script>
     /*	$(document).ready(function() {
      function getComments(url) {
@@ -162,6 +166,6 @@ echo '   <form method="post" enctype="multipart/form-data">
 </script>
 
 
-</div>
+
 
 
