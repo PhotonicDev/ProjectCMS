@@ -61,7 +61,7 @@ echo '   <form id="adminform" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label style="color:#fff;" for="userNameInput">User:</label>
                     <?php
-                    if(isset($_SESSION['user_id'])) {
+                    if(isset($_SESSION['username'])) {
                         echo '<input type="text" id="userNameInput" class="form-control" name="postName" required value="' . $_SESSION['username'] . '">';
                     }
                     else {

@@ -10,7 +10,7 @@
 
 	function confirm_logged_in() {
         if (!logged_in()) {
-            header("Location: /bussiness%20logic%20cms/mainSolution/index.php");
+            header("Location: index.php");
         }
     }
 

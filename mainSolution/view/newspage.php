@@ -1,10 +1,13 @@
-<div class="container"> <?php
+<div class="container">
+   
+
+    <?php
     $output = '';
 
     if(mysqli_num_rows($news) > 0){
 
 
-        $output .= '';
+
         while($post = mysqli_fetch_array($news)){
 
             $output .=	'

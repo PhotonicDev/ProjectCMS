@@ -131,8 +131,8 @@ else {
                         <div class="directLogin">
                             <div class="form-group">
 
-                                <label for="User email">Email address</label>
-                                <input name="username" type="text" class="form-control" id="userEmail" placeholder="Email">
+                                <label for="User name">Username</label>
+                                <input name="username" type="text" class="form-control" id="userName" placeholder="Username">
                             </div>
                             <div class="form-group">
                                 <label for="User password">Password</label>

@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "123", "db_cms");
+$conn = mysqli_connect("localhost", "root", "lpokji12", "db_cms");
 
 if (isset($_SESSION['LOC'][1])) {   //getting product comments by id
     $q = $_SESSION['LOC'][1];

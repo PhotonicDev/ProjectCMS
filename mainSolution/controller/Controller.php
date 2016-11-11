@@ -230,6 +230,83 @@ class Controller
             }
 
 
+             // ADD NEWS
+             if(isset($_POST['insert_news'])) {
+
+                 if (file_exists($_FILES["uploadimage"]["tmp_name"]) || is_uploaded_file($_FILES["uploadimage"]["tmp_name"])) {
+
+
+                     if ($_FILES['uploadimage']['size'] > 0 &&
+                         (($_FILES["uploadimage"]["type"] == "image/gif") ||
+                             ($_FILES["uploadimage"]["type"] == "image/jpeg") ||
+                             ($_FILES["uploadimage"]["type"] == "image/pjpeg") ||
+                             ($_FILES["uploadimage"]["type"] == "image/png") &&
+                             ($_FILES["uploadimage"]["size"] < 5097152))
+                     ) {
+
+                         $filepath =  $_FILES["uploadimage"]["name"];
+                         move_uploaded_file($_FILES["uploadimage"]["tmp_name"], $filepath);
+                     }
+
+                     if ($_FILES["uploadimage"]["error"] > 0) {
+                         echo "Return Code: " . $_FILES["uploadimage"]["error"] . "<br />";
+                     }
+
+                     $this->model->post_news($filepath, $_POST['add_news_text'], $_POST['add_news_header']);
+
+
+                 }
+             }
+            // END OF NEWS
+
+
+            // UPDATE NEWS
+
+            if(isset($_POST['update_news'])){
+
+                if(file_exists($_FILES["uploadimage"]["tmp_name"]) || is_uploaded_file($_FILES["uploadimage"]["tmp_name"])) {
+
+
+                    if ($_FILES['uploadimage']['size'] > 0 &&
+                        (($_FILES["uploadimage"]["type"] == "image/gif") ||
+                            ($_FILES["uploadimage"]["type"] == "image/jpeg") ||
+                            ($_FILES["uploadimage"]["type"] == "image/pjpeg") ||
+                            ($_FILES["uploadimage"]["type"] == "image/png") &&
+                            ($_FILES["uploadimage"]["size"] < 2097152))
+                    ) {
+
+                        $filepath =  $_FILES["uploadimage"]["name"];
+                        move_uploaded_file($_FILES["uploadimage"]["tmp_name"], $filepath);
+                    }
+
+                    if ($_FILES["uploadimage"]["error"] > 0) {
+                        echo "Return Code: " . $_FILES["uploadimage"]["error"] . "<br />";
+                    }
+
+                    $this->model->update_news($filepath,$_POST['update_news_text'], $_POST['update_news_header'],$_POST['Page_ID']);
+
+                }
+
+                else{
+                    $this->model->update_news_noimage($_POST['update_news_text'], $_POST['update_news_header'],$_POST['Page_ID']);
+
+                }
+            }
+
+
+
+
+
+
+            //DELETE NEWS PAGE
+
+           if(isset($_POST['delete_news'])){
+
+               $this->model->delete_news($_POST['Page_ID']);
+           }
+
+
+
 
 
             switch ($_GET) {

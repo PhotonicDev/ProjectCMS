@@ -4,5 +4,5 @@
     </div>
 </div>
 <script>
-    document.location = "/ProjectCMS/mainSolution/index.php";
+    document.location = "index.php";
 </script>

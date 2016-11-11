@@ -53,6 +53,42 @@ include_once("view/error_view/note.php");
 
          return "bla";
      }
+
+     public function post_news($filepath,$text,$header){
+
+         $query = "INSERT INTO `newspage` (`Page_ID`, `Image`, `Description`, `DATE`, `Header`) VALUES (NULL, '$filepath', '$text', NOW(), '$header')";
+
+         $this->Connect()->getNothing($query);
+         note("New post created !");
+     }
+
+     public function update_news($filepath,$update_desc,$update_header,$Page_ID){
+
+         $query ="UPDATE `newspage` SET `Image` = '$filepath', `Description` = '$update_desc', `DATE` = NOW(), `Header` = '$update_header' WHERE `newspage`.`Page_ID` = '$Page_ID'";
+
+         $this->Connect()->getQuery($query);
+         note("Post updated !");
+     }
+
+     public function update_news_noimage($update_desc,$update_header,$Page_ID){
+
+         $query ="UPDATE `newspage` SET `Description` = '$update_desc', `DATE` = NOW(), `Header` = '$update_header' WHERE `newspage`.`Page_ID` = '$Page_ID'";
+
+         $this->Connect()->getQuery($query);
+         note("Post updated !");
+
+     }
+
+
+     public function delete_news ($Page_ID){
+
+         $query = "DELETE FROM `newspage` WHERE `Page_ID` = '$Page_ID'";
+
+         $this->Connect()->getNothing($query);
+         note("Post Deleted !");
+
+     }
+
         public function searchProducts($search) {
 
          $result = $this->Connect()->getQuery("SELECT * FROM products WHERE name LIKE '%" . $search . "%'");
@@ -171,7 +207,7 @@ if (isset($connection)){mysqli_close($connection);}
 		// in a real life scenario this will be done through a db select command
 		$allProducts = $this->getProductList();
          if (mysqli_num_rows($allProducts) > 0) {
-             $pro = $this->Connect()->getQuery("SELECT `views` FROM products WHERE `name`  = '" . $name . "' LIMIT 1");
+             $pro = $this->Connect()->getQuery("SELECT `views` FROM products WHERE `name`  = '" .$name. "' LIMIT 1");
             $view = mysqli_fetch_array($pro);
             $viewValue =  $view['views'] + 1;
                $this->Connect()->getQuery("UPDATE `products` SET `views` ='" . $viewValue . "' WHERE `name` =" . $name);
