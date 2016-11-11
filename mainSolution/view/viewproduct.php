@@ -1,17 +1,20 @@
 <?php
 	$product = mysqli_fetch_array($productSelected);
-
-$_SESSION['LOC'][0] = "index.php/viewproduct.php";
-$_SESSION['LOC'][1] = $product['Product_ID'];
+if($_SESSION['LOC'] != $product['Product_ID']) {
+	$_SESSION['LOC'][0] = $product['name'];
+	$_SESSION['LOC'][1] = $product['Product_ID'];
+}
 ?>
 <div class="item thumbnail container" xmlns="http://www.w3.org/1999/html">
 		<div class="row">
 			<div class="col-md-6">
 				<div class="itemImageFrame">
-					<img class="itemPictureBig thumbnail" src="<?php echo $product['images']; ?>">
+					<img class="itemPictureBig thumbnail" src="<?php echo $product['images']; ?>"><br />
 					<div class="btn-group productControl text-center">
-						<button type="button" class="btn-lg btn btn-success">Add to basket <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></button>
-						<button type="button" class="btn-lg btn btn-success">Up vote <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button>
+						<form method="get">
+						<button id="cart" name="add_to_cart" type="button" class="btn-lg btn btn-success">Add to basket <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></button>
+						<button id="up" type="button" class="btn-lg btn btn-success">Up vote <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -34,8 +37,11 @@ $_SESSION['LOC'][1] = $product['Product_ID'];
     <li class="list-group-item">Category:<strong> <?php echo $product['category']; ?></strong></li>
     <li class="list-group-item">On stock:<strong> <?php echo $product['stock']; ?></strong></li>
     <li class="list-group-item">Tags:<strong class="tags"> <?php echo $product['tags']; ?></strong></li>
-    
-  				</ul>
+	<li class="list-group-item">Views:<strong> <?php echo $product['views']; ?></strong></li>
+	<li class="list-group-item">Up votes:<strong> <?php echo $product['upVote']; ?></strong></li>
+
+
+				</ul>
   				
 		</div>
 
@@ -51,6 +57,7 @@ $_SESSION['LOC'][1] = $product['Product_ID'];
 					<div class="form-group">
 						<label for="userNameInput">User:</label>
 						<?php
+
 						if(isset($_SESSION['user_id'])) {
 							echo '<input type="text" id="userNameInput" class="form-control" name="postName" required value="' . $_SESSION['username'] . '">';
 						}
@@ -78,7 +85,7 @@ $_SESSION['LOC'][1] = $product['Product_ID'];
 
 				</div>
 				<div id="echo">
-					<?php require 'controller/comments.php'; ?>
+					<?php include_once 'controller/comments.php'; ?>
 				</div>
 
 			</div>
@@ -87,6 +94,7 @@ $_SESSION['LOC'][1] = $product['Product_ID'];
 			Ad!
 		</div>
 	</div>
+
 	<script>
 		/*	$(document).ready(function() {
 		 function getComments(url) {

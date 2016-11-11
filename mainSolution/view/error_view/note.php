@@ -5,7 +5,7 @@ function note($message){
 <div class="container">
     <div class="errorResponse alert alert-dismissible alert-success" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>Oh snap!' . $message . '</strong>
+        <strong>Success!  ' . $message . '</strong>
     </div>
 </div>';
 }
@@ -15,7 +15,7 @@ function error($message){
 <div class="container">
     <div class="errorResponse alert alert-dismissible alert-danger" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>Oh snap! '. $message .'</strong>
+        <strong>Oh snap!  '. $message .'</strong>
     </div>
 </div>';
 }

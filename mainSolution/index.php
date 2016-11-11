@@ -1,8 +1,13 @@
 <?php
 include_once("controller/Controller.php");
 
+session_start();
 $controller = new Controller();
 
+if (!isset($_SESSION['user_id'])) {
+    $_SESSION['user_id'] = rand(1,99999);
+
+}
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +38,7 @@ $controller = new Controller();
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="http://getbootstrap.com/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
-
+    <script src="controller/js/cookieQuery.js" rel="script"></script>
 
     <link href="view/sass/main.css" type="text/css" rel="stylesheet">
     <link rel='stylesheet' type='text/css' href='view/sass/css/contactform.css'>
@@ -75,22 +80,24 @@ $controller = new Controller();
                 </span>
                 </div>
             </form><!-- search bar-->
+            <form method="post">
 
             <ul class="nav navbar-nav navbar-right">
                 <?php
-                 include_once("controller/session.php");
-                if(isset($_SESSION['user_id'])){
-                    echo "<li><a href='controller/logout.php' >Logout</a></li>";
+                if(isset($_SESSION['username'])){
+                    echo "<li><a href='controller/logout.php' >Logout</a></li>
+                          <li><a href='index.php?page=profile'>My profile</a></li>
+                          <li><a href='index.php?page=basket'>My basket</a></li>";
                 }
                 else {
-                 echo   "<li><a data-toggle='modal' data-target='.bs-example-modal-lg' class='loginModal'>Login</a></li>";
+                 echo   "<li><a data-toggle='modal' data-target='.bs-example-modal-lg' class='loginModal'>Login</a></li>
+                         <li><a href='index.php?page=basket'>My basket</a></li>";
                 }
 
 ?>
 
-                <li><a class="sideClick" style="cursor:pointer;">Categories</a></li>
-
             </ul>
+            </form>
 
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -185,7 +192,7 @@ $controller = new Controller();
                 $.ajax({
                     url:"controller/fetch.php",
                     method:"get",
-                    data:{search:txt,},
+                    data:{search:txt},
                     dataType:"text",
                     success:function(data)
                     {   $('#static').hide( 500 ,"swing");
@@ -220,7 +227,36 @@ $controller = new Controller();
         }
     });
 </script>
-
+<script>
+    $(document).ready(function() {
+        $('#cart').on('click', function () {
+            $.ajax({
+                url: "controller/fetch.php",
+                method: "get",
+                data: {cart:<?php echo $_SESSION['LOC'][1]; ?>},
+                dataType: "text",
+                success: function () {
+                    $('#cart').html('Added');
+                }
+            });
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#up').on('click', function () {
+            $.ajax({
+                url: "controller/fetch.php",
+                method: "get",
+                data: {cart:<?php echo $_SESSION['LOC'][1]; ?>},
+                dataType: "text",
+                success: function () {
+                    $('#cart').html('Added');
+                }
+            });
+        });
+    });
+</script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="controller/js/add.js" type="application/javascript"></script>
 </body>

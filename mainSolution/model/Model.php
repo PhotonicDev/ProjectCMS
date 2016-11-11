@@ -6,6 +6,34 @@ include_once("view/error_view/note.php");
 
 
  class Model {
+     public function updateUserProfile($first,$last,$address, $birth){
+     $userID = $_SESSION['user_id'];
+         $this->Connect()->getNothing("UPDATE `customers` 
+                                                SET `firstName` ='" . $first . "',
+                                                `lastName` ='" . $last . "',
+                                                `Address` = '" . $address . "',
+                                                `birth` ='" . $birth . "'
+                                                WHERE `customer_id` = " . $userID);
+         return;
+     }
+     public function changePass($current, $new) {
+        $result = $this->Connect()->getQuery("SELECT `customer_id`, `name`, `password` FROM `customers` WHERE customer_id = '{$_SESSION['user_id']}' AND name = '{$_SESSION['username']}' LIMIT 1");
+         if(mysqli_num_rows($result) == 1) {
+             $pass = mysqli_fetch_array($result);
+             if(password_verify($current, $pass['password'])){
+                 $iterations = ['cost' => 10]; // encrypting password - hashing it 10 times
+                 $hashed = password_hash($new, PASSWORD_BCRYPT, $iterations);
+                 //insert results from the form input
+                 $this->Connect()->getNothing("UPDATE `customers` SET `password` = '" . $hashed . "' WHERE `customer_id` = ". $_SESSION['user_id']);
+                    note("Password changed!");
+             }
+             else {
+                 error('password doesint match!');
+             }
+
+         }
+
+     }
      public function postComment($user,$comment){
          $cUser = htmlspecialchars($user);
          $cComment = htmlspecialchars($comment);
@@ -54,11 +82,8 @@ include_once("view/error_view/note.php");
                 if(password_verify($password, $found_user['password'])){
                     $_SESSION['user_id'] = $found_user['customer_id'];
                     $_SESSION['username'] = $found_user['name'];
-                    $products = $this->getProductList();
-                    include_once "view/productpage.php";
                     note("Logged in");
-                   // header("Refresh:0; url=bussiness%20logic%20cms/mainSolution/index.php");
-                   // header("Location: /bussiness%20logic%20cms/mainSolution/index.php");
+                    include "view/after.php";
                 } else {
                     // username/password combo was not found in the database
                     error("Username/password combination incorrect.
@@ -85,9 +110,14 @@ if (isset($connection)){mysqli_close($connection);}
          }
      }
 
+     public function userProfile() {
+         $user = $_SESSION['user_id'];
+        $userData = $this->Connect()->getQuery("SELECT `customer_id`, `name`, `email`, `firstName`, `lastName`, `Address`, `birth` FROM `customers` WHERE `customer_id` = '{$user}' LIMIT 1");
+         return $userData;
+     }
      public function Register($username,$password,$email) {
 
-            $check = $this->Connect()->getQuery("SELECT * FROM `customers` WHERE `name` = '$username' AND `email` = '$email'");
+            $check = $this->Connect()->getQuery("SELECT `password` FROM `customers` WHERE `name` = '$username' AND `email` = '$email'");
 
             $rowResult = mysqli_num_rows($check);
 
@@ -118,7 +148,14 @@ if (isset($connection)){mysqli_close($connection);}
 
         }
 
-
+        public function contactPage(){
+           $contact = $this->Connect()->getQuery('SELECT * FROM contact_info LIMIT 1');
+            return $contact;
+        }
+        public function description(){
+            $des = $this->Connect()->getQuery("SELECT * FROM company_desc LIMIT 1");
+            return $des;
+        }
 
 
         public function openNews() {
@@ -134,7 +171,13 @@ if (isset($connection)){mysqli_close($connection);}
 		// in a real life scenario this will be done through a db select command
 		$allProducts = $this->getProductList();
          if (mysqli_num_rows($allProducts) > 0) {
-             $proData = $this->Connect()->getQuery("SELECT * FROM products WHERE `name`  = '{$name}' LIMIT 1");
+             $pro = $this->Connect()->getQuery("SELECT `views` FROM products WHERE `Product_ID`  = '" . $_SESSION['LOC'][1] . "' LIMIT 1");
+            $view = mysqli_fetch_array($pro);
+            $viewValue =  $view['views'] + 1;
+               $this->Connect()->getQuery("UPDATE `products` SET `views` ='" . $viewValue . "' WHERE `Product_ID` =" . $_SESSION['LOC'][1]);
+
+             $proData = $this->Connect()->getQuery("SELECT `name`,`price`,`description`,`color`,`size`,`category`,`images`,`stock`,`tags`,`manufacture`,`views`,`upVote`,`Product_ID` FROM products WHERE `name`  = '{$name}' LIMIT 1");
+
              return $proData;
 
          }
@@ -199,8 +242,8 @@ if (isset($connection)){mysqli_close($connection);}
 
 
 
-             $query = "INSERT INTO `products`(name, price, description, manufacture, color, size, category ,stock, tags, images)
-                                  VALUES ('$name', '$price', '$description', '$manufacture', '$color', '$size', '$category','$stock', '$tags','$filepath')";
+             $query = "INSERT INTO `products`(name, price, description, manufacture, color, size, category ,stock, tags, images,views,upVote)
+                                  VALUES ('$name', '$price', '$description', '$manufacture', '$color', '$size', '$category','$stock', '$tags','$filepath','0','0')";
 
          if($this->Connect() == false){
 

@@ -33,7 +33,6 @@ class Controller
                         $productSelected = $this->model->getProductById($_SESSION['LOC'][1]);
                         include 'view/viewproduct.php';
                     }
-                    //reload
                     break;
             }
         }
@@ -63,19 +62,43 @@ class Controller
                             include "view/newspage.php";
                             break;
                         case "contacts";
+                            $contact = $this->model->contactPage();
+                            $des = $this->model->description();
                             include "view/contactform.php";
+                            break;
+                        case 'profile';
+                            if(isset($_SESSION['user_id'])){
+                                $profile = $this->model->userProfile();
+                                include('view/profile.php');
+                            }
+                            else {
+                                note("you are not logged in!");
+                                $this->homePage();
+                            }
+                            break;
+                        case 'basket';
+                            include 'view/basket.php';
                             break;
                     }
                     break;
-                // case $_POST['news']:
-                //$news = $this->model->getNews();
-                //  include 'view/newspage.php';
             }
         }
         else {
             $this->homePage();
         }
 
+        if(isset($_POST['update_profile']) && isset($_SESSION['user_id'])) {
+            $this->model->updateUserProfile($_POST['firstName'],
+                                           $_POST['lastName'],
+                                           $_POST['Address'],
+                                           $_POST['birthDay']
+            );
+            note('Updated your profile!');
+        }
+        if(isset($_POST['update_password']) && isset($_SESSION['user_id'])) {
+                $this->model->changePass($_POST['current_pass'],$_POST['new_pass']);
+
+        }
 
     }
 
