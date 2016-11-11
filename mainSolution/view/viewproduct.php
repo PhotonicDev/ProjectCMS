@@ -1,7 +1,7 @@
 <?php
 	$product = mysqli_fetch_array($productSelected);
-if($_SESSION['LOC'] != $product['Product_ID']) {
-	$_SESSION['LOC'][0] = $product['name'];
+if($_SESSION['LOC'][1] != $product['Product_ID']) {
+	$_SESSION['LOC'][0] = $product['upVote'];
 	$_SESSION['LOC'][1] = $product['Product_ID'];
 }
 ?>
@@ -40,7 +40,6 @@ if($_SESSION['LOC'] != $product['Product_ID']) {
 	<li class="list-group-item">Views:<strong> <?php echo $product['views']; ?></strong></li>
 	<li class="list-group-item">Up votes:<strong> <?php echo $product['upVote']; ?></strong></li>
 
-
 				</ul>
   				
 		</div>
@@ -58,7 +57,7 @@ if($_SESSION['LOC'] != $product['Product_ID']) {
 						<label for="userNameInput">User:</label>
 						<?php
 
-						if(isset($_SESSION['user_id'])) {
+						if(isset($_SESSION['username'])) {
 							echo '<input type="text" id="userNameInput" class="form-control" name="postName" required value="' . $_SESSION['username'] . '">';
 						}
 						else {

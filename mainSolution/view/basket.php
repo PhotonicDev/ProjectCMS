@@ -1,4 +1,5 @@
 <?php
+if(isset($_SESSION['cart'])) {
 $connect = mysqli_connect("localhost", "root", "123" /* "lpokji12" */, "db_cms");
 $output = '';
 $i = 0;
@@ -54,5 +55,16 @@ $result = mysqli_query($connect, $sql);
  }
  ?>
 </div>
-
+<?php
+}
+else {
+    echo '<div class="container">
+                <div class="well">
+                <h3>There is no items in your basket. You can browse items by using search
+                at the top of your page or by browsing categories.</h3>
+                </div>  
+          </div>
+';
+}
+?>
 

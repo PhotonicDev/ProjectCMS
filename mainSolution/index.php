@@ -243,19 +243,35 @@ if (!isset($_SESSION['user_id'])) {
     });
 </script>
 <script>
+
     $(document).ready(function() {
+            <?php
+        if(empty($_SESSION['up'])){
+            $_SESSION['up'] = array();
+
+        }
+        ?>
+        var voted = '<?php echo in_array($_SESSION['LOC'][1],$_SESSION['up']); ?>';
+
+        if( voted == false ){
         $('#up').on('click', function () {
             $.ajax({
                 url: "controller/fetch.php",
                 method: "get",
-                data: {cart:<?php echo $_SESSION['LOC'][1]; ?>},
+                data: {vote:<?php echo $_SESSION['LOC'][1]; ?>},
                 dataType: "text",
                 success: function () {
-                    $('#cart').html('Added');
+                    $('#up').html('Up voted').attr('disabled','disabled');
+                    location.reload();
                 }
             });
         });
+        }
+        else {
+            $('#up').html('Up voted').attr('disabled','disabled');
+        }
     });
+
 </script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="controller/js/add.js" type="application/javascript"></script>
