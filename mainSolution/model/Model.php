@@ -272,6 +272,13 @@ if (isset($connection)){mysqli_close($connection);}
 
          $this->Connect()->getNothing($query_company);
      }
+
+     public function company_desc_noimage($title,$description){
+
+         $query_company = "UPDATE `company_desc` SET `title` ='" . $title. "', `Description`='" .$description. "'  WHERE `id` = 1" ;
+
+         $this->Connect()->getNothing($query_company);
+     }
      // UPDATE contact info
      public function contact_update($Street,$description,$email,$city,$country,$Phone,$zipcode,$monday,$tuesday,$wednesday,$thursday,$friday,$saturday,$sunday)
      {
@@ -325,6 +332,32 @@ if (isset($connection)){mysqli_close($connection);}
 
      }
 
+     public function Update_products_noimage($Product_ID,$name,$price,$description,$manufacture,$color,$size,$category,$stock,$tags){
+
+         if($this->Connect() == false){
+
+             echo "<div class=\"alert alert-danger\" role=\"alert\">
+  <a href=\"#\" class=\"alert-link\">Failed to update or  connect to database</a>
+</div>";
+         }
+         else{
+             echo"<div class=\"alert alert-success\">
+  <strong>Success!</strong> Data has been updated.
+</div>";
+         }
+
+         $query = "UPDATE `products` SET `Product_ID` ='" . $Product_ID . "', `name` ='".$name. "', `price` = '".$price."', `description` ='".$description."', `manufacture` ='" . $manufacture . "', `color` = '" .$color. "', `size` ='" .$size. "', `category` ='".$category."', `stock` ='".$stock."', `tags` ='".$tags."' WHERE `Product_ID` =".$Product_ID;
+
+
+
+         $this->Connect()->getNothing($query);
+
+
+
+
+
+     }
+
      // DELETE PRODUCTS
 
      public function Delete_products($Product_ID){
@@ -343,7 +376,9 @@ if (isset($connection)){mysqli_close($connection);}
 
          $query = "DELETE FROM products WHERE `Product_ID` =".$Product_ID;
          $this->Connect()->getNothing($query);
-
+         echo"<div class='alert alert-success'>
+  <strong>Success!</strong> Product has been deleted.
+</div>";
      }
 
 

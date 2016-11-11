@@ -146,7 +146,9 @@ class Controller
 
             if (isset($_POST['btn_save_updates'])) {
 
-                if (!isset($_POST['uploadimage'])) {
+                if(file_exists($_FILES["uploadimage"]["tmp_name"]) || is_uploaded_file($_FILES["uploadimage"]["tmp_name"])){
+
+
 
                     if ($_FILES['uploadimage']['size'] > 0 &&
                         (($_FILES["uploadimage"]["type"] == "image/gif") ||
@@ -166,8 +168,14 @@ class Controller
 
                     $this->model->Update_products($_POST['Product_ID'], $_POST['product_name'], $_POST['product_price'], $_POST['product_description'], $_POST['product_manufacture'], $_POST['product_color'], $_POST['product_size'], $_POST['product_category'], $_POST['product_stock'], $_POST['product_tags'], $filepath);
 
+               }
+
+               else{
+
+                    $this->model->Update_products_noimage($_POST['Product_ID'], $_POST['product_name'], $_POST['product_price'], $_POST['product_description'], $_POST['product_manufacture'], $_POST['product_color'], $_POST['product_size'], $_POST['product_category'], $_POST['product_stock'], $_POST['product_tags']);
 
                 }
+
 
 
             }
@@ -181,23 +189,33 @@ class Controller
 
             if(isset($_POST['btn_update'])){
 
+                if(file_exists($_FILES["uploadimage"]["tmp_name"]) || is_uploaded_file($_FILES["uploadimage"]["tmp_name"])) {
 
-                if($_FILES['uploadimage']['size'] > 0 &&
-                    (($_FILES["uploadimage"]["type"] == "image/gif") ||
-                        ($_FILES["uploadimage"]["type"] == "image/jpeg")||
-                        ($_FILES["uploadimage"]["type"] == "image/pjpeg") ||
-                        ($_FILES["uploadimage"]["type"] == "image/png") &&
-                        ($_FILES["uploadimage"]["size"] < 2097152))){
 
-                    $filepath = 'user_images/'.$_FILES["uploadimage"]["name"];
-                    move_uploaded_file($_FILES["uploadimage"]["tmp_name"],$filepath);
+                    if ($_FILES['uploadimage']['size'] > 0 &&
+                        (($_FILES["uploadimage"]["type"] == "image/gif") ||
+                            ($_FILES["uploadimage"]["type"] == "image/jpeg") ||
+                            ($_FILES["uploadimage"]["type"] == "image/pjpeg") ||
+                            ($_FILES["uploadimage"]["type"] == "image/png") &&
+                            ($_FILES["uploadimage"]["size"] < 2097152))
+                    ) {
+
+                        $filepath = 'user_images/' . $_FILES["uploadimage"]["name"];
+                        move_uploaded_file($_FILES["uploadimage"]["tmp_name"], $filepath);
+                    }
+
+                    if ($_FILES["uploadimage"]["error"] > 0) {
+                        echo "Return Code: " . $_FILES["uploadimage"]["error"] . "<br />";
+                    }
+
+                    $this->model->company_desc($_POST['desc_title'], $_POST['desc_text'], $filepath);
+
                 }
 
-                if ($_FILES["uploadimage"]["error"] > 0){
-                    echo "Return Code: " . $_FILES["uploadimage"]["error"] . "<br />";
-                }
+                 else{
+                     $this->model->company_desc_noimage($_POST['desc_title'], $_POST['desc_text']);
 
-                $this->model->company_desc($_POST['desc_title'],$_POST['desc_text'],$filepath);
+                 }
             }
 
             if (isset($_POST['btn_delete'])) {
