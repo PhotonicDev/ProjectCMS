@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2016 at 01:29 PM
+-- Generation Time: Nov 11, 2016 at 06:21 PM
 -- Server version: 5.7.11
 -- PHP Version: 5.6.19
 
@@ -207,8 +207,8 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`Product_ID`, `name`, `price`, `description`, `color`, `size`, `category`, `images`, `stock`, `tags`, `manufacture`, `views`, `upVote`) VALUES
-(1, '     Blue duck', 6.99, '     description of blue duck', '     bluee', '     SM small', '     small blue     ', 'user_images/duck_blue.png', 888, '   blue-sm             ', '     china', 125, 2),
-(2, '  Blue duck', 6.99, '  description of blue duck', '  blue', ' SM small', '  small blue        ', 'user_images/duck_blue.png', 106, '  blue-sm        ', '  china', 97, 7),
+(1, '     Blue duck', 6.99, '     description of blue duck', '     bluee', '     SM small', '     small blue     ', 'user_images/duck_blue.png', 888, '   blue-sm             ', '     china', 128, 3),
+(2, '  Blue duck', 6.99, '  description of blue duck', '  blue', ' SM small', '  small blue        ', 'user_images/duck_blue.png', 106, '  blue-sm        ', '  china', 99, 7),
 (3, 'Green duck', 15.99, 'awesome duck description', 'green', 'Big XXL', 'Green ducks   ', 'user_images/duck_green.png', 123, 'awesome duck   ', 'germany', 20, 2),
 (4, ' Purple duck', 6.99, ' description of purple duck', ' purple', ' SM small', ' small pruple ', 'user_images/duck_purple.png', 13, ' purple-sm ', ' china', 3, 1),
 (5, 'Purple duck', 6.99, 'description of purple duck', 'purple', 'SM small', 'small pruple', 'user_images/duck_purple.png', 12, 'purple-sm', 'china', 3, 0),
