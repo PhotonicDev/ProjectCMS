@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2016 at 04:22 PM
+-- Generation Time: Nov 11, 2016 at 01:29 PM
 -- Server version: 5.7.11
 -- PHP Version: 5.6.19
 
@@ -116,16 +116,22 @@ CREATE TABLE `customers` (
   `customer_id` int(20) NOT NULL,
   `name` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL
+  `email` varchar(100) NOT NULL,
+  `firstName` varchar(50) DEFAULT NULL,
+  `lastName` varchar(50) DEFAULT NULL,
+  `Address` varchar(200) DEFAULT NULL,
+  `birth` date DEFAULT NULL,
+  `basket` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`customer_id`, `name`, `password`, `email`) VALUES
-(13, 'wentox', '$2y$10$.1sBIZ9VxOppK34yIkibDe5LZiwomJ.EGe/ZQ6t6G32wf2yQYWFU6', 'dovydastt@gmail.com'),
-(14, 'anonim', '$2y$10$VioSrbFLAsnpAvn2G9xsBuKXgm.U5HVyKbZhNK7919ernqFLuhwIW', 'dsd@gmail.com');
+INSERT INTO `customers` (`customer_id`, `name`, `password`, `email`, `firstName`, `lastName`, `Address`, `birth`, `basket`) VALUES
+(13, 'wentox', '$2y$10$.1sBIZ9VxOppK34yIkibDe5LZiwomJ.EGe/ZQ6t6G32wf2yQYWFU6', 'dovydastt@gmail.com', NULL, NULL, NULL, NULL, NULL),
+(14, 'anonim', '$2y$10$VioSrbFLAsnpAvn2G9xsBuKXgm.U5HVyKbZhNK7919ernqFLuhwIW', 'dsd@gmail.com', NULL, NULL, NULL, NULL, NULL),
+(15, 'admin', '$2y$10$rpZZ68k21ZVeD7/EtNCkcOICWkC3M47oj9IhrSaAu8bpkl6Nhf9lK', 'admin@admin.com', 'gfdsgfdshgggf', 'ffgfdgfsd', 'gdshgdshgdsgfds', '1982-05-25', NULL);
 
 -- --------------------------------------------------------
 
@@ -149,7 +155,7 @@ CREATE TABLE `newspage` (
   `Image` varchar(255) NOT NULL,
   `Description` text NOT NULL,
   `DATE` timestamp NOT NULL,
-  `Header` text NOT NULL
+  `Header` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -157,8 +163,9 @@ CREATE TABLE `newspage` (
 --
 
 INSERT INTO `newspage` (`Page_ID`, `Image`, `Description`, `DATE`, `Header`) VALUES
-(1, 'quasars.jpg', 'Welcome to the newsfeed', '2016-11-08 15:41:01', ''),
-(2, 'quasars.jpg', 'Welcome to the newsfeed', '2016-11-08 15:41:12', '');
+(1, 'gravity.jpg', 'Gravitational waves are \'ripples\' in the fabric of space-time caused by some of the most violent and energetic processes in the Universe. Albert Einstein predicted the existence of gravitational waves in 1916 in his general theory of relativity.', '2016-11-10 22:50:11', 'Gravity still undefined...'),
+(2, 'home.jpg', 'But while those dreams haven\'t materialised just yet, it hasn’t stopped visionaries from imagining what a human colony on the red planet might look like in the future.', '2016-11-10 22:51:13', 'Our new home?'),
+(3, 'quasars.jpg', 'Shining so brightly that they eclipse the ancient galaxies that contain them, quasars are distant objects powered by black holes a billion times as massive as our sun. These powerful dynamos have fascinated astronomers since their discovery half a century ago.', '2016-11-10 22:52:13', 'Quasars are cool!');
 
 -- --------------------------------------------------------
 
@@ -190,24 +197,26 @@ CREATE TABLE `products` (
   `images` varchar(255) NOT NULL,
   `stock` int(255) NOT NULL,
   `tags` varchar(50) NOT NULL,
-  `manufacture` varchar(100) NOT NULL
+  `manufacture` varchar(100) NOT NULL,
+  `views` int(15) DEFAULT NULL,
+  `upVote` int(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`Product_ID`, `name`, `price`, `description`, `color`, `size`, `category`, `images`, `stock`, `tags`, `manufacture`) VALUES
-(1, '     Blue duck', 6.99, '     description of blue duck', '     bluee', '     SM small', '     small blue     ', 'user_images/duck_blue.png', 888, '   blue-sm             ', '     china'),
-(2, '  Blue duck', 6.99, '  description of blue duck', '  blue', ' SM small', '  small blue        ', 'user_images/duck_blue.png', 106, '  blue-sm        ', '  china'),
-(3, 'Green duck', 15.99, 'awesome duck description', 'green', 'Big XXL', 'Green ducks   ', 'user_images/duck_green.png', 123, 'awesome duck   ', 'germany'),
-(4, ' Purple duck', 6.99, ' description of purple duck', ' purple', ' SM small', ' small pruple ', 'user_images/duck_purple.png', 13, ' purple-sm ', ' china'),
-(5, 'Purple duck', 6.99, 'description of purple duck', 'purple', 'SM small', 'small pruple', 'user_images/duck_purple.png', 12, 'purple-sm', 'china'),
-(6, '  Green duck', 15.99, '  awesome duck description', '  green', '  Big XXL', '  Green ducks  ', 'user_images/duck_green.png', 4, '  awesome duck  ', '  china'),
-(7, '  Yellow duck', 14.99, '  awesome duck description', '  yellow', '  Big XXL', '  Yellow ducks  ', 'user_images/duck_yellow.png', 56, '  awesome duck  ', '  china'),
-(8, ' Yellow duck', 7.55, ' awesome duck description', ' yellow', ' Big XXL', ' Yellow ducks ', 'user_images/duck_yellow.png', 56, ' awesome duck ', ' china'),
-(14, ' NiceDuck', 45.99, 'Very nice but expensive duck', 'colorful', 'Tiny', 'none', 'user_images/duck_blue.png', 68, 'none', 'Portugal'),
-(15, ' Duckuyyy', 5.99, 'something awesome', 'yellow', 'big', 'asdas', 'user_images/duck_yellow.png', 455, 'sdsds', 'denmark');
+INSERT INTO `products` (`Product_ID`, `name`, `price`, `description`, `color`, `size`, `category`, `images`, `stock`, `tags`, `manufacture`, `views`, `upVote`) VALUES
+(1, '     Blue duck', 6.99, '     description of blue duck', '     bluee', '     SM small', '     small blue     ', 'user_images/duck_blue.png', 888, '   blue-sm             ', '     china', 125, 2),
+(2, '  Blue duck', 6.99, '  description of blue duck', '  blue', ' SM small', '  small blue        ', 'user_images/duck_blue.png', 106, '  blue-sm        ', '  china', 97, 7),
+(3, 'Green duck', 15.99, 'awesome duck description', 'green', 'Big XXL', 'Green ducks   ', 'user_images/duck_green.png', 123, 'awesome duck   ', 'germany', 20, 2),
+(4, ' Purple duck', 6.99, ' description of purple duck', ' purple', ' SM small', ' small pruple ', 'user_images/duck_purple.png', 13, ' purple-sm ', ' china', 3, 1),
+(5, 'Purple duck', 6.99, 'description of purple duck', 'purple', 'SM small', 'small pruple', 'user_images/duck_purple.png', 12, 'purple-sm', 'china', 3, 0),
+(6, '  Green duck', 15.99, '  awesome duck description', '  green', '  Big XXL', '  Green ducks  ', 'user_images/duck_green.png', 4, '  awesome duck  ', '  china', 3, 0),
+(7, '  Yellow duck', 14.99, '  awesome duck description', '  yellow', '  Big XXL', '  Yellow ducks  ', 'user_images/duck_yellow.png', 56, '  awesome duck  ', '  china', 1, 0),
+(8, ' Yellow duck', 7.55, ' awesome duck description', ' yellow', ' Big XXL', ' Yellow ducks ', 'user_images/duck_yellow.png', 56, ' awesome duck ', ' china', 2, 1),
+(14, ' NiceDuck', 45.99, 'Very nice but expensive duck', 'colorful', 'Tiny', 'none', 'user_images/duck_blue.png', 68, 'none', 'Portugal', 0, 0),
+(15, ' Duckuyyy', 5.99, 'something awesome', 'yellow', 'big', 'asdas', 'user_images/duck_yellow.png', 455, 'sdsds', 'denmark', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -227,9 +236,8 @@ CREATE TABLE `search_history` (
 
 CREATE TABLE `social_pages` (
   `Product_ID` int(20) NOT NULL,
-  `Likes` int(255) NOT NULL,
+  `Likes` int(15) NOT NULL,
   `Comments` text NOT NULL,
-  `Views` int(255) NOT NULL,
   `name` varchar(50) NOT NULL,
   `comment_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -238,8 +246,14 @@ CREATE TABLE `social_pages` (
 -- Dumping data for table `social_pages`
 --
 
-INSERT INTO `social_pages` (`Product_ID`, `Likes`, `Comments`, `Views`, `name`, `comment_id`) VALUES
-(2, 0, ' sdsd ', 0, 'ddd', 1);
+INSERT INTO `social_pages` (`Product_ID`, `Likes`, `Comments`, `name`, `comment_id`) VALUES
+(1, 0, ' whats up ', 'Nerijus', 1),
+(1, 0, ' whats up ', 'Nerijus', 2),
+(15, 0, ' gdsagds ', 'd', 3),
+(15, 0, ' gdsagds ', 'd', 4),
+(15, 0, ' dd ', 'd', 5),
+(1, 0, ' gfasgfas ', 'gfadsgfa', 6),
+(1, 0, ' bla\r\n ', 'nerijus', 7);
 
 -- --------------------------------------------------------
 
@@ -252,6 +266,18 @@ CREATE TABLE `sold_products` (
   `Product_ID` int(20) NOT NULL,
   `Qty` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `temp_user`
+--
+
+CREATE TABLE `temp_user` (
+  `name` varchar(50) DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
+  `basket` text
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
@@ -334,6 +360,12 @@ ALTER TABLE `sold_products`
   ADD KEY `Product_ID` (`Product_ID`);
 
 --
+-- Indexes for table `temp_user`
+--
+ALTER TABLE `temp_user`
+  ADD PRIMARY KEY (`user_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -356,12 +388,12 @@ ALTER TABLE `contact_info`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `customer_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `newspage`
 --
 ALTER TABLE `newspage`
-  MODIFY `Page_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Page_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `orders`
 --
@@ -376,7 +408,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `social_pages`
 --
 ALTER TABLE `social_pages`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `sold_products`
 --
