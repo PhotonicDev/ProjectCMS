@@ -19,6 +19,7 @@ $result = mysqli_query($connect, $sql);
     <div class="well text-right">
         <div class="row">
             <div class="col-md-12">
+                <?php print_r($_SESSION['cart']); ?>
         <button type="button" class="btn btn-danger">Clear selected</button>
         <button type="button" class="btn btn-danger">Clear cart</button>
         <button type="button" class="btn btn-success">Buy selected</button>

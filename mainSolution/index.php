@@ -1,12 +1,25 @@
 <?php
 include_once("controller/Controller.php");
+include_once 'controller/load.php';
 
 session_start();
 $controller = new Controller();
+if(empty($_SESSION['prep'])){
+if(isset($_COOKIE['temp'])) {
+    $_SESSION['temp_id'] =  $_COOKIE['temp'];
+    load_temp($_SESSION['temp_id']);
+    $_SESSION['prep'] = 'yes';
+}
+elseif (isset($_COOKIE['user'])){
+    $_SESSION['user_id'] =  $_COOKIE['user'];
+    load($_SESSION['user_id']);
+    $_SESSION['prep'] = 'yes';
+}
+else {
+    create_new();
+    $_SESSION['prep'] = 'yes';
 
-if (!isset($_SESSION['user_id'])) {
-    $_SESSION['user_id'] = rand(1,99999);
-
+}
 }
 ?>
 

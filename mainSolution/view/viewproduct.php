@@ -1,6 +1,6 @@
 <?php
 	$product = mysqli_fetch_array($productSelected);
-if($_SESSION['LOC'][1] != $product['Product_ID']) {
+if(empty($_SESSION['LOC'][1]) || $_SESSION['LOC'][1] != $product['Product_ID']){
 	$_SESSION['LOC'][0] = $product['upVote'];
 	$_SESSION['LOC'][1] = $product['Product_ID'];
 }
