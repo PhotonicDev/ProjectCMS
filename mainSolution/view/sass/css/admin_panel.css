@@ -20,7 +20,7 @@ body {
     z-index: 1000;
     position: fixed;
     left: 250px;
-    width: 0;
+    width: 250px;
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
@@ -149,7 +149,6 @@ body {
 .mainProduct{
 
     float:right;
-    background-color:cornflowerblue;
     width:calc(100% - 250px);
 
 
@@ -163,7 +162,7 @@ body {
 
 .descbox{
 
-    margin-left: 27vw;
+    margin-left: 17vw;
     margin-top: 10vh;
     width:60%;
 }

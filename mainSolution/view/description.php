@@ -1,9 +1,13 @@
+
 <?php
 $show = '';
 if(mysqli_num_rows($description) > 0) {
     while ($desc = mysqli_fetch_array($description)) {
 
-        $show .= '<form method=\'post\' enctype=\'multipart/form-data\'>
+        $show .= '
+<div style="background-color: #444">
+ <div class="mainProduct">
+<form method=\'post\' enctype=\'multipart/form-data\'>
 <div class=\'descbox\'>
 
 <div class="form-group">
@@ -15,7 +19,9 @@ if(mysqli_num_rows($description) > 0) {
 <input class="input-group" type="file" name="uploadimage"/><br>
 <img src="'.$desc['pictures'].'" class="img-rounded" alt="Cinque Terre" width="200" height="130">
 <button type="submit" name="btn_update"  class="pull-right btn-sm btn btn-primary">Update <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
-</form></div>';
+</form></div>
+</div>
+</div>';
 
     }
 
@@ -25,6 +31,7 @@ if(mysqli_num_rows($description) > 0) {
 else{
     echo ' ';
 }
+?>
 
 
 

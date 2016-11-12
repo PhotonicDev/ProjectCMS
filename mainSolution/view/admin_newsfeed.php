@@ -1,5 +1,8 @@
-<div style="width: 130vh;" class="container pagination-centered">
+
+<div style="background-color: #444444;">
+<div style="" class="container pagination-centered">
     <div class="col-lg-12">
+        <div class="mainProduct">
     <form method="post" enctype="multipart/form-data">
         <div class="jumbotron">
 
@@ -33,7 +36,7 @@
 
                 </div>
 
-
+                </div>
         </div>
     </form>
 
@@ -48,6 +51,7 @@
         while($post = mysqli_fetch_array($news)){
 
             $output .=	'
+          <div class="mainProduct">
             <form method="post" enctype="multipart/form-data">
    <!-- <a href="index.php?news='.$post['Page_ID'].'"> -->
 
@@ -76,7 +80,7 @@
             </div>
         </div>
    <!-- </a> --></form>
-			';
+			</div>';
         }
         echo $output;
     }
@@ -85,4 +89,5 @@
         echo ' ';
     }
     ?>
+</div>
 </div>
