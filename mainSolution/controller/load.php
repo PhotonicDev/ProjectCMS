@@ -2,9 +2,7 @@
 
 
 function load($user){
-    $sqlLoad = "SELECT `basket`, `up_votes` FROM `customers` WHERE customer_id ='{$user}' LIMIT 1";
-    $conn = mysqli_connect("localhost", "root", "123", "db_cms");
-    $result = mysqli_query($conn, $sqlLoad);
+    $result = Connect()->getQuery("SELECT `basket`, `up_votes` FROM `customers` WHERE customer_id ='{$user}' LIMIT 1");
     $data = mysqli_fetch_array($result);
     if(!empty($data['basket'])){
         $bas =  $data['basket'];
@@ -17,10 +15,8 @@ function load($user){
 
 }
 function load_temp($temp) {
-    $sqlLoad = "SELECT `basket`, `up_votes` FROM `customers` WHERE customer_id ='{$temp}' LIMIT 1";
-    $conn = mysqli_connect("localhost", "root", "123", "db_cms");
-    $result = mysqli_query($conn, $sqlLoad);
-    $temp_data = mysqli_fetch_array($result);
+    $sqlLoad = Connect()->getQuery("SELECT `basket`, `up_votes` FROM `temp_user` WHERE user_id ='{$temp}' LIMIT 1");
+    $temp_data = mysqli_fetch_array($sqlLoad);
     if(!empty($temp_data['basket'])){
     $temp_bas =  $temp_data['basket'];
     $_SESSION['cart'] = explode(' ',$temp_bas);

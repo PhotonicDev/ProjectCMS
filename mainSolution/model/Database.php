@@ -31,7 +31,6 @@ class Database
         $this->getConnection()->query($query);
         return "succesfull";
     }
-
    /* function fetchProducts(){
         $getProducts = $this->getConnection()->query("SELECT * FROM products");
 

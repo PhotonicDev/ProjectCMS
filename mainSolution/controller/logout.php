@@ -1,12 +1,11 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "123", "db_cms");
-$sql = '';
+
 		session_start();
 if(isset($_SESSION['user_id'])) {
     $useritemup = implode(' ', $_SESSION['up']);
     $usercart = implode(' ', $_SESSION['cart']);
     $useruser = $_SESSION['user_id'];
-    $sql = "UPDATE customers SET basket = '{$usercart}', up_votes = '{$useritemup}' WHERE `customer_id` = '{$useruser}'";
+    Connect()->getQuery("UPDATE customers SET basket = '{$usercart}', up_votes = '{$useritemup}' WHERE `customer_id` = '{$useruser}'");
     setcookie('user', $_SESSION['user_id'],time()+3600*24*30, '/');
 }
 elseif (isset($_SESSION['temp_id'])) {
@@ -14,12 +13,9 @@ elseif (isset($_SESSION['temp_id'])) {
     $cart = implode(' ', $_SESSION['cart']);
     $user = $_SESSION['temp_id'];
     $na = $_SESSION['tempname'];
-    $sql = "INSERT INTO temp_user (name,user_id,basket,up_votes) VALUES ('{$na}','{$user}','{$cart}','{$itemup}')";
+    Connect()->getQuery("INSERT INTO temp_user (name,user_id,basket,up_votes) VALUES ('{$na}','{$user}','{$cart}','{$itemup}')");
     setcookie('temp', $_SESSION['temp_id'],time()+3600*24*30, '/');
 }	// 2. Unset all the session variables
-
-$result = mysqli_query($conn, $sql);
-
 		$_SESSION = array();
 
 		// 3. Destroy the session cookie

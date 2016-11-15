@@ -1,5 +1,10 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "123", "db_cms");
+function Connect(){
+
+    $db = require('model/conn.php');
+    $connection = new Database($db);
+    return $connection;
+}
 
 if (isset($_SESSION['LOC'][1])) {   //getting product comments by id
     $q = $_SESSION['LOC'][1];
@@ -14,7 +19,7 @@ if (isset($_SESSION['LOC'][1])) {   //getting product comments by id
      }
      $perPage = 5;
  */
-    $sql = "SELECT * FROM social_pages WHERE Product_ID='" . $q . "'";//   from where to start,how many posts
+    $sql = Connect()->getQuery("SELECT * FROM social_pages WHERE Product_ID='" . $q . "'");//   from where to start,how many posts
 
 
     /*   $start = ($commentRow * $perPage) - $perPage;

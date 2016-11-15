@@ -21,6 +21,13 @@ else {
 
 }
 }
+function Connect(){
+
+    $db = require('model/conn.php');
+    $connection = new Database($db);
+    return $connection;
+}
+
 ?>
 
 <!DOCTYPE html>
