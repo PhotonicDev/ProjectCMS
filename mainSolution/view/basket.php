@@ -1,5 +1,5 @@
 <?php
-if(isset($_SESSION['cart'])) {
+if(isset($_SESSION['cart']) && count($_SESSION['cart']) != 0 ) {
 $connect = mysqli_connect("localhost", "root", "123" /* "lpokji12" */, "db_cms");
 $output = '';
 $i = 0;
@@ -14,19 +14,22 @@ while (count($_SESSION['cart']) > $i ){
     }
 $sql = "SELECT * FROM products WHERE Product_ID IN ($output)";
 $result = mysqli_query($connect, $sql);
+
 ?>
 <div class="container">
+    <form method="post">
     <div class="well text-right">
         <div class="row">
             <div class="col-md-12">
                 <?php print_r($_SESSION['cart']); ?>
         <button type="button" class="btn btn-danger">Clear selected</button>
-        <button type="button" class="btn btn-danger">Clear cart</button>
+        <button name="clear_all" type="submit" class="btn btn-danger">Clear cart</button>
         <button type="button" class="btn btn-success">Buy selected</button>
         <button type="button" class="btn btn-success">Buy All</button>
             </div>
         </div>
     </div>
+    </form>
 </div>
 <div class="container">
     <?php

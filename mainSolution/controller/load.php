@@ -1,15 +1,11 @@
 <?php
-include_once ('model/Database.php');
 
 
-function Connect(){
-    $conn = include 'model/conn.php';
-    $db = new Database($conn);
-    return $db;
-}
 function load($user){
-    $query = Connect()->getQuery("SELECT `basket`, `up_votes` FROM `customers` WHERE customer_id ='{$user}' LIMIT 1");
-    $data = mysqli_fetch_array($query);
+    $sqlLoad = "SELECT `basket`, `up_votes` FROM `customers` WHERE customer_id ='{$user}' LIMIT 1";
+    $conn = mysqli_connect("localhost", "root", "123", "db_cms");
+    $result = mysqli_query($conn, $sqlLoad);
+    $data = mysqli_fetch_array($result);
     if(!empty($data['basket'])){
         $bas =  $data['basket'];
         $_SESSION['cart'] = explode(' ',$bas);
@@ -21,8 +17,10 @@ function load($user){
 
 }
 function load_temp($temp) {
-    $temp_query = Connect()->getQuery("SELECT basket, up_votes FROM customers WHERE customer_id =" . $temp . " LIMIT 1");
-    $temp_data = mysqli_fetch_array($temp_query);
+    $sqlLoad = "SELECT `basket`, `up_votes` FROM `customers` WHERE customer_id ='{$temp}' LIMIT 1";
+    $conn = mysqli_connect("localhost", "root", "123", "db_cms");
+    $result = mysqli_query($conn, $sqlLoad);
+    $temp_data = mysqli_fetch_array($result);
     if(!empty($temp_data['basket'])){
     $temp_bas =  $temp_data['basket'];
     $_SESSION['cart'] = explode(' ',$temp_bas);
@@ -34,6 +32,6 @@ function load_temp($temp) {
 }
 function create_new(){
     $userRan = uniqid();
-    setcookie('user', $userRan,time()+3600*24*30, '/');
-    $_SESSION['user_id'] = $userRan;
+    setcookie('temp', $userRan,time()+3600*24*30, '/');
+    $_SESSION['temp_id'] = $userRan;
 }

@@ -57,8 +57,8 @@ if(empty($_SESSION['LOC'][1]) || $_SESSION['LOC'][1] != $product['Product_ID']){
 						<label for="userNameInput">User:</label>
 						<?php
 
-						if(isset($_SESSION['username'])) {
-							echo '<input type="text" id="userNameInput" class="form-control" name="postName" required value="' . $_SESSION['username'] . '">';
+						if(isset($_SESSION['username'])  || isset($_SESSION['tempname'])) {
+							echo '<input type="text" id="userNameInput" disabled="disabled" class="form-control" name="postName" required value="' . $_SESSION['username'] . '">';
 						}
 						else {
 							echo '<input type="text" id="userNameInput" class="form-control" placeholder="Your name..." name="postName" required value="">';

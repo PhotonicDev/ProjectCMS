@@ -34,6 +34,10 @@ class Controller
                         include 'view/viewproduct.php';
                     }
                     break;
+                case isset($_POST['clear_all']);
+                    $_SESSION['cart'] = array();
+                    $_GET['page'] = 'basket';
+                    break;
             }
         }
         elseif (!empty($_GET)) {

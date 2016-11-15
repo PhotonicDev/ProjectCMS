@@ -207,10 +207,10 @@ if (isset($connection)){mysqli_close($connection);}
 		// in a real life scenario this will be done through a db select command
 		$allProducts = $this->getProductList();
          if (mysqli_num_rows($allProducts) > 0) {
-             $pro = $this->Connect()->getQuery("SELECT `views` FROM products WHERE `name`  = '" .$name. "' LIMIT 1");
+             $pro = $this->Connect()->getQuery("SELECT `views` FROM products WHERE `name`  = '{$name}' LIMIT 1");
             $view = mysqli_fetch_array($pro);
             $viewValue =  $view['views'] + 1;
-               $this->Connect()->getQuery("UPDATE `products` SET `views` ='" . $viewValue . "' WHERE `name` =" . $name);
+               $this->Connect()->getQuery("UPDATE `products` SET `views` ='{$viewValue}' WHERE `name` ='{$name}'");
 
              $proData = $this->Connect()->getQuery("SELECT `name`,`price`,`description`,`color`,`size`,`category`,`images`,`stock`,`tags`,`manufacture`,`views`,`upVote`,`Product_ID` FROM products WHERE `name`  = '{$name}' LIMIT 1");
 

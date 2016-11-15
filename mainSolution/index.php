@@ -10,7 +10,7 @@ if(isset($_COOKIE['temp'])) {
     load_temp($_SESSION['temp_id']);
     $_SESSION['prep'] = 'yes';
 }
-elseif (isset($_COOKIE['user'])){
+elseif(isset($_COOKIE['user'])){
     $_SESSION['user_id'] =  $_COOKIE['user'];
     load($_SESSION['user_id']);
     $_SESSION['prep'] = 'yes';
@@ -163,8 +163,8 @@ else {
         <div class="containerMain">
                 <div id="static" class="staticItems slideAn">
                     <?php
-                    $controller->invoke();
-?>
+                        $controller->invoke();
+                    ?>
                 </div>
                 <div id="dynamic" class="staticItems slideAn">
 
