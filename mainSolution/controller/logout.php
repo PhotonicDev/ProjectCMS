@@ -1,5 +1,10 @@
 <?php
-
+function Connect(){
+    require "../model/Database.php";
+    $db = require('../model/conn.php');
+    $connection = new Database($db);
+    return $connection;
+}
 		session_start();
 if(isset($_SESSION['user_id'])) {
     $useritemup = implode(' ', $_SESSION['up']);

@@ -36,7 +36,14 @@ if(empty($_SESSION['LOC'][1]) || $_SESSION['LOC'][1] != $product['Product_ID']){
     <li class="list-group-item">Size:<strong> <?php echo $product['size']; ?></strong></li>
     <li class="list-group-item">Category:<strong> <?php echo $product['category']; ?></strong></li>
     <li class="list-group-item">On stock:<strong> <?php echo $product['stock']; ?></strong></li>
-    <li class="list-group-item">Tags:<strong class="tags"> <?php echo $product['tags']; ?></strong></li>
+    <li class="list-group-item">Tags:<strong class="tags"> <?php
+
+			$tags =  explode( " ",$product['tags']);
+			foreach($tags as $tag){
+				echo '<span class="label label-default">' . $tag . '</span> ';
+			}
+
+			?></strong></li>
 	<li class="list-group-item">Views:<strong> <?php echo $product['views']; ?></strong></li>
 	<li class="list-group-item">Up votes:<strong> <?php echo $product['upVote']; ?></strong></li>
 
