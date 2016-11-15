@@ -1,6 +1,6 @@
 <?php
 if(isset($_SESSION['cart']) && count($_SESSION['cart']) != 0 ) {
-$connect = mysqli_connect("localhost", "root", "123" /* "lpokji12" */, "db_cms");
+$connect = mysqli_connect("localhost", "root", "lpokji12" /* "123" */, "db_cms");
 $output = '';
 $i = 0;
 while (count($_SESSION['cart']) > $i ){
@@ -24,7 +24,6 @@ $result = mysqli_query($connect, $sql);
                 <?php print_r($_SESSION['cart']); ?>
         <button type="button" class="btn btn-danger">Clear selected</button>
         <button name="clear_all" type="submit" class="btn btn-danger">Clear cart</button>
-        <button type="button" class="btn btn-success">Buy selected</button>
         <button type="button" class="btn btn-success">Buy All</button>
             </div>
         </div>
@@ -51,7 +50,33 @@ $result = mysqli_query($connect, $sql);
            <strong>Manufacture:</strong>' . $count['manufacture'] . '<br />
             </div>
             <div class="col-md-4 text-right">
-            <button type="button" class="btn btn-danger">Cancel</button><br />
+           <br>
+           <br>
+           <br>
+            <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" name="frmPayPal1">
+            <input type="hidden" name="business" value="businessducks@gmail.com">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="item_name" value="' . $count['name'] . '"> <!-- product name -->
+            <!--<input type="hidden" name="description" value="'.$count['description'].'"> NOT WORKING -->
+            <input type="hidden" name="item_number" value="1">  <!-- item number - how much -->
+            <input type="hidden" name="credits" value="510">
+            <input type="hidden" name="userid" value="">
+            <input type="hidden" name="amount" value="' . $count['price'] . '"> <!-- price-->
+            <input type="hidden" name="cpp_header_image" value="http://examserver38.dk/user_images/dcuk-logo.png">
+            <input type="hidden" name="no_shipping" value="0">
+            <input type="hidden" name="currency_code" value="DKK">
+            <input type="hidden" name="handling" value="0"> <!-- shipping cost -->
+            <input type="hidden" name="cancel_return" value="http://examserver38.dk">
+            <input type="hidden" name="return" value="http://examserver38.dk">
+            <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+            <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+        </form>
+        <br>
+        <br>
+        <br>
+         <button type="button" class="btn btn-danger">Remove</button><br />
+            <Br>
+            
             </div>
             </div>
             </div>
@@ -71,4 +96,5 @@ else {
 ';
 }
 ?>
+
 
