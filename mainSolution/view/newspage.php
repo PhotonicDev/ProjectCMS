@@ -1,5 +1,13 @@
-<div class="container">
-   
+<div class="container-fluid">
+   <div class="row">
+       <div class="col-md-3">
+        <?php
+        $controller = new Controller();
+        $controller->recommend()
+
+        ?>
+       </div>
+       <div class="col-md-9">
 
     <?php
     $output = '';
@@ -39,4 +47,6 @@
         echo ' ';
     }
     ?>
+       </div>
+   </div>
 </div>

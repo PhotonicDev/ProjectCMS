@@ -26,6 +26,9 @@
             <li>
                 <a href="admin.php?contacts=products">Contacts</a>
             </li>
+            <li>
+                <a href="admin.php?categories=products">Category</a>
+            </li>
         </ul>
     </form>
 
@@ -52,7 +55,8 @@
  
  <form method='get'>
  
-<button style='margin: 8px;' name='btn-insert' type=\"submit\" class=\"pull-right btn-sm btn btn-default\">Add Product <span class=\"glyphicon glyphicon-arrow-left\" aria-hidden=\"true\"></button>
+<button style='margin: 8px;' name='btn-insert' type='submit' class='pull-right btn-sm btn btn-default'>Add Product <span class='glyphicon glyphicon-arrow-left' aria-hidden='true'></button>
+<button style='margin: 8px;' name='btn-cate-new' type='submit' class='pull-right btn-sm btn btn-default'>Add Category <span class='glyphicon glyphicon-folder-open' aria-hidden='true'></button>
   
    </form>";
 

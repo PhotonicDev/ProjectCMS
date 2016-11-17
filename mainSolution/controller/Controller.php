@@ -109,9 +109,31 @@ class Controller
     public function homePage()
     {
         $products = $this->model->getProductList();
+        $news = $this->model->Carousel();
         include 'view/productpage.php';
-    }
 
+    }
+    public function recommend(){
+        $ran = rand(0,2);
+        //daily items
+        $name = '';
+        switch ($ran) {
+            case 0;
+                $daily = $this->model->most_viewed();
+                $name = 'Most viewed on shop!';
+                break;
+            case 1;
+                $daily = $this->model->Daily();
+                $name = 'Daily special pick!';
+                break;
+            case 2;
+                $daily = $this->model->most_liked();
+                $name = 'Everyone love these ones!';
+                break;
+        }
+
+        include_once 'view/daily.php';
+    }
 
     public function panel()
     {
@@ -343,10 +365,18 @@ class Controller
                     include_once "view/content.php";
                     include "view/contacts.php";
                     break;
-                case isset ($_GET['btn-insert']);
+                case isset($_GET['btn-insert']);
                     include_once 'view/admin_add_product.php';
                     break;
-
+                case isset($_GET['categories']);
+                    $category = $this->model->category();
+                    include_once "view/content.php";
+                    include_once 'view/admin_category.php';
+                    break;
+                case isset($_GET['btn-cate-new']);
+                    include_once "view/content.php";
+                    include_once 'view/admin_new_category.php';
+                    break;
 
 
             }

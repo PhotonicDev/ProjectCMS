@@ -155,6 +155,7 @@ body   {
             width: 80% !important;
         }
         .mainTile {
+
             .containerMain {
                 padding: 0 15px;
                 .staticItems {
@@ -230,12 +231,17 @@ $blur : 8px;
 #faq-result{margin: -10px auto 0px;width:50%;line-height:30px;border-radius:5px;min-height:300px;}
 #loader-icon {position: fixed;top: 50%;width:100%;height:100%;text-align:center;display:none;}
 
+.item-par {
+    margin: 15px !important;
+}
 
 .items {
-    margin: 10px;
+    margin-top:30px;
+    box-shadow: 0.5px 0.5px 2px black;
+    border: lightgray solid 1px;
     padding: 5px;
     float: left;
-    width: 250px;
+    width: 217px;
     background-color: lightgoldenrodyellow;
     .itemInfoHide {
         position: relative;
@@ -301,4 +307,14 @@ $blur : 8px;
     small {
         float:right;
     }
+}
+.bound-img {
+    height: 50vh;
+    background-size:cover;
+    background: no-repeat center center;
+}
+.item {
+    margin-top:0;
+    height: 50vh !important;
+
 }

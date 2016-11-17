@@ -6,6 +6,24 @@ include_once("view/error_view/note.php");
 
 
  class Model {
+     public function category(){
+         $category = $this->Connect()->getQuery("SELECT * FROM product_order");
+         return $category;
+     }
+     public function Daily(){
+         $daily = $this->Connect()->getQuery("SELECT *   
+                                    FROM products AS p, daily_product AS d 
+                                    WHERE p.Product_ID = d.Product_ID LIMIT 5");
+         return $daily;
+     }
+     public function most_viewed(){
+         $viewed = $this->Connect()->getQuery("SELECT * FROM products ORDER BY views DESC LIMIT 5");
+         return $viewed;
+     }
+     public function most_liked(){
+         $liked = $this->Connect()->getQuery("SELECT * FROM products ORDER BY upVote DESC LIMIT 5");
+         return $liked;
+     }
      public function updateUserProfile($first,$last,$address, $birth){
      $userID = $_SESSION['user_id'];
          $this->Connect()->getNothing("UPDATE `customers` 
@@ -34,6 +52,10 @@ include_once("view/error_view/note.php");
          }
 
      }
+     public function Carousel() {
+         $post = $this->Connect()->getQuery("SELECT * FROM `newspage` LIMIT 5 ");
+         return $post;
+     }
      public function postComment($user,$comment){
          $cUser = htmlspecialchars($user);
          $cComment = htmlspecialchars($comment);
@@ -46,7 +68,7 @@ include_once("view/error_view/note.php");
          else {
 
              $userLocation = $_SESSION["LOC"][1];
-             $check = $this->Connect()->getNothing("INSERT INTO `social_pages`( `Product_ID`, `Likes` , `Comments`, `Views`,`name`) VALUES ('$userLocation', 0 ,' $cComment ', 0 ,'$cUser')");
+             $check = $this->Connect()->getNothing("INSERT INTO `social_pages`( `Product_ID`, `Likes` , `Comments`, `views`,`name`) VALUES ('$userLocation', 0 ,' $cComment ', 0 ,'$cUser')");
              //reload
              note("success!!!");
          }
@@ -102,7 +124,7 @@ include_once("view/error_view/note.php");
      }
 	    public function getProductList()
 	{
-        $proData = $this->Connect()->getQuery("SELECT * FROM products");
+        $proData = $this->Connect()->getQuery("SELECT * FROM products LIMIT 16");
 
             return $proData;
 

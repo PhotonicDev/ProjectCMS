@@ -87,7 +87,7 @@ $result = mysqli_query($connect, $sql);
 <?php
 }
 else {
-    echo '<div class="container">
+    echo '<div class="container-fluid">
                 <div class="well">
                 <h3>There is no items in your basket. You can browse items by using search
                 at the top of your page or by browsing categories.</h3>

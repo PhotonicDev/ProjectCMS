@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2016 at 12:23 PM
+-- Generation Time: Nov 17, 2016 at 05:28 PM
 -- Server version: 5.7.11
 -- PHP Version: 5.6.19
 
@@ -132,7 +132,7 @@ CREATE TABLE `customers` (
 INSERT INTO `customers` (`customer_id`, `name`, `password`, `email`, `firstName`, `lastName`, `Address`, `birth`, `basket`, `up_votes`) VALUES
 (13, 'wentox', '$2y$10$.1sBIZ9VxOppK34yIkibDe5LZiwomJ.EGe/ZQ6t6G32wf2yQYWFU6', 'dovydastt@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL),
 (14, 'anonim', '$2y$10$VioSrbFLAsnpAvn2G9xsBuKXgm.U5HVyKbZhNK7919ernqFLuhwIW', 'dsd@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL),
-(15, 'admin', '$2y$10$rpZZ68k21ZVeD7/EtNCkcOICWkC3M47oj9IhrSaAu8bpkl6Nhf9lK', 'admin@admin.com', 'gfdsgfdshgggf', 'ffgfdgfsd', 'gdshgdshgdsgfds', '1982-05-25', '4 1', '');
+(15, 'admin', '$2y$10$UpBjkOC5Fv9Dg4Pasxm44.ccATpnKYRD4Qykij3l29r2ET55gUDDG', 'admin@admin.com', 'gfdsgfdshgggf', 'ffgfdgfsd', 'gdshgdshgdsgfds', '1982-05-25', '', '1 2 4');
 
 -- --------------------------------------------------------
 
@@ -144,6 +144,17 @@ CREATE TABLE `daily_product` (
   `date` timestamp NOT NULL,
   `Product_ID` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `daily_product`
+--
+
+INSERT INTO `daily_product` (`date`, `Product_ID`) VALUES
+('2016-11-15 13:19:40', 1),
+('2016-11-15 13:19:51', 2),
+('2016-11-15 13:19:57', 3),
+('2016-11-15 13:20:02', 4),
+('2016-11-15 13:20:08', 5);
 
 -- --------------------------------------------------------
 
@@ -208,16 +219,52 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`Product_ID`, `name`, `price`, `description`, `color`, `size`, `category`, `images`, `stock`, `tags`, `manufacture`, `views`, `upVote`) VALUES
-(1, '     Blue duck', 6.99, '     description of blue duck', '     bluee', '     SM small', '     small blue     ', 'user_images/duck_blue.png', 888, '   blue-sm             ', '     china', 135, 3),
-(2, '  Blue duck', 6.99, '  description of blue duck', '  blue', ' SM small', '  small blue        ', 'user_images/duck_blue.png', 106, '  blue-sm        ', '  china', 101, 8),
-(3, 'Green duck', 15.99, 'awesome duck description', 'green', 'Big XXL', 'Green ducks   ', 'user_images/duck_green.png', 123, 'awesome duck   ', 'germany', 20, 3),
-(4, ' Purple duck', 6.99, ' description of purple duck', ' purple', ' SM small', ' small pruple ', 'user_images/duck_purple.png', 13, ' purple-sm ', ' china', 3, 2),
+(1, '     Blue duck', 6.99, '     description of blue duck', '     bluee', '     SM small', '     small blue     ', 'user_images/duck_blue.png', 888, '   blue-sm             ', '     china', 157, 8),
+(2, '  Blue duck', 6.99, '  description of blue duck', '  blue', ' SM small', '  small blue        ', 'user_images/duck_blue.png', 106, '  blue-sm        ', '  china', 129, 11),
+(3, 'Green duck', 15.99, 'awesome duck description', 'green', 'Big XXL', 'Green ducks   ', 'user_images/duck_green.png', 123, 'awesome duck   ', 'germany', 27, 4),
+(4, ' Purple duck', 6.99, ' description of purple duck', ' purple', ' SM small', ' small pruple ', 'user_images/duck_purple.png', 13, ' purple-sm ', ' china', 11, 4),
 (5, 'Purple duck', 6.99, 'description of purple duck', 'purple', 'SM small', 'small pruple', 'user_images/duck_purple.png', 12, 'purple-sm', 'china', 3, 0),
-(6, '  Green duck', 15.99, '  awesome duck description', '  green', '  Big XXL', '  Green ducks  ', 'user_images/duck_green.png', 4, '  awesome duck  ', '  china', 3, 0),
-(7, '  Yellow duck', 14.99, '  awesome duck description', '  yellow', '  Big XXL', '  Yellow ducks  ', 'user_images/duck_yellow.png', 56, '  awesome duck  ', '  china', 1, 0),
-(8, ' Yellow duck', 7.55, ' awesome duck description', ' yellow', ' Big XXL', ' Yellow ducks ', 'user_images/duck_yellow.png', 56, ' awesome duck ', ' china', 2, 1),
+(6, '  Green duck', 15.99, '  awesome duck description', '  green', '  Big XXL', '  Green ducks  ', 'user_images/duck_green.png', 4, '  awesome duck  ', '  china', 3, 1),
+(7, '  Yellow duck', 14.99, '  awesome duck description', '  yellow', '  Big XXL', '  Yellow ducks  ', 'user_images/duck_yellow.png', 56, '  awesome duck  ', '  china', 4, 1),
+(8, ' Yellow duck', 7.55, ' awesome duck description', ' yellow', ' Big XXL', ' Yellow ducks ', 'user_images/duck_yellow.png', 56, ' awesome duck ', ' china', 4, 1),
 (14, ' NiceDuck', 45.99, 'Very nice but expensive duck', 'colorful', 'Tiny', 'none', 'user_images/duck_blue.png', 68, 'none', 'Portugal', 1, 0),
-(15, ' Duckuyyy', 5.99, 'something awesome', 'yellow', 'big', 'asdas', 'user_images/duck_yellow.png', 455, 'sdsds', 'denmark', 0, 0);
+(15, ' Duckuyyy', 5.99, 'something awesome', 'yellow', 'big', 'asdas', 'user_images/duck_yellow.png', 455, 'sdsds', 'denmark', 6, 0),
+(16, 'Psy Duck', 99.99, 'Psycho duck from pokemon.', 'yellow', 'L', 'Special', 'user_images/duck_yellow.png', 2, 'special psy pokemon duck yellow limited edition', 'Japan', 0, 0),
+(17, ' polymorph duck', 26, ' polymorph', 'red', 'XS', ' ', 'user_images/duck_purple.png', 5, ' rare poly moph duck red ', ' China', 0, 0),
+(18, ' Giarados duck', 999.99, 'Evolved from magickarp', 'water blue', 'XL', 'Special', 'user_images/duck_blue.png', 99, 'pokemon giarados blue water Ash magickarp ', 'Ash', 0, 0),
+(19, ' Bulbasourus', 99, 'Not a first choice', 'green', 'S', ' ', 'user_images/duck_green.png', 45, 'leaf green grass pokemon never gets old', 'america', 0, 0),
+(20, 'Sick duck', 995, 'Something is wrong with this one', 'Violet', 'M', ' ', 'user_images/duck_purple.png', 78, 'vodka sick duck hangover', 'Russia', 2, 0),
+(21, 'Ordinary duck', 45, ' Very first choice of any collector', 'Yellow', 'M', ' ', 'user_images/duck_yellow.png', 23, 'ordinary common first collecting casual ', 'Denmark', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_order`
+--
+
+CREATE TABLE `product_order` (
+  `category` varchar(50) DEFAULT NULL,
+  `category_id` int(11) NOT NULL,
+  `num_products` int(5) DEFAULT NULL,
+  `related tags` text
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `product_order`
+--
+
+INSERT INTO `product_order` (`category`, `category_id`, `num_products`, `related tags`) VALUES
+('Color', 1, NULL, 'red green blue yellow brown black gray purple white'),
+('Material', 2, NULL, 'Metal Wood Rubber'),
+('Price', 3, NULL, 'cheap rare unique'),
+('Size', 4, NULL, 'XS S M L XL'),
+('Special', 5, NULL, NULL),
+('Country', 6, NULL, 'China Denmark America Russia Canada'),
+('Manufacturer', 7, NULL, 'DuckCo Rubder Duckfab'),
+('In stock', 8, NULL, NULL),
+('Year', 9, NULL, '2000 2001 2002 2003 2004 2005 2006 2007 2008 2009 2010 2011 2012 2013 2014 2015 2016'),
+('Popularity', 10, NULL, NULL),
+('Top', 11, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -342,6 +389,12 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`Product_ID`);
 
 --
+-- Indexes for table `product_order`
+--
+ALTER TABLE `product_order`
+  ADD PRIMARY KEY (`category_id`);
+
+--
 -- Indexes for table `search_history`
 --
 ALTER TABLE `search_history`
@@ -405,7 +458,12 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `Product_ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `Product_ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+--
+-- AUTO_INCREMENT for table `product_order`
+--
+ALTER TABLE `product_order`
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `social_pages`
 --

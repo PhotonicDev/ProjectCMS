@@ -184,11 +184,16 @@ body {
   text-align: center;
   display: none; }
 
+.item-par {
+  margin: 15px !important; }
+
 .items {
-  margin: 10px;
+  margin-top: 30px;
+  box-shadow: 0.5px 0.5px 2px black;
+  border: lightgray solid 1px;
   padding: 5px;
   float: left;
-  width: 250px;
+  width: 217px;
   background-color: lightgoldenrodyellow; }
   .items .itemInfoHide {
     position: relative; }
@@ -237,5 +242,14 @@ body {
     height: auto; }
   .panel-custom small {
     float: right; }
+
+.bound-img {
+  height: 50vh;
+  background-size: cover;
+  background: no-repeat center center; }
+
+.item {
+  margin-top: 0;
+  height: 50vh !important; }
 
 /*# sourceMappingURL=main.css.map */
