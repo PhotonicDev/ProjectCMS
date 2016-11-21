@@ -82,17 +82,17 @@ function Connect(){
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="index.php">Home <span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
 
-                <li><a href="index.php?page=news">News</a></li>
+                <li><a href="index.php?page=news"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span></a></li>
 
-                <li><a href="index.php?page=contacts">Contact us</a></li>
+                <li><a href="index.php?page=contacts"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a></li>
 
             </ul>
             <form class="navbar-form navbar-left"> <!-- search bar-->
                 <div class="input-group">
                     <div class="form-group">
-                        <input type="text" name="search_text" id="search_text" class="form-control" placeholder="Search">
+                        <input type="text" name="search_text" id="search_text" class="form-control" placeholder="I'm searching for...">
                     </div>
                     <span class="input-group-btn">
         <button type="button" class="search_button btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
@@ -104,13 +104,14 @@ function Connect(){
             <ul class="nav navbar-nav navbar-right">
                 <?php
                 if(isset($_SESSION['username'])){
-                    echo "<li><a href='controller/logout.php' >Logout</a></li>
-                          <li><a href='index.php?page=profile'>My profile</a></li>
-                          <li><a href='index.php?page=basket'>My basket</a></li>";
+                    echo "
+                          <li><a href='index.php?page=profile'><span class='glyphicon glyphicon-user' aria-hidden='true'></span></a></li>
+                          <li><a href='index.php?page=basket'><span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span></a></li>
+                          <li><a href='controller/logout.php' ><span class='glyphicon glyphicon-log-out' aria-hidden='true'></span></a></li>";
                 }
                 else {
-                 echo   "<li><a data-toggle='modal' data-target='.bs-example-modal-lg' class='loginModal'>Login</a></li>
-                         <li><a href='index.php?page=basket'>My basket</a></li>";
+                 echo   "<li><a data-toggle='modal' data-target='.bs-example-modal-lg' class='loginModal'><span class='glyphicon glyphicon-log-in' aria-hidden='true'></span></a></li>
+                         <li><a href='index.php?page=basket'><span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span></a></li>";
                 }
 
 ?>

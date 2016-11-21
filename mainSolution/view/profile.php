@@ -5,7 +5,6 @@
 <form method="post">
 
 
-<div class="well container">
     <div class="well">
      <h2>Username: <?php echo $user['name']; ?>      Email: <?php echo $user['email']; ?></h2>
     </div>
@@ -29,6 +28,5 @@
         <button class="btn btn-primary" type="submit" name="update_password">Update my password</button>
 
     </div>
-</div>
 
     </form>

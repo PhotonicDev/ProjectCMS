@@ -1,4 +1,21 @@
+<div class="row">
+    <div class="col-md-9">
+        <div class="welcome-tile">
+            <h1 class="text-right">
+                <strong>...Winter is coming</strong>
+            </h1>
 
+            <h4 class="text-right">But no until polyDuck autumn sales rampage!<br/>
+                Here at polyDuck time of the year doesn't really matter since<br />
+                we always treat our customers, and not only on holidays.<br /></h4>
+                <p class="text-right"><span class="label label-primary">New ducks every day, stupidly low prices, rare stock</span></p>
+            <p class="text-right"><button type="button" class="btn btn-default btn-lg" >Take a peek...</button></p>
+
+        </div>
+    </div>
+    <div class="col-md-3">
+    </div>
+</div>
 <div class="row">
     <div class="col-md-9">
         <div class="row">

@@ -44,25 +44,13 @@ echo $output;
         </form>
         <?php
         if(isset($_POST['update_cate'])){
-           var_dump($_POST['sub']);
-            $o = 0;
-            while( $o != count($_POST['category'])) {
-                $cate = $_POST['category'][$o];
-                $t = 0;
-               while($t != count($_POST['sub']) ){
+            $xml = new DOMDocument();
+            $xml_cate = $xml->createElement('Category');
+            $xml_sub = $xml->createElement("Sub");
+            $xml_cate->appendChild($xml_sub);
+            $xml->appendChild($xml_cate);
 
-                }
-                $arr = implode(' ',$_POST['sub'][$o]);
-                $array = array('category' => $cate, 'sub' => $arr);
-                $data = file_get_contents('category.json');
-                $de = json_decode($data,true);
-                array_push($de,$array);
-                $fp = fopen('category.json','w+');
-                fwrite($fp, json_encode($de));
-                fclose($fp);
-                $o++;
-            }
-
+            $xml->save('/tmp/test.xml');
 
         /*    $arr = implode(' ',$_POST['sub_category']);
             $na = $_POST['category'];

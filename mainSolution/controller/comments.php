@@ -60,7 +60,7 @@ if (isset($_SESSION['LOC'][1])) {   //getting product comments by id
         while($comment = mysqli_fetch_array($result)){
 
             $output .=	'
-        <div class="well">  
+        <div class="panel panel-default">  
            <h3>'. $comment['name'] .'</h3>
            <h5>'. $comment['Comments'] .'</h5>
         </div>
@@ -70,10 +70,8 @@ if (isset($_SESSION['LOC'][1])) {   //getting product comments by id
     }
     else
     {
-        echo '<div class="notFound jumbotron">
-                <div class="container">
-                    <h2>be the first one to comment</h2>
-                </div>
+        echo '<div class="notFound panel panel-default">
+                    <h2>No comments. Be the first one to comment!</h2>
             </div>';
     }
 }

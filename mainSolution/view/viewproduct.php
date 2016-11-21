@@ -5,10 +5,10 @@ if(empty($_SESSION['LOC'][1]) || $_SESSION['LOC'][1] != $product['Product_ID']){
 	$_SESSION['LOC'][1] = $product['Product_ID'];
 }
 ?>
-<div class="item thumbnail container" xmlns="http://www.w3.org/1999/html">
+<div class="item container-fluid" xmlns="http://www.w3.org/1999/html">
 		<div class="row">
 			<div class="col-md-6">
-				<div class="itemImageFrame">
+				<div class="itemImageFrame panel panel-default">
 					<img class="itemPictureBig thumbnail" src="<?php echo $product['images']; ?>"><br />
 					<div class="btn-group productControl text-center">
 						<form method="get">
@@ -19,24 +19,22 @@ if(empty($_SESSION['LOC'][1]) || $_SESSION['LOC'][1] != $product['Product_ID']){
 				</div>
 			</div>
 			<div class="col-md-6">
-				<div class="itemInformation pull-right">
+				<div class="itemInformation">
 	
 <div class="panel panel-default">
   <!-- Default panel contents -->
-  	<div class="panel-heading"><h3><strong><?php echo $product['name']; ?></strong></h3><br/>
-  	</div>
   		<div class="panel-body">
-  			<h4>Price:<strong><?php echo $product['price']; ?> DKK</strong></h4><br/>
-					<p><?php echo $product['description']; ?></p>
-		</div>
   <!-- List group -->
   				<ul class="list-group">
-    <li class="list-group-item">Manufacturer:<strong><?php echo $product['manufacture']; ?></strong></li>
-    <li class="list-group-item">Color:<strong> <?php echo $product['color']; ?></strong></li>
-    <li class="list-group-item">Size:<strong> <?php echo $product['size']; ?></strong></li>
-    <li class="list-group-item">Category:<strong> <?php echo $product['category']; ?></strong></li>
-    <li class="list-group-item">On stock:<strong> <?php echo $product['stock']; ?></strong></li>
-    <li class="list-group-item">Tags:<strong class="tags"> <?php
+					<li class="list-group-item"><h3><strong><?php echo $product['name']; ?></h3></strong></li>
+					<li class="list-group-item">Price: <strong><?php echo $product['price']; ?> DKK</strong></li>
+					<li class="list-group-item">Description: <strong><?php echo $product['description']; ?></strong></li>
+					<li class="list-group-item">Manufacturer: <strong><?php echo $product['manufacture']; ?></strong></li>
+    				<li class="list-group-item">Color: <strong> <?php echo $product['color']; ?></strong></li>
+    				<li class="list-group-item">Size: <strong> <?php echo $product['size']; ?></strong></li>
+    				<li class="list-group-item">Category: <strong> <?php echo $product['category']; ?></strong></li>
+    				<li class="list-group-item">On stock: <strong> <?php echo $product['stock']; ?></strong></li>
+    				<li class="list-group-item">Tags: <strong class="tags"> <?php
 
 			$tags =  explode( " ",$product['tags']);
 			foreach($tags as $tag){
@@ -55,10 +53,10 @@ if(empty($_SESSION['LOC'][1]) || $_SESSION['LOC'][1] != $product['Product_ID']){
   </div>
 	
 				</div>
-								<!--Product end-->
+						</div>		<!--Product end-->
 	<div class="row">
 		<div class="col-md-12">
-			<div id="postNew" class="container">
+			<div id="postNew" class="panel panel-default">
 				<form method="post">
 					<div class="form-group">
 						<label for="userNameInput">User:</label>
@@ -83,13 +81,7 @@ if(empty($_SESSION['LOC'][1]) || $_SESSION['LOC'][1] != $product['Product_ID']){
 	</div>
 	<div class="row">
 		<div class="col-md-9">
-			<div id="commentSection" class="container">
-				<div id="loader-icon">
-					<img src="view/web_images/LoaderIcon.gif" />
-				</div>
-				<div id="rowcount">
-
-				</div>
+			<div id="commentSection">
 				<div id="echo">
 					<?php include_once 'controller/comments.php'; ?>
 				</div>
@@ -97,7 +89,7 @@ if(empty($_SESSION['LOC'][1]) || $_SESSION['LOC'][1] != $product['Product_ID']){
 			</div>
 		</div>
 		<div class="col-md-3">
-			Ad!
+			<div class="jumbotron">free space</div>
 		</div>
 	</div>
 

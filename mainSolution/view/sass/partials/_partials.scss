@@ -2,10 +2,8 @@
 
 $light : white;
 .notFound {
-    margin-top: 20px;
     box-shadow: black 1px 1px 10px;
-    border: 1px solid white;
-    border-radius: 1vw;
+    padding: 20px;
 }
 .errorResponse {
     position: fixed;
@@ -29,21 +27,30 @@ $light : white;
 
             }
         }
-    #search_text {
-        color: darkgrey !important;
-        border: lightgray solid 1.5px !important;
-    }
-    .search_button {
-        border-radius:0 !important;
-        border: lightgray solid 1.5px !important;
-        span {
+    .form-groups {
+        #search_text {
             color: darkgrey !important;
+            border: lightgray solid 1.5px !important;
+        }
+        .search_button {
+            border-radius:0 !important;
+            border: lightgray solid 1.5px !important;
+            span {
+                color: darkgrey !important;
+            }
         }
     }
+
 }
+#navigation {
+  border-bottom: white solid 1px !important;
+
+}
+
 nav {
     background-color: rgba(0,0,0,0.1);
-    .navbar-toggle {
+
+  .navbar-toggle {
         border: solid 1px white;
         span {
             background-color: white;
@@ -78,7 +85,11 @@ nav {
 }
 .navbar-form {
     #search_text {
-
+        width: 10vw;
+        transition: ease-in-out,width .35s ease-in-out;
+        &:focus {
+            width: 30vw;
+        }
         color: $light;
         background:none;
         border: $light solid 1.5px;
@@ -176,9 +187,9 @@ body   {
     margin-top: 20px;
 
     .itemImageFrame {
-        width: 90%;
+        padding: 20px;
+        width: 100%;
         height:auto;
-        margin: 20px auto;
         .itemPictureBig {
             margin: auto;
             position:static !important;
@@ -189,11 +200,9 @@ body   {
     }
     .itemInformation {
         float:left;
-        width: 90%;
+        width: 100%;
         height: auto;
-        margin-right:40px;
         .panel {
-            margin-top: 20px;
         }
         button {
             margin-left: 10px;
@@ -211,8 +220,28 @@ body   {
 
     }
 }
-$blur : 8px;
+$blur : 2px;
+$light-tint: rgba(0,0,0,0.2);
+$dark-tint: rgba(0,0,0,0.9);
 .background {
+    background: red; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient($dark-tint, $light-tint); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient($dark-tint, $light-tint); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient($dark-tint, $light-tint); /* For Firefox 3.6 to 15 */
+    background: linear-gradient($dark-tint, $light-tint), url(../web_images/back.gif) no-repeat; /* Standard syntax */
+    position: fixed;
+    background-size:cover;
+    z-index:-100;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    -webkit-filter: blur($blur);
+    -ms-filter: blur($blur);
+    filter: blur($blur);
+
+}
+/*.background {
     opacity: 0.9;
     background:  url(../web_images/back.gif) no-repeat;
     position: fixed;
@@ -225,7 +254,7 @@ $blur : 8px;
     -webkit-filter: blur($blur);
     -ms-filter: blur($blur);
     filter: blur($blur);
-}
+}*/
 .question {font-weight:bold;background-color:#FFF;padding:7px 0px  0px 15px;}
 .answer{font-style:italic;background-color:#FFF;padding:0px 0px 7px 15px;}
 #faq-result{margin: -10px auto 0px;width:50%;line-height:30px;border-radius:5px;min-height:300px;}
@@ -317,4 +346,39 @@ $blur : 8px;
     margin-top:0;
     height: 50vh !important;
 
+}
+.welcome-tile {
+    height: 82vh;
+    h1 {
+        margin-top: 8vh;
+        color: white;
+        font-size: 60px;
+        margin-bottom: 5vh;
+    }
+    h4 {
+        color: white;
+        font-size: 16px;
+        line-height: 150%;
+        margin-bottom: 2vh;
+    }
+    button {
+        margin-top: 5vh;
+        margin-left: 5vw;
+        font-size: 20px;
+        padding: 10px 20px;
+        background: none;
+        border-radius:0;
+        color:white;
+        transition-duration: 0.3s;
+        &:hover {
+            color:black;
+            transition-duration: 0.3s;
+        }
+    }
+    span.label {
+        font-size: 12px;
+    }
+}
+#postNew {
+    padding: 20px;
 }

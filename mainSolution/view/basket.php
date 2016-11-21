@@ -1,6 +1,6 @@
 <?php
 if(isset($_SESSION['cart']) && count($_SESSION['cart']) != 0 ) {
-$connect = mysqli_connect("localhost", "root", "lpokji12" /* "123" */, "db_cms");
+$connect = mysqli_connect("localhost", "root", "123" /* "123" */, "db_cms");
 $output = '';
 $i = 0;
 while (count($_SESSION['cart']) > $i ){
@@ -89,8 +89,10 @@ $result = mysqli_query($connect, $sql);
 else {
     echo '<div class="container-fluid">
                 <div class="well">
-                <h3>There is no items in your basket. You can browse items by using search
+                <div class="container">
+                <h2><strong>There is no items in your basket!</strong></h2> <h3>You can browse items by using search
                 at the top of your page or by browsing categories.</h3>
+                </div>
                 </div>  
           </div>
 ';
