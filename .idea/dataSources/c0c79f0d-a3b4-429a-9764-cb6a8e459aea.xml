@@ -321,7 +321,7 @@
       <mandatory>1</mandatory>
       <data-type>varchar(15)|0</data-type>
     </column>
-    <column id="102" parent="26" name="category">
+    <column id="102" parent="26" name="material">
       <mandatory>1</mandatory>
       <data-type>varchar(20)|0</data-type>
     </column>

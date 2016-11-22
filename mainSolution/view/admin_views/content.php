@@ -26,9 +26,6 @@
             <li>
                 <a href="admin.php?contacts=products">Contacts</a>
             </li>
-            <li>
-                <a href="admin.php?categories=products">Category</a>
-            </li>
         </ul>
     </form>
 

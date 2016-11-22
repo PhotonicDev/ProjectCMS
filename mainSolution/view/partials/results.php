@@ -1,12 +1,13 @@
-<div class="panel container-fluid">
-<h4 class="text-center"><?php echo $name; ?></h4>
 <?php
-$output = "";
 
-while ( $product = mysqli_fetch_array($daily)) {
-    $output .= '
-    <div class="items text-left">
- <a href="index.php?product='.$product['name'].'">
+if(!empty($_POST['search']))
+{
+
+    $output .= '';
+    while($product = mysqli_fetch_array($result)){
+
+        $output .=	'<div class="items">  
+         <a href="index.php?product='.$product['name'].'">
            <div class="itemWhite">
            
             <img class="itemPicture" src="' . $product['images'] . '">
@@ -25,7 +26,7 @@ while ( $product = mysqli_fetch_array($daily)) {
              Size:<strong>' . $product['size'] . '</strong><br>
              Color:<strong>' . $product['color'] . '</strong><br>
              From:<strong>' . $product['manufacture'] . '</strong><br>
-             Category:<strong>' . $product['category'] . '</strong><br>
+             Category:<strong>' . $product['material'] . '</strong><br>
              Tags:<strong>' . $product['tags'] . '</strong><br>
              
               </div>
@@ -35,10 +36,17 @@ while ( $product = mysqli_fetch_array($daily)) {
     </div>
     </a>
 </div>
-			
-    ';
-
+			';
+    }
+    echo $output;
 }
-echo $output;
-?>
+else
+{
+    echo '<div class="notFound jumbotron">
+<div class="container">
+    <h2>No items where found according to your search: ' . $q .'</h2>
 </div>
+</div>';
+}
+
+?>

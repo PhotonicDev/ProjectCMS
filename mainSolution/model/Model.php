@@ -6,10 +6,6 @@ include_once("view/error_view/note.php");
 
 
  class Model {
-     public function category(){
-         $category = $this->Connect()->getQuery("SELECT * FROM product_order");
-         return $category;
-     }
      public function Daily(){
          $daily = $this->Connect()->getQuery("SELECT *   
                                     FROM products AS p, daily_product AS d 
@@ -223,18 +219,18 @@ if (isset($connection)){mysqli_close($connection);}
 
     }
 
-	    public function getProduct($name)
+	    public function getProduct($id)
 	{
 		// we use the previous function to get all the books and then we return the requested one.
 		// in a real life scenario this will be done through a db select command
 		$allProducts = $this->getProductList();
          if (mysqli_num_rows($allProducts) > 0) {
-             $pro = $this->Connect()->getQuery("SELECT `views` FROM products WHERE `name`  = '{$name}' LIMIT 1");
+             $pro = $this->Connect()->getQuery("SELECT `views` FROM products WHERE `Product_ID`  = '{$id}' LIMIT 1");
             $view = mysqli_fetch_array($pro);
             $viewValue =  $view['views'] + 1;
-               $this->Connect()->getQuery("UPDATE `products` SET `views` ='{$viewValue}' WHERE `name` ='{$name}'");
+               $this->Connect()->getQuery("UPDATE `products` SET `views` ='{$viewValue}' WHERE `Product_ID` ='{$id}'");
 
-             $proData = $this->Connect()->getQuery("SELECT `name`,`price`,`description`,`color`,`size`,`category`,`images`,`stock`,`tags`,`manufacture`,`views`,`upVote`,`Product_ID` FROM products WHERE `name`  = '{$name}' LIMIT 1");
+             $proData = $this->Connect()->getQuery("SELECT `name`,`price`,`description`,`color`,`size`,`material`,`images`,`stock`,`tags`,`manufacture`,`views`,`upVote`,`Product_ID` FROM products WHERE `Product_ID`  = '{$id}' LIMIT 1");
 
              return $proData;
 
@@ -253,7 +249,7 @@ if (isset($connection)){mysqli_close($connection);}
                 if (password_verify($adminPassword,$found_user['password'])) {
                     $_SESSION['admin_id'] = $found_user['admin_id'];
                     $_SESSION['admin_name'] = $found_user['name'];
-                    include_once "view/content.php";
+                    include_once "view/admin_views/content.php";
                 } else {
                     // username/password combo was not found in the database
                     $message = "Username/password combination incorrect.<br />
@@ -294,14 +290,14 @@ if (isset($connection)){mysqli_close($connection);}
 
 
 
-     public function Add_products($name,$price,$description,$manufacture,$color,$size,$category,$stock,$tags,$filepath){
+     public function Add_products($name,$price,$description,$manufacture,$color,$size,$material,$stock,$tags,$filepath){
 
 
 
 
 
-             $query = "INSERT INTO `products`(name, price, description, manufacture, color, size, category ,stock, tags, images,views,upVote)
-                                  VALUES ('$name', '$price', '$description', '$manufacture', '$color', '$size', '$category','$stock', '$tags','$filepath','0','0')";
+             $query = "INSERT INTO `products`(name, price, description, manufacture, color, size, material ,stock, tags, images,views,upVote)
+                                  VALUES ('$name', '$price', '$description', '$manufacture', '$color', '$size', '$material','$stock', '$tags','$filepath','0','0')";
 
          if($this->Connect() == false){
 
@@ -363,7 +359,7 @@ if (isset($connection)){mysqli_close($connection);}
 
 
        // UPDATE PRODUCTS
-        public function Update_products($Product_ID,$name,$price,$description,$manufacture,$color,$size,$category,$stock,$tags,$filepath){
+        public function Update_products($Product_ID,$name,$price,$description,$manufacture,$color,$size,$material,$stock,$tags,$filepath){
 
             if($this->Connect() == false){
 
@@ -377,10 +373,10 @@ if (isset($connection)){mysqli_close($connection);}
 </div>";
             }
 
-            $query = "UPDATE `products` SET `Product_ID` ='" . $Product_ID . "', `name` ='".$name. "', `price` = '".$price."', `description` ='".$description."', `manufacture` ='" . $manufacture . "', `color` = '" .$color. "', `size` ='" .$size. "', `category` ='".$category."', `stock` ='".$stock."', `tags` ='".$tags."', `images` ='".$filepath."' WHERE `Product_ID` =".$Product_ID;
+            $query = "UPDATE `products` SET `Product_ID` ='" . $Product_ID . "', `name` ='".$name. "', `price` = '".$price."', `description` ='".$description."', `manufacture` ='" . $manufacture . "', `color` = '" .$color. "', `size` ='" .$size. "', `material` ='".$material."', `stock` ='".$stock."', `tags` ='".$tags."', `images` ='".$filepath."' WHERE `Product_ID` =".$Product_ID;
 
 
-        // $this->Connect()->getNothing("UPDATE `products` SET `Product_ID` =' . $Product_ID . ', `name` ='.$name.', `price` = '.$price.', `description` ='.$description.', `manifacture` ='.$manufacture.', `color` = '.$color.', `size` ='.$size.', `category` ='.$category.', `stock` ='.$stock.', `tags` ='.$tags.' WHERE `Product_ID` ='.$Product_ID.'")";
+        // $this->Connect()->getNothing("UPDATE `products` SET `Product_ID` =' . $Product_ID . ', `name` ='.$name.', `price` = '.$price.', `description` ='.$description.', `manifacture` ='.$manufacture.', `color` = '.$color.', `size` ='.$size.', `material` ='.$material.', `stock` ='.$stock.', `tags` ='.$tags.' WHERE `Product_ID` ='.$Product_ID.'")";
 
             $this->Connect()->getNothing($query);
 
@@ -390,7 +386,7 @@ if (isset($connection)){mysqli_close($connection);}
 
      }
 
-     public function Update_products_noimage($Product_ID,$name,$price,$description,$manufacture,$color,$size,$category,$stock,$tags){
+     public function Update_products_noimage($Product_ID,$name,$price,$description,$manufacture,$color,$size,$material,$stock,$tags){
 
          if($this->Connect() == false){
 
@@ -404,7 +400,7 @@ if (isset($connection)){mysqli_close($connection);}
 </div>";
          }
 
-         $query = "UPDATE `products` SET `Product_ID` ='" . $Product_ID . "', `name` ='".$name. "', `price` = '".$price."', `description` ='".$description."', `manufacture` ='" . $manufacture . "', `color` = '" .$color. "', `size` ='" .$size. "', `category` ='".$category."', `stock` ='".$stock."', `tags` ='".$tags."' WHERE `Product_ID` =".$Product_ID;
+         $query = "UPDATE `products` SET `Product_ID` ='" . $Product_ID . "', `name` ='".$name. "', `price` = '".$price."', `description` ='".$description."', `manufacture` ='" . $manufacture . "', `color` = '" .$color. "', `size` ='" .$size. "', `material` ='".$material."', `stock` ='".$stock."', `tags` ='".$tags."' WHERE `Product_ID` =".$Product_ID;
 
 
 

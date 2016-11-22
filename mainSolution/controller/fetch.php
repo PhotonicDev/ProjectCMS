@@ -1,12 +1,6 @@
 <?php
 include "../model/conn.php";
 $co = mysqli_connect($host,$user,$pass,$dbName);
-if (isset($_GET['search'])) {
-    $q = $_GET['search'];
-    $output = '';
-    $result = mysqli_query($co ,"SELECT * FROM products WHERE name LIKE '%".$_GET["search"]."%'");
-    include_once "../view/results.php";
-}
 if(isset($_GET['cart'])) {
     session_start();
     if(!isset($_SESSION['cart'])){

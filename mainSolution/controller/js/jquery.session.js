@@ -22,7 +22,8 @@
                for (var key in this._cookieCache) {
                    try {
                    window.sessionStorage.setItem(key, this._cookieCache[key]);
-                   } catch (e) {};
+                   } catch (e) {
+                   }
                }
             }
 
@@ -102,7 +103,8 @@
         {
             try {
             window.sessionStorage.removeItem(key);
-            } catch (e) {};
+            } catch (e) {
+            }
             this._deleteFallback(key);
             return this;
         },

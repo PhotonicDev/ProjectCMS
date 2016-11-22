@@ -60,9 +60,13 @@ if (isset($_SESSION['LOC'][1])) {   //getting product comments by id
         while($comment = mysqli_fetch_array($result)){
 
             $output .=	'
-        <div class="panel panel-default">  
-           <h3>'. $comment['name'] .'</h3>
+        <div class="panel panel-default"> 
+        <div class="panel-heading"><div class="row"><div class="col-md-6 text-left"><strong>'. $comment['name'] .'</strong></div> <div class="col-md-6 text-right">' . $comment['Likes'] . ' <button type="button" class="btn btn-success btn-sm" name="upComment">Up vote</button></div> </div>
+</div>
+            <div class="panel-body">
            <h5>'. $comment['Comments'] .'</h5>
+            </div>
+           
         </div>
 			';
         }

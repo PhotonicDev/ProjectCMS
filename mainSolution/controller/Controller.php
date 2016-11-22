@@ -105,10 +105,13 @@ class Controller
         }
 
     }
+    public function listProducts(){
+        $products = $this->model->getProductList();
+        include 'view/save_products.php';
+    }
 
     public function homePage()
     {
-        $products = $this->model->getProductList();
         $news = $this->model->Carousel();
         include 'view/productpage.php';
 
@@ -132,7 +135,7 @@ class Controller
                 break;
         }
 
-        include_once 'view/daily.php';
+        include_once 'view/partials/daily.php';
     }
 
     public function panel()
@@ -193,6 +196,9 @@ class Controller
                     }
 
                     $this->model->Update_products($_POST['Product_ID'], $_POST['product_name'], $_POST['product_price'], $_POST['product_description'], $_POST['product_manufacture'], $_POST['product_color'], $_POST['product_size'], $_POST['product_category'], $_POST['product_stock'], $_POST['product_tags'], $filepath);
+                    $productsAdmin = $this->model->getProductList();
+                    include_once "view/admin_views/content.php";
+                    include_once "view/admin_views/list_admin_products.php";
 
                }
 
@@ -337,51 +343,40 @@ class Controller
 
             switch ($_GET) {
                 default:
-                    include_once "view/content.php";
+                    include_once "view/admin_views/content.php";
                     break;
 
                 case isset($_GET['page']);
 
                     $productsAdmin = $this->model->getProductList();
-                    include_once "view/content.php";
-                    include_once "view/list_admin_products.php";
+                    include_once "view/admin_views/content.php";
+                    include_once "view/admin_views/list_admin_products.php";
                     break;
                 case isset($_GET['news']);
                     $news = $this->model->openNews();
-                    include_once "view/content.php";
-                    include_once "view/admin_newsfeed.php";
+                    include_once "view/admin_views/content.php";
+                    include_once "view/admin_views/admin_newsfeed.php";
                     break;
                 case isset($_GET['product']);
                     $productAdmin = $this->model->getProduct($_GET['product']);
-                    include 'view/view_admin_product.php';
+                    include 'view/admin_views/view_admin_product.php';
                     break;
                 case isset($_GET['description']);
                     $description = $this->model->company_description();
-                    include_once "view/content.php";
-                    include "view/description.php";
+                    include_once "view/admin_views/content.php";
+                    include "view/admin_views/description.php";
                     break;
                 case isset($_GET['contacts']);
                     $contacts = $this->model->get_contacts();
-                    include_once "view/content.php";
-                    include "view/contacts.php";
+                    include_once "view/admin_views/content.php";
+                    include "view/admin_views/contacts.php";
                     break;
                 case isset($_GET['btn-insert']);
-                    include_once 'view/admin_add_product.php';
+                    include_once 'view/admin_views/admin_add_product.php';
                     break;
-                case isset($_GET['categories']);
-                    $category = $this->model->category();
-                    include_once "view/content.php";
-                    include_once 'view/admin_category.php';
-                    break;
-                case isset($_GET['btn-cate-new']);
-                    include_once "view/content.php";
-                    include_once 'view/admin_new_category.php';
-                    break;
-
-
             }
         } else {
-            include_once "view/admin_login.php";
+            include_once "view/admin_views/admin_login.php";
         }
 
 

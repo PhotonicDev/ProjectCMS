@@ -1,20 +1,21 @@
+<div class="panel panel-default">
+<h4 class="text-center"><?php echo $name; ?></h4>
+    </div>
+<div class="container-fluid">
 <?php
-require "../controller/fetch.php";
-if(mysqli_num_rows($result) > 0)
-{
+$output = "";
 
-    $output .= '';
-    while($product = mysqli_fetch_array($result)){
-
-        $output .=	'<div class="items">  
-         <a href="index.php?product='.$product['name'].'">
+while ( $product = mysqli_fetch_array($daily)) {
+    $output .= '
+    <div class="items center-block">
+ <a href="index.php?product='.$product['name'].'">
            <div class="itemWhite">
            
             <img class="itemPicture" src="' . $product['images'] . '">
             </div>
            
     <div class="itemInfoHide caption">
-    <div class="transitionInformation">
+    <div class="transitionInformation text-left">
          <h4>
          <strong>'.$product['name'].'</strong>
 			</h4>
@@ -26,7 +27,7 @@ if(mysqli_num_rows($result) > 0)
              Size:<strong>' . $product['size'] . '</strong><br>
              Color:<strong>' . $product['color'] . '</strong><br>
              From:<strong>' . $product['manufacture'] . '</strong><br>
-             Category:<strong>' . $product['category'] . '</strong><br>
+             Category:<strong>' . $product['material'] . '</strong><br>
              Tags:<strong>' . $product['tags'] . '</strong><br>
              
               </div>
@@ -36,16 +37,10 @@ if(mysqli_num_rows($result) > 0)
     </div>
     </a>
 </div>
-			';
-    }
-    echo $output;
+			
+    ';
+
 }
-else
-{
-    echo '<div class="notFound jumbotron">
-<div class="container">
-    <h2>No items where found according to your search: ' . $q .'</h2>
-</div>
-</div>';
-}
+echo $output;
 ?>
+</div>

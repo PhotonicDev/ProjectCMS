@@ -11,13 +11,19 @@ $light : white;
     bottom: 0;
 
 }
+.paypal {
+  margin-top: 11%;
+}
 .fancyNav {
+
     background-color: white;
     transition:ease-in-out 1s;
+
         .navbar-toggle {
-            border: solid 1px white;
+            border: solid 1px darkgrey;
             span {
-                background-color: white;
+              color: darkgrey;
+              background-color: darkgrey;
             }
         }
         a {
@@ -57,7 +63,7 @@ nav {
         }
     }
     a {
-        color:$light;
+        color:white;
         font-weight: 700;
         &:hover {
             background-color: lightgrey;
@@ -271,13 +277,13 @@ $dark-tint: rgba(0,0,0,0.9);
     padding: 5px;
     float: left;
     width: 217px;
-    background-color: lightgoldenrodyellow;
+    background-color: rgba(255,255,255,0.8);
     .itemInfoHide {
         position: relative;
         .transitionInformation {
             font-size: 13px;
             padding: 5px;
-            width: 75%;
+            width: 100%;
             float:left;
 
             .pricey {
@@ -317,9 +323,6 @@ $dark-tint: rgba(0,0,0,0.9);
         position: relative;
         height: auto;
         width: 100%;
-    }
-    .label {
-        float: left;
     }
     .badge {
         float: right;

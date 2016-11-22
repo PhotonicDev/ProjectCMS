@@ -3,8 +3,11 @@ include_once 'controller/Controller.php';
 include_once 'controller/load.php';
 session_start();
 $controller = new Controller();
+$controller->listProducts();
+
 if(empty($_SESSION['prep'])){
-if(isset($_COOKIE['temp'])) {
+
+    if(isset($_COOKIE['temp'])) {
     $_SESSION['temp_id'] =  $_COOKIE['temp'];
     load_temp($_SESSION['temp_id']);
     $_SESSION['prep'] = 'yes';
@@ -181,116 +184,13 @@ function Connect(){
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav nav-tabs nav-justified" role="tablist">
-                            <li><a href="index.php">All</a></li>
-                            <li role="presentation"><a href="#Color" aria-controls="Color" role="tab" data-toggle="tab">Color</a></li>
-                            <li role="presentation"><a href="#Material" aria-controls="Material" role="tab" data-toggle="tab">Material</a></li>
-                            <li role="presentation"><a href="#Price" aria-controls="Price" role="tab" data-toggle="tab">Price</a></li>
-                            <li role="presentation"><a href="#Size" aria-controls="Size" role="tab" data-toggle="tab">Size</a></li>
-                            <li role="presentation"><a href="#Country" aria-controls="Country" role="tab" data-toggle="tab">Country</a></li>
-                            <li role="presentation"><a href="#Manufacturer" aria-controls="Manufacturer" role="tab" data-toggle="tab">Manufacturer</a></li>
-                            <li role="presentation"><a href="#Instock" aria-controls="Instock" role="tab" data-toggle="tab">In stock</a></li>
-                            <li role="presentation"><a href="#Year" aria-controls="Year" role="tab" data-toggle="tab">Year</a></li>
-                            <li role="presentation"><a href="#Popularity" aria-controls="Popularity" role="tab" data-toggle="tab">Popularity</a></li>
-                            <li role="presentation"><a href="#Top" aria-controls="Top" role="tab" data-toggle="tab">Top</a></li>
-
-                        </ul>
-                        <div class="tab-content">
-                            <div role="tabpanel" class="well tab-pane" id="Color">
-                                <a class="btn btn-lg btn-primary" href="#">Red</a>
-                                <a class="btn btn-lg btn-primary" href="#">Blue</a>
-                                <a class="btn btn-lg btn-primary" href="#">Green</a>
-                                <a class="btn btn-lg btn-primary" href="#">Yellow</a>
-                                <a class="btn btn-lg btn-primary" href="#">Purple</a>
-                                <a class="btn btn-lg btn-primary" href="#">Orange</a>
-                                <a class="btn btn-lg btn-primary" href="#">White</a>
-                            </div>
-                            <div role="tabpanel" class="well tab-pane" id="Material">
-                                <a class="btn btn-lg btn-primary" href="#">Metal</a>
-                                <a class="btn btn-lg btn-primary" href="#">Wood</a>
-                                <a class="btn btn-lg btn-primary" href="#">Silicon</a>
-                                <a class="btn btn-lg btn-primary" href="#">Rubber</a>
-                                <a class="btn btn-lg btn-primary" href="#">PVC</a>
-                                <a class="btn btn-lg btn-primary" href="#">Quick silver</a>
-                                <a class="btn btn-lg btn-primary" href="#">Mercury</a>
-                            </div>
-                            <div role="tabpanel" class="well tab-pane" id="Price">
-                                <a class="btn btn-lg btn-primary" href="#">0.99-2.99</a>
-                                <a class="btn btn-lg btn-primary" href="#">2.99-4.99</a>
-                                <a class="btn btn-lg btn-primary" href="#">4.99-7.99</a>
-                                <a class="btn btn-lg btn-primary" href="#">7.99-9.99</a>
-                                <a class="btn btn-lg btn-primary" href="#">9.99-12.99</a>
-                                <a class="btn btn-lg btn-primary" href="#">12.99-14.99</a>
-                                <a class="btn btn-lg btn-primary" href="#">14.99-17.99</a>
-                            </div>
-                            <div role="tabpanel" class="well tab-pane" id="Size">
-                                <a class="btn btn-lg btn-primary" href="#">XS</a>
-                                <a class="btn btn-lg btn-primary" href="#">S</a>
-                                <a class="btn btn-lg btn-primary" href="#">M</a>
-                                <a class="btn btn-lg btn-primary" href="#">L</a>
-                                <a class="btn btn-lg btn-primary" href="#">XL</a>
-                                <a class="btn btn-lg btn-primary" href="#">XXL</a>
-                                <a class="btn btn-lg btn-primary" href="#">XXXL</a>
-                            </div>
-                            <div role="tabpanel" class="well tab-pane" id="Country">
-                                <a class="btn btn-lg btn-primary" href="#">China</a>
-                                <a class="btn btn-lg btn-primary" href="#">Denmark</a>
-                                <a class="btn btn-lg btn-primary" href="#">Germany</a>
-                                <a class="btn btn-lg btn-primary" href="#">Estonia</a>
-                                <a class="btn btn-lg btn-primary" href="#">Japan</a>
-                                <a class="btn btn-lg btn-primary" href="#">America</a>
-                                <a class="btn btn-lg btn-primary" href="#">Canada</a>
-                            </div>
-                            <div role="tabpanel" class="well tab-pane" id="Manufacturer">
-                                    <a class="btn btn-lg btn-primary" href="#">China</a>
-                                    <a class="btn btn-lg btn-primary" href="#">Denmark</a>
-                                    <a class="btn btn-lg btn-primary" href="#">Germany</a>
-                                    <a class="btn btn-lg btn-primary" href="#">Estonia</a>
-                                    <a class="btn btn-lg btn-primary" href="#">Japan</a>
-                                    <a class="btn btn-lg btn-primary" href="#">America</a>
-                                    <a class="btn btn-lg btn-primary" href="#">Canada</a>
-                            </div>
-                            <div role="tabpanel" class="well tab-pane" id="Instock">
-                                    <a class="btn btn-lg btn-primary" href="#">China</a>
-                                    <a class="btn btn-lg btn-primary" href="#">Denmark</a>
-                                    <a class="btn btn-lg btn-primary" href="#">Germany</a>
-                                    <a class="btn btn-lg btn-primary" href="#">Estonia</a>
-                                    <a class="btn btn-lg btn-primary" href="#">Japan</a>
-                                    <a class="btn btn-lg btn-primary" href="#">America</a>
-                                    <a class="btn btn-lg btn-primary" href="#">Canada</a>
-                            </div>
-                            <div role="tabpanel" class="well tab-pane" id="Year">
-                                    <a class="btn btn-lg btn-primary" href="#">China</a>
-                                    <a class="btn btn-lg btn-primary" href="#">Denmark</a>
-                                    <a class="btn btn-lg btn-primary" href="#">Germany</a>
-                                    <a class="btn btn-lg btn-primary" href="#">Estonia</a>
-                                    <a class="btn btn-lg btn-primary" href="#">Japan</a>
-                                    <a class="btn btn-lg btn-primary" href="#">America</a>
-                                    <a class="btn btn-lg btn-primary" href="#">Canada</a>
-                            </div>
-                            <div role="tabpanel" class="well tab-pane" id="Popularity">
-                                    <a class="btn btn-lg btn-primary" href="#">China</a>
-                                    <a class="btn btn-lg btn-primary" href="#">Denmark</a>
-                                    <a class="btn btn-lg btn-primary" href="#">Germany</a>
-                                    <a class="btn btn-lg btn-primary" href="#">Estonia</a>
-                                    <a class="btn btn-lg btn-primary" href="#">Japan</a>
-                                    <a class="btn btn-lg btn-primary" href="#">America</a>
-                                    <a class="btn btn-lg btn-primary" href="#">Canada</a>
-                            </div>
-                            <div role="tabpanel" class="well tab-pane" id="Top">
-                                    <a class="btn btn-lg btn-primary" href="#">China</a>
-                                    <a class="btn btn-lg btn-primary" href="#">Denmark</a>
-                                    <a class="btn btn-lg btn-primary" href="#">Germany</a>
-                                    <a class="btn btn-lg btn-primary" href="#">Estonia</a>
-                                    <a class="btn btn-lg btn-primary" href="#">Japan</a>
-                                    <a class="btn btn-lg btn-primary" href="#">America</a>
-                                    <a class="btn btn-lg btn-primary" href="#">Canada</a>
-                            </div>
-                        </div>
+                    <?php //include 'view/partials/categories.php';
+                    ?>
 
                     </div><!-- /.navbar-collapse -->
             </nav>
         </div>
+
             <div class="containerMain">
 
                 <div id="static" class="staticItems slideAn">
@@ -329,29 +229,72 @@ function Connect(){
 
 
 
+<script>
 
+</script>
  <script>
+     function swingIn(output){
+         $('#static').hide( 500 ,"swing");
+         $('#dynamic').html(output).show( 500 ,"swing");
+     }
+     function swingOut(){
+         $('#dynamic').hide( 500 ,"swing").html('');
+         $('#static').show( 500 ,"swing");
+     }
     $(document).ready(function(){
         $('#search_text').keyup(function(){
-            var txt = $(this).val();
-            if(txt != '')
-            {
-                $.ajax({
-                    url:"controller/fetch.php",
-                    method:"get",
-                    data:{search:txt},
-                    dataType:"text",
-                    success:function(data)
-                    {   $('#static').hide( 500 ,"swing");
-                        $('#dynamic').html(data).show( 500 ,"swing");
+            var search = $(this).val();
+            var txt =  new RegExp(search, 'i');
+            if(search != '') {
+                $.getJSON("data.json", {name: txt}) .done(function(data){
+                    var output = '';
+                    var count = 0;
+                    $.each(data, function (key, val) {
+                        if ((val.name.search(txt) != -1) || (val.tags.search(txt) != -1)) {
+                            output += '<div class="items">' +
+                                '<a href="index.php?product=' + val.name + '">' +
+                                '<div class="itemWhite">' +
+                                '<img class="itemPicture" src="' + val.images + '">' +
+                                '</div>' +
+                                '<div class="itemInfoHide caption">' +
+                                '<div class="transitionInformation">' +
+                                '<h4>' +
+                                '<strong>' + val.name + '</strong>' +
+                                '</h4>' +
+                                '<div class="pricey">' +
+                                '<h4>' + val.price + ' DKK</h4>' +
+                                '<img src="red.png" class="stick">' +
+                                '</div>' +
+                                '<div class="otherInformation">' +
+                                'Size:<strong>' + val.size + '</strong><br>' +
+                                'Color:<strong>' + val.color + '</strong><br>' +
+                                'From:<strong>' + val.manufacture + '</strong><br>' +
+                                'Category:<strong>' + val.material + '</strong><br>' +
+                                'Tags:<strong>' + val.tags + '</strong><br>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>' +
+                                '</a>' +
+                                '</div>';
+                            count++;
+                        }
+                    });
+                    if(count == 0){
+                        output += '<div class="notFound jumbotron">' +
+                            '<div class="container">' +
+                            '<h2>No items where found according to your search: <strong>' + search + '</strong></h2>' +
+                            '</div>' +
+                            '</div>';
 
                     }
+                    swingIn(output);
                 });
+
             }
             else
             {
-                $('#dynamic').hide( 500 ,"swing").html('');
-                $('#static').show( 500 ,"swing");
+                swingOut();
             }
         });
     });

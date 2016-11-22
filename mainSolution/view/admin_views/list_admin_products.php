@@ -17,7 +17,7 @@ if(mysqli_num_rows($productsAdmin) > 0){
     while($product = mysqli_fetch_array($productsAdmin)){
 
         $output .=	'<div class="items thumbnail">  
-<a  href="admin.php?product='.$product['name'].'">
+<a  href="admin.php?product='.$product['Product_ID'].'">
            <div class="itemWhite">
            
             <img class="itemPicture" src="' . $product['images'] . '">
@@ -37,7 +37,7 @@ if(mysqli_num_rows($productsAdmin) > 0){
              Size:<strong>' . $product['size'] . '</strong><br>
              Color:<strong>' . $product['color'] . '</strong><br>
              From:<strong>' . $product['manufacture'] . '</strong><br>
-             Category:<strong>' . $product['category'] . '</strong><br>
+             Material:<strong>' . $product['material'] . '</strong><br>
              Tags:<strong>' . $product['tags'] . '</strong><br>
              Stock:<strong>' . $product['stock'] . '</strong><br>
              

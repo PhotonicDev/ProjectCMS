@@ -79,12 +79,13 @@
         </div>
                 <?php
                 $output = '';
-
-                if(mysqli_num_rows($products) > 0){
+                $pro = file_get_contents('data.json');
+                $prom = json_decode($pro);
+             //   if(mysqli_num_rows($products) > 0){
 
 
                     $output .= '';
-                    while($product = mysqli_fetch_array($products)) {
+                    foreach($prom as $product) {
                         if (!isset($num) || $num == 4) {
                             $num = 0;
                         }
@@ -92,33 +93,26 @@
                         if ($num == 0) {
                                 $output .= '<div class="row">';
                             }
+                            $tags = explode(' ', $product->tags);
 
                                 $output .= '
 <div class="col-md-3 item-por">
 <div class="items">
- <a href="index.php?product=' . $product['name'] . '">
+ <a href="index.php?product=' . $product->Product_ID . '">
            <div class="itemWhite">
            
-            <img class="itemPicture" src="' . $product['images'] . '">
+            <img class="itemPicture" src="' . $product->images . '">
             </div>
            
     <div class="itemInfoHide caption">
     <div class="transitionInformation">
          <h4>
-         <strong>' . $product['name'] . '</strong>
+         <strong>' . $product->name . '</strong>
 			</h4>
-              <div class="pricey">
-              <h4>' . $product['price'] . ' DKK</h4>
-             <img src="red.png" class="stick">
-              </div>
-              <div class="otherInformation">
-             Size:<strong>' . $product['size'] . '</strong><br>
-             Color:<strong>' . $product['color'] . '</strong><br>
-             From:<strong>' . $product['manufacture'] . '</strong><br>
-             Category:<strong>' . $product['category'] . '</strong><br>
-             Tags:<strong>' . $product['tags'] . '</strong><br>
-             
-              </div>
+			         <h4><strong>' . $product->price . ' DKK</strong></h4>
+                    <h4>' . $product->upvotes . '</h4>
+                    <button class="btn btn-success btn-group-justified"  type="button">Add to Cart</button>
+              
     </div>
               
     
@@ -135,11 +129,11 @@
 
 
                     echo $output;
-                }
-                else
-                {
-                    echo ' ';
-                }
+               // }
+              //  else
+            //    {
+             //       echo ' ';
+             //   }
 
                 ?>
 

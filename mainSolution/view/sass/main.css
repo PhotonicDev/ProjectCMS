@@ -7,13 +7,17 @@
   z-index: 9999;
   bottom: 0; }
 
+.paypal {
+  margin-top: 11%; }
+
 .fancyNav {
   background-color: white;
   transition: ease-in-out 1s; }
   .fancyNav .navbar-toggle {
-    border: solid 1px white; }
+    border: solid 1px darkgrey; }
     .fancyNav .navbar-toggle span {
-      background-color: white; }
+      color: darkgrey;
+      background-color: darkgrey; }
   .fancyNav a {
     color: darkgrey; }
     .fancyNav a:hover {
@@ -218,13 +222,13 @@ body {
   padding: 5px;
   float: left;
   width: 217px;
-  background-color: lightgoldenrodyellow; }
+  background-color: rgba(255, 255, 255, 0.8); }
   .items .itemInfoHide {
     position: relative; }
     .items .itemInfoHide .transitionInformation {
       font-size: 13px;
       padding: 5px;
-      width: 75%;
+      width: 100%;
       float: left; }
       .items .itemInfoHide .transitionInformation .pricey {
         color: white;
@@ -254,8 +258,6 @@ body {
     position: relative;
     height: auto;
     width: 100%; }
-  .items .label {
-    float: left; }
   .items .badge {
     float: right; }
 

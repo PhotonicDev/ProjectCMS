@@ -16,7 +16,6 @@ $sql = "SELECT * FROM products WHERE Product_ID IN ($output)";
 $result = mysqli_query($connect, $sql);
 
 ?>
-<div class="container">
     <form method="post">
     <div class="well text-right">
         <div class="row">
@@ -29,8 +28,6 @@ $result = mysqli_query($connect, $sql);
         </div>
     </div>
     </form>
-</div>
-<div class="container">
     <?php
  while( $count = mysqli_fetch_array($result)) {
      echo ' <div class="well">
@@ -39,20 +36,22 @@ $result = mysqli_query($connect, $sql);
             <img class="img-responsive" src="' . $count['images'] . '"  />
                   
             </div>
-            <div class="col-md-5">
-            <h5><strong>Name:</strong></strog>' . $count['name'] . '</h5>
+            <div class="col-md-3">
+           <strong>Name:</strong></strog>' . $count['name'] . '<br />
            <strong>Price:</strong>' . $count['price'] . '<br />
            <strong>Description:</strong>' . $count['description'] . '<br />
            <strong>Color:</strong>' . $count['color'] . '<br />
-           <strong>Category:</strong>' . $count['category'] . '<br />
+           <strong>Category:</strong>' . $count['material'] . '<br />
            <strong>Size:</strong>' . $count['size'] . '<br />
            <strong>Stock:</strong>' . $count['stock'] . '<br />
            <strong>Manufacture:</strong>' . $count['manufacture'] . '<br />
             </div>
-            <div class="col-md-4 text-right">
-           <br>
-           <br>
-           <br>
+            <div class="col-md-6 text-right">
+            <button type="button" class="btn btn-danger">Remove</button><br />
+           <br />
+           <br />
+           <br />
+           <div class="paypal">
             <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" name="frmPayPal1">
             <input type="hidden" name="business" value="businessducks@gmail.com">
             <input type="hidden" name="cmd" value="_xclick">
@@ -71,19 +70,13 @@ $result = mysqli_query($connect, $sql);
             <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
             <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
         </form>
-        <br>
-        <br>
-        <br>
-         <button type="button" class="btn btn-danger">Remove</button><br />
-            <Br>
-            
+        </div>
             </div>
             </div>
             </div>
         ';
  }
  ?>
-</div>
 <?php
 }
 else {

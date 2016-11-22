@@ -60,14 +60,13 @@ if (isset($_SESSION['LOC'][1])) {   //getting product comments by id
 
    */
     $output = '';
-    $result = mysqli_query($conn, $sql);
 
 
-    if(mysqli_num_rows($result) > 0)
+    if(mysqli_num_rows($sql) > 0)
     {
 
         $output .= '';
-        while($comment = mysqli_fetch_array($result)){
+        while($comment = mysqli_fetch_array($sql)){
 
             $output .=	'<form method="post">
         <label style="color:#fff;">All existing comments :</label>
