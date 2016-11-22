@@ -13,6 +13,9 @@
                         </div>
                         <textarea class='form-control' rows='3' name='comments' placeholder='Any comments?'></textarea>
                         <br/>
+                        <div class="g-recaptcha" data-sitekey="6LcGRQwUAAAAACSHXYarFIy5rp_iat0ymtFQnaHD"></div>
+                        <!-- <div class="g-recaptcha" data-sitekey="6LcDRQwUAAAAAOgAEugcGPzAui8LOAakDd0huLn_"></div> - for examserver38.dk -->
+                        <br>
                         <button type='submit' class='btn btn-primary'>Send</button>
                     </form>
             </div>

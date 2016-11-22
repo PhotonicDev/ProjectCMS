@@ -64,6 +64,8 @@ function Connect(){
 
     <link href="view/sass/main.css" type="text/css" rel="stylesheet">
     <link rel='stylesheet' type='text/css' href='view/sass/css/contactform.css'>
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script> <!--reCAPTCHA API JavaScript library-->
 </head>
 <body>
 <nav id="navigation" class="navbar-fixed-top navbar">
