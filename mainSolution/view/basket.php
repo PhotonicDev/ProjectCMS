@@ -1,6 +1,6 @@
 <?php
 if(isset($_SESSION['cart']) && count($_SESSION['cart']) != 0 ) {
-$connect = mysqli_connect("localhost", "root", "123" /* "123" */, "db_cms");
+$connect = mysqli_connect("localhost", "root", "lpokji12" /* "123" */, "db_cms");
 $output = '';
 $i = 0;
 while (count($_SESSION['cart']) > $i ){
