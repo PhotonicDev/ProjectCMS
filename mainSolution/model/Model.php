@@ -137,7 +137,7 @@ include_once("view/error_view/note.php");
                     $_SESSION['user_id'] = $found_user['customer_id'];
                     $_SESSION['username'] = $found_user['name'];
                     note("Logged in");
-                    include "view/after.php";
+                    include "view/partials/after.php";
                 } else {
                     // username/password combo was not found in the database
                     error("Username/password combination incorrect.
