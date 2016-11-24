@@ -38,7 +38,7 @@ include_once("view/error_view/note.php");
              if(password_verify($current, $pass['password'])){
 
                  if ($renew == $new) {
-
+                   if($current != $new){
                      $iterations = ['cost' => 10]; // encrypting password - hashing it 10 times
                      $hashed = password_hash($new, PASSWORD_BCRYPT, $iterations);
 
@@ -46,7 +46,12 @@ include_once("view/error_view/note.php");
                      //insert results from the form input
                      $this->Connect()->getNothing("UPDATE `customers` SET `password` = '" . $hashed . "' WHERE `customer_id` = " . $_SESSION['user_id']);
                      note("Password changed!");
-                 }
+                 }else{
+                       error('new password can not be as the current one, please change it');
+                   }
+                  }
+
+
                  else{
                      error('new password and repeat password do not match');
                  }
