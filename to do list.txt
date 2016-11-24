@@ -16,3 +16,5 @@ analytics
 fix up all the images and seo for w3 standards
 code clean up and some fix up for more proper programing
 front page lead
+Error handling
+validations

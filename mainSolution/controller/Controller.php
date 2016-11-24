@@ -55,7 +55,10 @@ class Controller
                 case isset($_GET['logout']);
                     include "controller/logout.php";
                     break;
-
+                case isset($_GET['news']);
+                    $newsSelect = $this->model->getNews($_GET['news']);
+                    include 'views/news_post.php';
+                    break;
                 case isset($_GET['page']);
                     switch ($_GET['page']) {
                         default:

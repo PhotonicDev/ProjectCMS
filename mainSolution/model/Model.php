@@ -140,6 +140,10 @@ include_once("view/error_view/note.php");
             return $proData;
 
         }
+        public function getNews($postId){
+            $post = $this->Connect()->getQuery("SELECT `Image`, `Description`, `DATE`, Header FROM newspage WHERE `Page_ID` = ' . $postId .  ' ");
+            return $post;
+        }
         public function Login($username,$password){
 
         $check = $this->Connect()->getQuery("SELECT `customer_id`, `name`, `password` FROM `customers` WHERE `name` = '{$username}' LIMIT 1");
