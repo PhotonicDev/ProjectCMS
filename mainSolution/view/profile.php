@@ -6,7 +6,7 @@
 
 
     <div class="well">
-     <h2>Username: <?php echo $user['name']; ?>      Email: <?php echo $user['email']; ?></h2>
+     <h2>Welcome, <?php echo $user['name']; ?> <Br>     Email: <?php echo $user['email']; ?></h2>
     </div>
     <div class="well">
         <h2>Additional information</h2><br /><br />

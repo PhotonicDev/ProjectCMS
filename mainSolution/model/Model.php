@@ -30,19 +30,29 @@ include_once("view/error_view/note.php");
                                                 WHERE `customer_id` = " . $userID);
          return;
      }
-     public function changePass($current, $new) {
+     public function changePass($current, $new ,$renew) {
+
         $result = $this->Connect()->getQuery("SELECT `customer_id`, `name`, `password` FROM `customers` WHERE customer_id = '{$_SESSION['user_id']}' AND name = '{$_SESSION['username']}' LIMIT 1");
          if(mysqli_num_rows($result) == 1) {
              $pass = mysqli_fetch_array($result);
              if(password_verify($current, $pass['password'])){
-                 $iterations = ['cost' => 10]; // encrypting password - hashing it 10 times
-                 $hashed = password_hash($new, PASSWORD_BCRYPT, $iterations);
-                 //insert results from the form input
-                 $this->Connect()->getNothing("UPDATE `customers` SET `password` = '" . $hashed . "' WHERE `customer_id` = ". $_SESSION['user_id']);
-                    note("Password changed!");
+
+                 if ($renew == $new) {
+
+                     $iterations = ['cost' => 10]; // encrypting password - hashing it 10 times
+                     $hashed = password_hash($new, PASSWORD_BCRYPT, $iterations);
+
+
+                     //insert results from the form input
+                     $this->Connect()->getNothing("UPDATE `customers` SET `password` = '" . $hashed . "' WHERE `customer_id` = " . $_SESSION['user_id']);
+                     note("Password changed!");
+                 }
+                 else{
+                     error('new password and repeat password do not match');
+                 }
              }
              else {
-                 error('password doesint match!');
+                 error('Current password is not correct');
              }
 
          }

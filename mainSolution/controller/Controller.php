@@ -100,7 +100,17 @@ class Controller
             note('Updated your profile!');
         }
         if(isset($_POST['update_password']) && isset($_SESSION['user_id'])) {
-                $this->model->changePass($_POST['current_pass'],$_POST['new_pass']);
+
+            $new = $_POST['new_pass'];
+            $renew = $_POST['new_pass_re'];
+            $current = $_POST['current_pass'];
+                if(!empty($new) && !empty($renew)){
+
+                $this->model->changePass($current, $new , $renew);
+            }
+            else{
+                error('Please insert new/repeat password');
+            }
 
         }
 
@@ -109,6 +119,7 @@ class Controller
         $products = $this->model->getProductList();
         include 'view/save_products.php';
     }
+
 
     public function homePage()
     {
