@@ -171,29 +171,14 @@ function Connect(){
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
     <div class="mainTile">
-        <div class="secondary-nav container-fluid">
-            <nav class="navbar">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
+        <?php
 
-                    </div>
+        //include 'view/partials/categories.php';
 
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <?php //include 'view/partials/categories.php';
-                    ?>
+        ?>
 
-                    </div><!-- /.navbar-collapse -->
-            </nav>
-        </div>
 
-            <div class="containerMain">
+        <div class="containerMain">
 
                 <div id="static" class="staticItems slideAn">
                     <?php

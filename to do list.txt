@@ -5,7 +5,7 @@ collect more user information
 basket button interface
 responsive design
 security
-news single post view
++	news single post view
 performance tweeks
 fix database calls and connections
 temporary user name when writing comments

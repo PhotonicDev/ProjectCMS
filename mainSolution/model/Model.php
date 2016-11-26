@@ -141,7 +141,7 @@ include_once("view/error_view/note.php");
 
         }
         public function getNews($postId){
-            $post = $this->Connect()->getQuery("SELECT `Image`, `Description`, `DATE`, Header FROM newspage WHERE `Page_ID` = ' . $postId .  ' ");
+            $post = $this->Connect()->getQuery("SELECT `Image`, `Description`, `DATE`, `Header` FROM newspage WHERE `Page_ID` = '{$postId}' LIMIT 1 ");
             return $post;
         }
         public function Login($username,$password){
