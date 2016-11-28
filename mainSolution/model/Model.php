@@ -21,7 +21,8 @@ include_once("view/error_view/note.php");
          return $liked;
      }
      public function updateUserProfile($first,$last,$address, $birth){
-     $userID = $_SESSION['user_id'];
+         $userID = $_SESSION['user_id'];
+         $new = $this->escape_input($first);
          $this->Connect()->getNothing("UPDATE `customers` 
                                                 SET `firstName` ='" . $first . "',
                                                 `lastName` ='" . $last . "',
@@ -30,6 +31,13 @@ include_once("view/error_view/note.php");
                                                 WHERE `customer_id` = " . $userID);
          return;
      }
+
+     public function escape_input ($var){
+         $conn = $this->Connect()->getConnection();
+         $new_var = mysqli_real_escape_string($conn,trim(htmlspecialchars($var)));
+         return $new_var;
+     }
+
      public function changePass($current, $new ,$renew) {
 
         $result = $this->Connect()->getQuery("SELECT `customer_id`, `name`, `password` FROM `customers` WHERE customer_id = '{$_SESSION['user_id']}' AND name = '{$_SESSION['username']}' LIMIT 1");
@@ -190,38 +198,51 @@ if (isset($connection)){mysqli_close($connection);}
      }
      public function Register($username,$password,$email) {
 
-            $check = $this->Connect()->getQuery("SELECT `password` FROM `customers` WHERE `name` = '$username' AND `email` = '$email'");
+         $check =  $this->Connect()->getQuery("SELECT `password` FROM `customers` WHERE `name` = '$username'");
 
-            $rowResult = mysqli_num_rows($check);
+         $rowResult = mysqli_num_rows($check);
 
-            $regexp = "/^[^0-9][A-z0-9_-]+([.][A-z0-9_]+)*[@][A-z0-9_]+([.][A-z0-9_-]+)*[.][A-z]{2,4}$/";
+         $check_mail =  $this->Connect()->getQuery("SELECT `password` FROM `customers` WHERE `email` = '$email'");
 
-            if(preg_match($regexp, $_POST['email'])){
+         $rowResult_mail = mysqli_num_rows($check_mail);
 
-                if($rowResult > 0) {
-                    error("This user already exists");
-                } else {
+         $regexp = "/^[^0-9][A-z0-9_-]+([.][A-z0-9_]+)*[@][A-z0-9_]+([.][A-z0-9_-]+)*[.][A-z]{2,4}$/";
 
-                    $iterations = ['cost' => 10]; // encrypting password - hashing it 10 times
-                    $hashed_password = password_hash($password, PASSWORD_BCRYPT, $iterations);
-                    //insert results from the form input
-                    $check = $this->Connect()->getNothing("INSERT INTO `customers`( `name`, `password` , `email`) VALUES ('$username', '$hashed_password', '$email')");
+         if(preg_match($regexp, $_POST['email'])){
 
-                    note("New user successfully created!");
+             if($rowResult > 0) {
+                 error("This user already exists");
+             }
 
-                }
+             elseif($rowResult_mail > 0){
+                 error("This email already registered");
+             }
 
-            }
+             else {
 
-            else{
+                 $iterations = ['cost' => 10]; // encrypting password - hashing it 10 times
+                 $hashed_password = password_hash($password, PASSWORD_BCRYPT, $iterations);
+                 //insert results from the form input
+                 $check = $this->Connect()->getNothing("INSERT INTO `customers`( `name`, `password` , `email`) VALUES ('$username', '$hashed_password', '$email')");
 
-                error("Your " .$_POST['email'] . "email is not correct");
+                 note("New user successfully created!");
 
-            }
+             }
 
-        }
 
-        public function contactPage(){
+
+         }
+
+         else{
+
+             error("Your " .$_POST['email'] . "email is not correct");
+
+         }
+
+     }
+
+
+     public function contactPage(){
            $contact = $this->Connect()->getQuery('SELECT * FROM contact_info LIMIT 1');
             return $contact;
         }
