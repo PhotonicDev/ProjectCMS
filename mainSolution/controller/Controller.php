@@ -28,10 +28,25 @@ class Controller
                     $this->model->Register($_POST['username'], $_POST['password'], $_POST['email']);
                     break;
                 case isset($_POST['submit_comment']);
-                    if(!empty($_POST['postName']) && !empty($_POST['comment'])) {
-                        $this->model->postComment($_POST['postName'], $_POST['comment']);
-                        $productSelected = $this->model->getProductById($_SESSION['LOC'][1]);
-                        include 'view/viewproduct.php';
+                    if(isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])) {
+                        // site secret key
+                        $secret = '6LcGRQwUAAAAAEsku6qw-a-LUi2R55lzRGC5Jxp2';     // <-----  localhost
+                        // $secret = '6LcDRQwUAAAAAP9-tCmZGba0HxU-04k-XGudAM8o';  //  <-----  examserver38.dk
+
+                        //get verify response data
+                        $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secret . '&response=' . $_POST['g-recaptcha-response']);
+                        $responseData = json_decode($verifyResponse);
+                        if ($responseData->success) {
+
+                            if (!empty($_POST['postName']) && !empty($_POST['comment'])) {
+                                $this->model->postComment($_POST['postName'], $_POST['comment']);
+                                $productSelected = $this->model->getProductById($_SESSION['LOC'][1]);
+                                include 'view/viewproduct.php';
+                            }
+                        }
+                    }
+                    else{
+                        error('Complete the reCAPTCHA first');
                     }
                     break;
                 case isset($_POST['clear_all']);

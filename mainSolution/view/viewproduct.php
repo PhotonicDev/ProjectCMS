@@ -74,6 +74,9 @@ if(empty($_SESSION['LOC'][1]) || $_SESSION['LOC'][1] != $product['Product_ID']){
 						<label for="userComment">Comment:</label>
 						<textarea class="form-control" id="userComment" rows="4" name="comment" placeholder="What do you think about product?"></textarea>
 					</div>
+					 <div class="g-recaptcha" data-sitekey="6LcGRQwUAAAAACSHXYarFIy5rp_iat0ymtFQnaHD"></div>
+					<!-- <div class="g-recaptcha" data-sitekey="6LcDRQwUAAAAAOgAEugcGPzAui8LOAakDd0huLn_"></div> - for examserver38.dk -->
+					<br>
 					<input type="submit" class="btn btn-primary" name="submit_comment">
 				</form>
 			</div>
