@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2016 at 08:20 PM
+-- Generation Time: Dec 02, 2016 at 07:18 PM
 -- Server version: 5.7.11
 -- PHP Version: 5.6.19
 
@@ -122,17 +122,16 @@ CREATE TABLE `customers` (
   `Address` varchar(200) DEFAULT NULL,
   `birth` date DEFAULT NULL,
   `basket` text,
-  `up_votes` text
+  `up_votes` text,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`customer_id`, `name`, `password`, `email`, `firstName`, `lastName`, `Address`, `birth`, `basket`, `up_votes`) VALUES
-(13, 'wentox', '$2y$10$.1sBIZ9VxOppK34yIkibDe5LZiwomJ.EGe/ZQ6t6G32wf2yQYWFU6', 'dovydastt@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL),
-(14, 'anonim', '$2y$10$VioSrbFLAsnpAvn2G9xsBuKXgm.U5HVyKbZhNK7919ernqFLuhwIW', 'dsd@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL),
-(15, 'admin', '$2y$10$UpBjkOC5Fv9Dg4Pasxm44.ccATpnKYRD4Qykij3l29r2ET55gUDDG', 'admin@admin.com', 'gfdsgfdshgggf', 'ffgfdgfsd', 'gdshgdshgdsgfds', '1982-05-25', '1', '1 2 4 3');
+INSERT INTO `customers` (`customer_id`, `name`, `password`, `email`, `firstName`, `lastName`, `Address`, `birth`, `basket`, `up_votes`, `date`) VALUES
+(42, 'test', '$2y$10$h3rUAhl4DPheteWNEOGjfuN2pShKTUi/7gin6q6Q2OeUxdS7TMWSq', 'dovydastt@gmail.com', NULL, NULL, NULL, NULL, '', '', '2016-12-02 19:02:55');
 
 -- --------------------------------------------------------
 
@@ -175,8 +174,8 @@ CREATE TABLE `newspage` (
 --
 
 INSERT INTO `newspage` (`Page_ID`, `Image`, `Description`, `DATE`, `Header`) VALUES
-(1, 'gravity.jpg', 'Gravitational waves are \'ripples\' in the fabric of space-time caused by some of the most violent and energetic processes in the Universe. Albert Einstein predicted the existence of gravitational waves in 1916 in his general theory of relativity.', '2016-11-10 22:50:11', 'Gravity still undefined...'),
-(2, 'home.jpg', 'But while those dreams haven\'t materialised just yet, it hasn’t stopped visionaries from imagining what a human colony on the red planet might look like in the future.', '2016-11-10 22:51:13', 'Our new home?'),
+(1, 'gravity.jpg', 'Gravitational waves are ripples in the fabric of space-time caused by some of the most violent and energetic processes in the Universe. Albert Einstein predicted the existence of gravitational waves in 1916 in his general theory of relativity.', '2016-12-02 18:54:50', 'Gravity still undefined...'),
+(2, 'home.jpg', 'But while those dreams havent materialised just yet, it hasnï¿½t stopped visionaries from imagining what a human colony on the red planet might look like in the future.', '2016-12-02 18:54:59', 'Our new home?'),
 (3, 'quasars.jpg', 'Shining so brightly that they eclipse the ancient galaxies that contain them, quasars are distant objects powered by black holes a billion times as massive as our sun. These powerful dynamos have fascinated astronomers since their discovery half a century ago.', '2016-11-10 22:52:13', 'Quasars are cool!');
 
 -- --------------------------------------------------------
@@ -219,10 +218,10 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`Product_ID`, `name`, `price`, `description`, `color`, `size`, `material`, `images`, `stock`, `tags`, `manufacture`, `views`, `upVote`) VALUES
-(1, 'Blue duck', 6.99, 'Description of blue duck', 'Blue', 'S', 'rubber', 'user_images/duck_blue.png', 888, 'small china rubber rare blue', 'China', 173, 8),
-(2, 'Blue duck', 6.99, 'Description of blue duck', 'Blue', 'SM', 'Iron', 'user_images/duck_blue.png', 106, 'blue iron china sm', 'China', 227, 11),
-(3, 'Green duck', 15.99, 'awesome duck description', 'Green', 'XXL', 'Pvc', 'user_images/duck_green.png', 123, 'germany pvc green xxl', 'Germany', 40, 5),
-(4, 'Purple duck', 6.99, 'description of purple duck', 'purple', 'S', 'rubber', 'user_images/duck_purple.png', 13, 'rubber purple china s', 'china', 19, 4),
+(1, 'Blue ducky', 13.55, 'Description of blue duck', 'Blue', 'S', 'rubber', 'user_images/duck_blue.png', 888, 'small china rubber rare blue', 'China', 182, 8),
+(2, 'Blue duck', 6.99, 'Description of blue duck', 'Blue', 'SM', 'Iron', 'user_images/duck_blue.png', 106, 'blue iron china sm', 'China', 239, 11),
+(3, 'Green duck', 15.99, 'awesome duck description', 'Green', 'XXL', 'Pvc', 'user_images/duck_green.png', 123, 'germany pvc green xxl', 'Germany', 41, 5),
+(4, 'Purple duck', 6.99, 'description of purple duck', 'purple', 'S', 'rubber', 'user_images/duck_purple.png', 13, 'rubber purple china s', 'china', 22, 4),
 (5, 'Purple duck', 6.99, 'description of purple duck', 'purple', 'SM small', 'small pruple', 'user_images/duck_purple.png', 12, 'purple-sm', 'china', 20, 0),
 (6, 'Green duck', 15.99, 'awesome duck description', 'green', 'XXL', 'rubber', 'user_images/duck_green.png', 4, 'rubber xxl china green', 'china', 4, 1),
 (7, 'Yellow duck', 14.99, 'awesome duck description', 'yellow', 'Big XXL', 'wood', 'user_images/duck_yellow.png', 56, 'wood xxl yellow china', 'china', 7, 1),
@@ -443,7 +442,7 @@ ALTER TABLE `contact_info`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `customer_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 --
 -- AUTO_INCREMENT for table `newspage`
 --

@@ -1,6 +1,7 @@
 <?php
 include_once 'controller/Controller.php';
 include_once 'controller/load.php';
+include_once ("analytics_tracking.php");
 session_start();
 $controller = new Controller();
 $controller->listProducts();
@@ -165,11 +166,118 @@ function Connect(){
                 </div>
                 <div class="modal-footer">
                     <a class="additionalLogin" href="index.php?register=y">Don't have an account?</a>
-                    <a class="additionalLogin" href="index.php?forgot=y">Forgot your password?</a>
+                    <a data-toggle='modal' data-target='.bs-example-modal-lg1' class='loginModal'>Forgot your password?</a>
+
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+
+    <div class="modal fade bs-example-modal-lg1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <?php
+        include "model/conn.php";
+        include_once ("view/error_view/note.php");
+        $co = mysqli_connect($host,$user,$pass);
+        if (!$co){
+            die("Database Connection Failed" . mysqli_error($co));
+        }
+        $select_db = mysqli_select_db($co,$dbName);
+        if (!$select_db){
+            die("Database Selection Failed" . mysqli_error($co));
+        }
+
+        if (isset($_POST['Email'])){
+            $email = $_POST['Email'];
+            $query="SELECT * FROM `customers` WHERE email='$email'";
+            $result   = mysqli_query($co, $query) or die(mysqli_error($co));
+            $count=mysqli_num_rows($result);
+            // If the count is equal to one, we will send message other wise display an error message.
+            if($count==1)
+            {
+                $rows=mysqli_fetch_array($result);
+
+                $name = $rows ['name'];
+                $pass  =  $rows['password'];//FETCHING PASS
+                //echo "your pass is ::".($pass)."";
+                $to = $rows['email'];
+                //echo "your email is ::".$email;
+                //Details for sending E-mail
+                $from = "Duck Shop";
+                $url = "http://www.examserver38.dk";
+                $body  =  "<b>Duck-Shop password recovery</b><Br> 
+		                   ---------------------------<br>
+		Url : $url;<br>
+		your username : <b>$name</b> <br>
+		your email : $to;<br>
+		Here is your password  : <b>$pass</b> <Br><br>
+		Sincerely,<Br>
+		Duck-Shop -- examserver38.dk";
+                $from = "ducks@examserver38.dk";
+                $subject = "DuckShop Password recovered";
+                $headers1 = "From: $from\n";
+                $headers1 .= "Content-type: text/html;charset=iso-8859-1\r\n";
+                $headers1 .= "X-Priority: 1\r\n";
+                $headers1 .= "X-MSMail-Priority: High\r\n";
+                $headers1 .= "X-Mailer: Just My Server\r\n";
+                $sentmail = mail ( $to, $subject, $body, $headers1 );
+            } else {
+                if ($_POST ['email'] != "") {
+
+                    error('Not found your email in our database');
+                }
+            }
+            //If the message is sent successfully, display sucess message otherwise display an error message.
+            if($sentmail==1)
+            {
+
+                note('Your Password Has Been Sent To Your Email Address.');
+            }
+            else
+            {
+                if($_POST['email']!="")
+
+                error('Cannot send password to your e-mail address.Problem with sending mail...');
+            }
+        }
+
+
+        ?>
+
+
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Password recovery</h4>
+
+                </div>
+                <div class="modal-body">
+
+                    <form method="post">
+                        <br>
+                        <br>
+                        <h2 class="form-signin-heading">Your username</h2>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1"></span>
+                            <input type="email" name="Email" class="form-control" placeholder="Email" required>
+                        </div>
+                        <br />
+                        <br>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Send me password</button>
+
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <a class="additionalLogin" href="index.php?register=y">Don't have an account?</a>
+
+
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
     <div class="mainTile">
         <?php
 
