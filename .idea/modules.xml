@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/bussiness logic cms.iml" filepath="$PROJECT_DIR$/.idea/bussiness logic cms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/myOwn.iml" filepath="$PROJECT_DIR$/.idea/myOwn.iml" />
     </modules>
   </component>
 </project>

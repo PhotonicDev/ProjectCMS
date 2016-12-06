@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="db_cms@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="db_cms">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="booklist"/>
+    <schema id="4" parent="1" name="database"/>
+    <schema id="5" parent="1" name="dix"/>
+    <schema id="6" parent="1" name="duck"/>
+    <schema id="7" parent="1" name="guest"/>
+    <schema id="8" parent="1" name="information_schema"/>
+    <schema id="9" parent="1" name="login"/>
+    <schema id="10" parent="1" name="multi_data"/>
+    <schema id="11" parent="1" name="mvc"/>
+    <schema id="12" parent="1" name="mysql"/>
+    <schema id="13" parent="1" name="odiosoorrore"/>
+    <schema id="14" parent="1" name="performance_schema"/>
+    <schema id="15" parent="1" name="projects"/>
+    <schema id="16" parent="1" name="rerestaurant"/>
+    <schema id="17" parent="1" name="restaurant"/>
+    <schema id="18" parent="1" name="restaurant1"/>
+    <schema id="19" parent="1" name="sys"/>
+    <schema id="20" parent="1" name="testdb"/>
+    <table id="21" parent="2" name="address"/>
+    <table id="22" parent="2" name="admin"/>
+    <table id="23" parent="2" name="company_desc"/>
+    <table id="24" parent="2" name="contact_info"/>
+    <table id="25" parent="2" name="customers"/>
+    <table id="26" parent="2" name="daily_product"/>
+    <table id="27" parent="2" name="newspage"/>
+    <table id="28" parent="2" name="orders"/>
+    <table id="29" parent="2" name="product_order"/>
+    <table id="30" parent="2" name="products"/>
+    <table id="31" parent="2" name="search_history"/>
+    <table id="32" parent="2" name="social_pages"/>
+    <table id="33" parent="2" name="sold_products"/>
+    <table id="34" parent="2" name="temp_user"/>
+    <column id="35" parent="21" name="customer_id">
+      <Position>1</Position>
+      <DataType>int(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="36" parent="21" name="Country">
+      <Position>2</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="37" parent="21" name="City">
+      <Position>3</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="38" parent="21" name="zip_code">
+      <Position>4</Position>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="39" parent="21" name="street">
+      <Position>5</Position>
+      <DataType>int(150)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="40" parent="21" name="house_no">
+      <Position>6</Position>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="41" parent="21" name="customer_id">
+      <ColNames>customer_id</ColNames>
+    </index>
+    <foreign-key id="42" parent="21" name="address_ibfk_1">
+      <ColNames>customer_id</ColNames>
+      <RefSchemaName>db_cms</RefSchemaName>
+      <RefTableName>customers</RefTableName>
+      <RefColNames>customer_id</RefColNames>
+    </foreign-key>
+    <column id="43" parent="22" name="admin_id">
+      <Position>1</Position>
+      <DataType>int(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="44" parent="22" name="name">
+      <Position>2</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="45" parent="22" name="password">
+      <Position>3</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="46" parent="22" name="email">
+      <Position>4</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="47" parent="22" name="PRIMARY">
+      <ColNames>admin_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="48" parent="23" name="Description">
+      <Position>1</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="49" parent="23" name="pictures">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="50" parent="23" name="title">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="51" parent="23" name="id">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <key id="52" parent="23" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="53" parent="24" name="Street">
+      <Position>1</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="54" parent="24" name="Phone">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="55" parent="24" name="email">
+      <Position>3</Position>
+      <DataType>varchar(150)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="56" parent="24" name="description">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="57" parent="24" name="zipcode">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="58" parent="24" name="city">
+      <Position>6</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="59" parent="24" name="country">
+      <Position>7</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="60" parent="24" name="monday">
+      <Position>8</Position>
+      <DataType>varchar(15)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="61" parent="24" name="tuesday">
+      <Position>9</Position>
+      <DataType>varchar(15)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="62" parent="24" name="wednesday">
+      <Position>10</Position>
+      <DataType>varchar(15)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="63" parent="24" name="thursday">
+      <Position>11</Position>
+      <DataType>varchar(15)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="64" parent="24" name="friday">
+      <Position>12</Position>
+      <DataType>varchar(15)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="65" parent="24" name="saturday">
+      <Position>13</Position>
+      <DataType>varchar(15)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="66" parent="24" name="sunday">
+      <Position>14</Position>
+      <DataType>varchar(15)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="67" parent="24" name="id">
+      <Position>15</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <key id="68" parent="24" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="69" parent="25" name="customer_id">
+      <Position>1</Position>
+      <DataType>int(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="70" parent="25" name="name">
+      <Position>2</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="71" parent="25" name="password">
+      <Position>3</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="72" parent="25" name="email">
+      <Position>4</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="73" parent="25" name="firstName">
+      <Position>5</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="74" parent="25" name="lastName">
+      <Position>6</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="75" parent="25" name="Address">
+      <Position>7</Position>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <column id="76" parent="25" name="birth">
+      <Position>8</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="77" parent="25" name="basket">
+      <Position>9</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="78" parent="25" name="up_votes">
+      <Position>10</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <key id="79" parent="25" name="PRIMARY">
+      <ColNames>customer_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="80" parent="26" name="date">
+      <Position>1</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="81" parent="26" name="Product_ID">
+      <Position>2</Position>
+      <DataType>int(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="82" parent="26" name="Product_ID">
+      <ColNames>Product_ID</ColNames>
+    </index>
+    <foreign-key id="83" parent="26" name="daily_product_ibfk_1">
+      <ColNames>Product_ID</ColNames>
+      <RefSchemaName>db_cms</RefSchemaName>
+      <RefTableName>products</RefTableName>
+      <RefColNames>Product_ID</RefColNames>
+    </foreign-key>
+    <column id="84" parent="27" name="Page_ID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="85" parent="27" name="Image">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="86" parent="27" name="Description">
+      <Position>3</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="87" parent="27" name="DATE">
+      <Position>4</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="88" parent="27" name="Header">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="89" parent="27" name="PRIMARY">
+      <ColNames>Page_ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="90" parent="28" name="Order_No">
+      <Position>1</Position>
+      <DataType>int(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="91" parent="28" name="BoughtID">
+      <Position>2</Position>
+      <DataType>int(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="92" parent="28" name="Date">
+      <Position>3</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="93" parent="28" name="customer_id">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="94" parent="28" name="BoughtID">
+      <ColNames>BoughtID</ColNames>
+    </index>
+    <index id="95" parent="28" name="customer_id">
+      <ColNames>customer_id</ColNames>
+    </index>
+    <key id="96" parent="28" name="PRIMARY">
+      <ColNames>Order_No</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="97" parent="28" name="orders_ibfk_2">
+      <ColNames>BoughtID</ColNames>
+      <RefSchemaName>db_cms</RefSchemaName>
+      <RefTableName>sold_products</RefTableName>
+      <RefColNames>BoughtID</RefColNames>
+    </foreign-key>
+    <foreign-key id="98" parent="28" name="orders_ibfk_1">
+      <ColNames>customer_id</ColNames>
+      <RefSchemaName>db_cms</RefSchemaName>
+      <RefTableName>customers</RefTableName>
+      <RefColNames>customer_id</RefColNames>
+    </foreign-key>
+    <column id="99" parent="29" name="category">
+      <Position>1</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="100" parent="29" name="category_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="101" parent="29" name="num_products">
+      <Position>3</Position>
+      <DataType>int(5)|0</DataType>
+    </column>
+    <column id="102" parent="29" name="related tags">
+      <Position>4</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <key id="103" parent="29" name="PRIMARY">
+      <ColNames>category_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="104" parent="30" name="Product_ID">
+      <Position>1</Position>
+      <DataType>int(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="105" parent="30" name="name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="106" parent="30" name="price">
+      <Position>3</Position>
+      <DataType>float|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="107" parent="30" name="description">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="108" parent="30" name="color">
+      <Position>5</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="109" parent="30" name="size">
+      <Position>6</Position>
+      <DataType>varchar(15)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="110" parent="30" name="material">
+      <Position>7</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="111" parent="30" name="images">
+      <Position>8</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="112" parent="30" name="stock">
+      <Position>9</Position>
+      <DataType>int(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="113" parent="30" name="tags">
+      <Position>10</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="114" parent="30" name="manufacture">
+      <Position>11</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="115" parent="30" name="views">
+      <Position>12</Position>
+      <DataType>int(15)|0</DataType>
+    </column>
+    <column id="116" parent="30" name="upVote">
+      <Position>13</Position>
+      <DataType>int(15)|0</DataType>
+    </column>
+    <key id="117" parent="30" name="PRIMARY">
+      <ColNames>Product_ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="118" parent="31" name="Product_ID">
+      <Position>1</Position>
+      <DataType>int(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="119" parent="31" name="Product_ID">
+      <ColNames>Product_ID</ColNames>
+    </index>
+    <foreign-key id="120" parent="31" name="search_history_ibfk_1">
+      <ColNames>Product_ID</ColNames>
+      <RefSchemaName>db_cms</RefSchemaName>
+      <RefTableName>products</RefTableName>
+      <RefColNames>Product_ID</RefColNames>
+    </foreign-key>
+    <column id="121" parent="32" name="Likes">
+      <Position>1</Position>
+      <DataType>int(15)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="122" parent="32" name="Comments">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="123" parent="32" name="name">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="124" parent="32" name="comment_id">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="125" parent="32" name="Product_ID">
+      <Position>5</Position>
+      <DataType>int(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="126" parent="32" name="PRIMARY">
+      <ColNames>comment_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="127" parent="33" name="BoughtID">
+      <Position>1</Position>
+      <DataType>int(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="128" parent="33" name="Product_ID">
+      <Position>2</Position>
+      <DataType>int(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="129" parent="33" name="Qty">
+      <Position>3</Position>
+      <DataType>int(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="130" parent="33" name="Product_ID">
+      <ColNames>Product_ID</ColNames>
+    </index>
+    <key id="131" parent="33" name="PRIMARY">
+      <ColNames>BoughtID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="132" parent="33" name="sold_products_ibfk_1">
+      <ColNames>Product_ID</ColNames>
+      <RefSchemaName>db_cms</RefSchemaName>
+      <RefTableName>products</RefTableName>
+      <RefColNames>Product_ID</RefColNames>
+    </foreign-key>
+    <column id="133" parent="34" name="name">
+      <Position>1</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="134" parent="34" name="user_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="135" parent="34" name="basket">
+      <Position>3</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="136" parent="34" name="up_votes">
+      <Position>4</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <key id="137" parent="34" name="PRIMARY">
+      <ColNames>user_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

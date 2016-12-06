@@ -11,7 +11,7 @@ fix database calls and connections
 temporary user name when writing comments
 contact us page design
 forgot your password function
-categories piping function
+categories piping function ?
 analytics
 fix up all the images and seo for w3 standards
 code clean up and some fix up for more proper programing

@@ -1,2 +1,0 @@
-# ProjectCMS
-School project
