@@ -1,28 +1,28 @@
 
-    <link rel="stylesheet" type="text/css" href="/myOwn/assets/sass/css/admin_panel.css">
+    <link rel="stylesheet" type="text/css" href="/ProjectCMS/assets/sass/css/admin_panel.css">
     <div class="col-md-3">
         <div id="sidebar-wrapper">
 
     <form method="get">
-            <a class="navbar-brand" href="/myOwn/admin/index"><img class="duckLogo" src="/myOwn/assets/user_images/duck_blue.png">Admin Panel</a>
+            <a class="navbar-brand" href="/ProjectCMS/admin/index"><img class="duckLogo" src="/ProjectCMS/assets/user_images/duck_blue.png">Admin Panel</a>
             <ul class="sidebar-nav pull-left text-left">
                 <li class="sidebar-brand">
                 </li>
                 <li>
-                    <a class="btn btn-sm btn-primary" href="/myOwn/admin/index">Products<span class="glyphicon glyphicon-th" aria-hidden="true"></span> </a>
+                    <a class="btn btn-sm btn-primary" href="/ProjectCMS/admin/index">Products<span class="glyphicon glyphicon-th" aria-hidden="true"></span> </a>
                 </li>
                 <li>
-                    <a class="btn btn-sm btn-primary" href="/myOwn/admin/newsfeed">Newsfeed</a>
+                    <a class="btn btn-sm btn-primary" href="/ProjectCMS/admin/newsfeed">Newsfeed</a>
                 </li>
                 <li>
-                    <a class="btn btn-sm btn-primary" href="/myOwn/admin/description">Description</a>
+                    <a class="btn btn-sm btn-primary" href="/ProjectCMS/admin/description">Description</a>
                 </li>
 
                 <li>
-                    <a class="btn btn-sm btn-primary" href="/myOwn/admin/contacts">Contacts</a>
+                    <a class="btn btn-sm btn-primary" href="/ProjectCMS/admin/contacts">Contacts</a>
                 </li>
                 <li>
-                    <a href="/myOwn/admin/add_new" class='btn-sm btn btn-success'>Add Product<span class='glyphicon glyphicon-plus' aria-hidden='true'></a>
+                    <a href="/ProjectCMS/admin/add_new" class='btn-sm btn btn-success'>Add Product<span class='glyphicon glyphicon-plus' aria-hidden='true'></a>
                 </li>
             </ul>
     </form>

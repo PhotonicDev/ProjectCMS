@@ -37,7 +37,7 @@
 
                                             $output .=  "<!-- Wrapper for slides -->
         <div class='item active'>
-            <img class='bound-img' src='/myOwn/assets/web_images/" .  $new['Image'] . "' alt='...'>
+            <img class='bound-img' src='/ProjectCMS/assets/web_images/" .  $new['Image'] . "' alt='...'>
             <div class='carousel-caption'>
                 <h3>" .  $new['Header'] . "</h3>
                 <p>" . $new['Description'].  "</p>
@@ -48,7 +48,7 @@
                                         else {
                                             $output .=  "<!-- Wrapper for slides -->
         <div class='item'>
-            <img class='bound-img' src='/myOwn/assets/web_images/" .  $new['Image'] . "' alt='...'>
+            <img class='bound-img' src='/ProjectCMS/assets/web_images/" .  $new['Image'] . "' alt='...'>
             <div class='carousel-caption'>
                 <h3>" .  $new['Header'] . "</h3>
                 <p>" . $new['Description'].  "</p>
@@ -98,9 +98,9 @@
                         $output .= '
 <div class="col-md-3 item-por">
     <div class="items">
-        <a href="/myOwn/main/product?p=' . $product->Product_ID . '">
+        <a href="/ProjectCMS/main/product?p=' . $product->Product_ID . '">
             <div class="itemWhite">
-                <img class="itemPicture" src="/myOwn/assets/' . $product->images . '">
+                <img class="itemPicture" src="/ProjectCMS/assets/' . $product->images . '">
             </div>
             <div class="itemInfoHide caption">
                 <div class="transitionInformation">

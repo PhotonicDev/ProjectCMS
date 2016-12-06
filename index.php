@@ -11,7 +11,7 @@ $GLOBALS['config'] = array(
         "index" => "index.php",
         "cache" => "caches/",
         "session" => "app/sessions",
-        "basePath" => "C:/wamp64/www/myOwn/"
+        "basePath" => "C:/wamp64/www/ProjectCMS/"
     ),
     "default" => array(
         "controller" => "main",
@@ -47,14 +47,14 @@ require_once $GLOBALS["config"]["path"]["app"]."autoload.php";
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-    <!--<script src="/myOwn/assets/js/bootstrap.js"></script>
-    <script src="/myOwn/assets/js/jquery-3.1.1.min.js"></script>
+    <!--<script src="/ProjectCMS/assets/js/bootstrap.js"></script>
+    <script src="/ProjectCMS/assets/js/jquery-3.1.1.min.js"></script>
  -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script> <!--reCAPTCHA API JavaScript library-->
 
-    <link href="/myOwn/assets/sass/main.css" type="text/css" rel="stylesheet">
-    <link rel='stylesheet' type='text/css' href='/myOwn/assets/sass/css/contactform.css'>
+    <link href="/ProjectCMS/assets/sass/main.css" type="text/css" rel="stylesheet">
+    <link rel='stylesheet' type='text/css' href='/ProjectCMS/assets/sass/css/contactform.css'>
 
 </head>
 <body>
@@ -93,7 +93,7 @@ new router();
                             output += '<div class="items">' +
                                 '<a href="index.php?product=' + val.name + '">' +
                                 '<div class="itemWhite">' +
-                                '<img class="itemPicture" src="/myOwn/assets' + val.images + '">' +
+                                '<img class="itemPicture" src="/ProjectCMS/assets' + val.images + '">' +
                                 '</div>' +
                                 '<div class="itemInfoHide caption">' +
                                 '<div class="transitionInformation">' +

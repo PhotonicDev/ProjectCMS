@@ -10,10 +10,10 @@
         foreach($items as $product){
 
             $output .=	'<div class="items thumbnail pull-right">  
-<a  href="/myOwn/admin/product?p='.$product['Product_ID'].'">
+<a  href="/ProjectCMS/admin/product?p='.$product['Product_ID'].'">
            <div class="itemWhite">
            
-            <img class="itemPicture" src="/myOwn/assets/' . $product['images'] . '">
+            <img class="itemPicture" src="/ProjectCMS/assets/' . $product['images'] . '">
             </div>
            
     <div class="itemInfoHide caption">

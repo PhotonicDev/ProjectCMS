@@ -27,7 +27,7 @@
                         foreach ($description as $desc){
                         ?>
                         <h3><?php echo $desc['title']; ?></h3> <br />
-                        <img src="/myOwn/assets/<?php echo $desc['pictures']; ?>" class="companyPicture img-responsive" />
+                        <img src="/ProjectCMS/assets/<?php echo $desc['pictures']; ?>" class="companyPicture img-responsive" />
                         <h4><?php echo $desc['Description']; ?></h4> <br />
                     <?php }?>
                     </div>

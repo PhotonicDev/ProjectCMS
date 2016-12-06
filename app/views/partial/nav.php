@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/myOwn/main/index"><img class="duckLogo" src="../../myOwn/assets/user_images/duck_yellow.png">polyDuck</a>
+            <a class="navbar-brand" href="/ProjectCMS/main/index"><img class="duckLogo" src="../../ProjectCMS/assets/user_images/duck_yellow.png">polyDuck</a>
 
 
         </div>
@@ -17,11 +17,11 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/myOwn/main/index"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
+                <li class="active"><a href="/ProjectCMS/main/index"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
 
-                <li><a href="/myOwn/main/news"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span></a></li>
+                <li><a href="/ProjectCMS/main/news"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span></a></li>
 
-                <li><a href="/myOwn/main/info"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a></li>
+                <li><a href="/ProjectCMS/main/info"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a></li>
 
             </ul>
             <form class="navbar-form navbar-left"> <!-- search bar-->
@@ -40,13 +40,13 @@
                     <?php
                     if(session::check("username")){
                         echo "
-                          <li><a href='/myOwn/main/profile'><span class='glyphicon glyphicon-user' aria-hidden='true'></span></a></li>
-                          <li><a href='/myOwn/main/basket'><span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span></a></li>
-                          <li><a href='/myOwn/main/logout' ><span class='glyphicon glyphicon-log-out' aria-hidden='true'></span></a></li>";
+                          <li><a href='/ProjectCMS/main/profile'><span class='glyphicon glyphicon-user' aria-hidden='true'></span></a></li>
+                          <li><a href='/ProjectCMS/main/basket'><span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span></a></li>
+                          <li><a href='/ProjectCMS/main/logout' ><span class='glyphicon glyphicon-log-out' aria-hidden='true'></span></a></li>";
                     }
                     else {
                         echo   "<li><a data-toggle='modal' data-target='.bs-example-modal-lg' class='loginModal'><span class='glyphicon glyphicon-log-in' aria-hidden='true'></span></a></li>
-                         <li><a href='/myOwn/main/basket'><span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span></a></li>";
+                         <li><a href='/ProjectCMS/main/basket'><span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span></a></li>";
                     }
 
                     ?>
@@ -94,14 +94,14 @@
 
                 </div>
                 <div class="modal-footer">
-                    <a class="additionalLogin" href="/myOwn/main/register">Don't have an account?</a>
-                    <a class="additionalLogin" href="/myOwn/main/forgot">Forgot your password?</a>
+                    <a class="additionalLogin" href="/ProjectCMS/main/register">Don't have an account?</a>
+                    <a class="additionalLogin" href="/ProjectCMS/main/forgot">Forgot your password?</a>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
     <div class="mainTile">
-        <img class="background" alt="web shop background autumn" src="/myOwn/assets/web_images/back.gif"/>
+        <img class="background" alt="web shop background autumn" src="/ProjectCMS/assets/web_images/back.gif"/>
 
         <?php
         //include 'view/partials/categories.php';

@@ -72,7 +72,7 @@ class admins_login extends model{
             }
         }
         else{
-            url::redir("/myOwn/main/index");
+            url::redir("/ProjectCMS/main/index");
             return "you must be logged in to update your profile";
 
         }
@@ -99,7 +99,7 @@ class admins_login extends model{
 
         }
         else {
-            url::redir("/myOwn/main/index");
+            url::redir("/ProjectCMS/main/index");
             return "you must be logged in to update your password";
 
         }

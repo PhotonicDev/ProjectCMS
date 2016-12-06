@@ -42,7 +42,7 @@
   				</ul>
 
 		</div>
-	<a href="/myOwn/admin/index"><button type="button" class="pull-left btn-lg btn btn-default">Back <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></button></a>
+	<a href="/ProjectCMS/admin/index"><button type="button" class="pull-left btn-lg btn btn-default">Back <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></button></a>
 
 	<button type="submit" name="btn_insert_new"  class="pull-left btn-lg btn btn-primary">Add new <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
 

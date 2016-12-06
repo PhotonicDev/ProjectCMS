@@ -65,7 +65,7 @@ class main extends controller {
     }
     function logout(){
         common::doUserLogout();
-        url::redir("/myOwn/main/index");
+        url::redir("/ProjectCMS/main/index");
     }
     function product(){
         $posts = new main_model();
@@ -77,7 +77,7 @@ class main extends controller {
             main::foot();
         }
         else{
-            url::redir("/myOwn/main/index");
+            url::redir("/ProjectCMS/main/index");
         }
 
     }
@@ -105,7 +105,7 @@ class main extends controller {
             $posts = new admins_login();
            $mess = $posts->register(url::post("username"),url::post("password"),url::post("email"));
             echo $mess;
-            url::redir("/myOwn/main/index");
+            url::redir("/ProjectCMS/main/index");
         }
     }
     function info(){
@@ -179,11 +179,11 @@ class main extends controller {
                 main::foot();
             }
             else {
-                url::redir("/myOwn/main/index");
+                url::redir("/ProjectCMS/main/index");
             }
         }
         else{
-            url::redir("/myOwn/main/index");
+            url::redir("/ProjectCMS/main/index");
         }
         if(isset($_POST["update_profile"])){
             $msg = $main->updateProfile(url::post("firstName"),url::post("lastName"),url::post("Address"),url::post("birthDay"));

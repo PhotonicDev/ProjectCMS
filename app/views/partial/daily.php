@@ -12,7 +12,7 @@
 <div class="items center-block">
     <a href="index.php?product='. $product['name'].'">
         <div class="itemWhite">
-            <img class="itemPicture" src="/myOwn/assets/'. $product['images'].'">
+            <img class="itemPicture" src="/ProjectCMS/assets/'. $product['images'].'">
         </div>
         <div class="itemInfoHide caption">
             <div class="transitionInformation text-left">

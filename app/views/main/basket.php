@@ -13,7 +13,7 @@ if(isset($basket)) {
 
             </div>
             <div class="col-md-2">
-            <img class="img-responsive" src="/myOwn/assets/' . $count['images'] . '"  />
+            <img class="img-responsive" src="/ProjectCMS/assets/' . $count['images'] . '"  />
                   
             </div>
             <div class="col-md-3">

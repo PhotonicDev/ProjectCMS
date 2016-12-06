@@ -10,7 +10,7 @@ echo '   <form id="adminform" method="post" enctype="multipart/form-data">
 		<div class="row">
 			<div class="col-md-6">
 				<div class="itemImageFrame">
-					<img class="itemPictureBig thumbnail" src="/myOwn/assets/' . $product['images'] . '">
+					<img class="itemPictureBig thumbnail" src="/ProjectCMS/assets/' . $product['images'] . '">
 					<br>
 					<input class="input-group" type="file" name="uploadimage"/>
 				</div>
@@ -41,7 +41,7 @@ echo '   <form id="adminform" method="post" enctype="multipart/form-data">
   				</ul>
   				
 		</div>
-	<a href="/myOwn/admin/index"><button type="button" class="pull-left btn-lg btn btn-default">Back <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></button></a>
+	<a href="/ProjectCMS/admin/index"><button type="button" class="pull-left btn-lg btn btn-default">Back <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></button></a>
 	
 	<button type="submit" name="btn_save_updates"  class="pull-left btn-lg btn btn-primary">Update <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
 	

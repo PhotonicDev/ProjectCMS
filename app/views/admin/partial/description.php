@@ -16,7 +16,7 @@ $show = '';
                     <textarea name='desc_text'  class='form-control' id='comment'>" . $desc['Description'] . "</textarea>
                 </div>
                 <input class='input-group' type='file' name='uploadimage'/><br>
-                <img src='/myOwn/assets/".$desc['pictures']."' class='img-rounded' alt='Cinque Terre' width='200' height='130'>
+                <img src='/ProjectCMS/assets/".$desc['pictures']."' class='img-rounded' alt='Cinque Terre' width='200' height='130'>
                 <button type='submit' name='btn_update'  class='pull-right btn-sm btn btn-primary'>Update <span class='glyphicon glyphicon-refresh' aria-hidden='true'></span></button>
             </div>
         </form>
