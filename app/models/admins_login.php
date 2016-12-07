@@ -1,11 +1,17 @@
 <?php
 class admins_login extends model{
     function auth($username, $password){
-        $this->model->query('SELECT * FROM `admin` WHERE `name`=? AND `password`=?',
-            array($username,$password)
+        $this->model->query('SELECT * FROM `admin` WHERE `name`=?',
+            array($username)
         );
         if($row = $this->model->fetch_assoc()){
-                return $row;
+            if(password_verify($password,$row['password'])){
+                return "logged in!";
+            }
+            else {
+                return "Incorrect password";
+            }
+
         }else{
             return false;
         }

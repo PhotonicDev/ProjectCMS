@@ -34,7 +34,7 @@ VALUES (NULL, ?,?,NOW(),?)",array($filepath,$text,$header));
         private function pictureLink($file)
         {
             $filepath = "";
-            if (file_exists("/ProjectCMS/assets/web_images/" .$file["name"]) || is_uploaded_file($file["tmp_name"])) {
+            if (file_exists("/ProjectCMS/assets/" .$file["name"]) || is_uploaded_file($file["tmp_name"])) {
 
 
                 if ($file['size'] > 0 &&
@@ -45,8 +45,8 @@ VALUES (NULL, ?,?,NOW(),?)",array($filepath,$text,$header));
                         ($file["size"] < 2097152))
                 ) {
 
-                    $filepath = $file["name"];
-                    move_uploaded_file($file["tmp_name"], 'C:/wamp64/www/ProjectCMS/assets/web_images/' . $filepath );
+                    $filepath = 'web_images/' . $file["name"];
+                    move_uploaded_file($file["tmp_name"], $GLOBALS['config']['path']['basePath'].'assets/' . $filepath );
 
                 }
                 if ($file["error"] > 0) {
