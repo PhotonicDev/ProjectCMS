@@ -9,7 +9,17 @@ class main_model extends model {
             return false;
         }
     }
-
+    function saveSession($cart,$name,$up){
+         if(is_array($cart)){
+             $cart = implode(",",$cart);
+         }
+        if(is_array($up)){
+            $up = implode(",",$up);
+        }
+        $date = $this->model->query("UPDATE `customers` SET `basket`=? AND `up_votes`=? WHERE `customer_id`=?",
+            array($cart,$name,$up));
+        return "Bye!";
+    }
     function posts($limit){
          if($limit == 0) {
              $this->model->query("SELECT * FROM newspage");

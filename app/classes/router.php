@@ -9,15 +9,14 @@
             if(class_exists($route["controller"])){
                 $controller = new $route["controller"]();
                 if(method_exists($controller,$route['method'])){
-                    $controller->$route["method"]();
-
+                      $controller->$route["method"]();
                 }
                 else {
-                    message::error(404);
+                    message::error("Page not found 404");
                 }
             }
             else{
-                message::error(404);
+                message::error("Page not found 404");
             }
         }
         private function routePart($route){

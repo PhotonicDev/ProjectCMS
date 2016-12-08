@@ -27,7 +27,7 @@ spl_autoload_register(function($class){
         }
         else{
             $instantiable = false;
-            $classFile = "{$appPath}/{$class}.php";
+            $classFile = "{$appPath}{$class}.php";
         }
         if($GLOBALS["config"]["cache_enabled"]){
             $locations[$class] = array(
@@ -38,7 +38,13 @@ spl_autoload_register(function($class){
 
         }
     }
-    require_once $classFile;
+    if(file_exists($classFile)){
+        require_once $classFile;
+
+    }
+    else{
+        message::error("Page not found 404");
+    }
     if($instantiable){
         foreach($GLOBALS["instances"] as $instance){
             $instance->$class = new $class();

@@ -17,7 +17,7 @@
                         admin::home();
                     }
                     else{
-                        internal_error::show("incorrect username");
+                        message::error("incorrect username");
                         load::view("admin::login");
 
                     }

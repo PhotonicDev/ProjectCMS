@@ -1,6 +1,7 @@
 @import "mixin";
 
 $light : white;
+
 .notFound {
     box-shadow: black 1px 1px 10px;
     padding: 20px;
@@ -251,7 +252,6 @@ $dark-tint: rgba(0,0,0,0.9);
     -webkit-filter: blur($blur);
     -ms-filter: blur($blur);
     filter: blur($blur);
-
 }
 /*.background {
     opacity: 0.9;
@@ -275,7 +275,6 @@ $dark-tint: rgba(0,0,0,0.9);
 .item-par {
     margin: 15px !important;
 }
-
 .items {
     margin-top:30px;
     box-shadow: 0.5px 0.5px 2px black;
@@ -291,7 +290,6 @@ $dark-tint: rgba(0,0,0,0.9);
             padding: 5px;
             width: 100%;
             float:left;
-
             .pricey {
                 color: white;
                 float:right;
@@ -317,13 +315,11 @@ $dark-tint: rgba(0,0,0,0.9);
             margin: 5px;
         }
     }
-
     .itemWhite {
         padding: 5px;
         border: solid white 1px;
         border-radius: 5px;
         background-color: white;
-
     }
     .itemPicture {
         position: relative;
@@ -354,7 +350,6 @@ $dark-tint: rgba(0,0,0,0.9);
 .item {
     margin-top:0;
     height: 50vh !important;
-
 }
 .welcome-tile {
     height: 82vh;

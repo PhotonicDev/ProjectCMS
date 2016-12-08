@@ -79,35 +79,39 @@ new router();
             var txt =  new RegExp(search, 'i');
             if(search != '') {
                 $.ajax({
-                    url: "data.json",
+                    url: "/ProjectCMS/data.json",
                     method: "post",
                     data: {input:txt},
                     dataType: "json",
-                    done: function (data) {
+                    error: function(xhr, ajaxOption, thrownError){
+                      alert(xhr.responseText);
+                      alert(thrownError);
+                    },
+                    success: function (data) {
                         var output = '';
                         var count = 0;
-                        JSON.parse(data);
-                    alert(output);
                     $.each(data, function (key, val) {
-                        if ((val.name.search(txt) != -1)) {
-                            output += '<div class="items">' +
-                                '<a href="index.php?product=' + val.name + '">' +
+                        if ((val.name.search(txt) != -1) || (val.tags.search(txt) != -1)) {
+                            var tags = val.tags.split(" ");
+                            output += '<div class=" col-md-3 item-por">'+
+                                '<div class="items">' +
+                                '<a href="ProjectCMS/main/product?p=' + val.Product_ID + '">' +
                                 '<div class="itemWhite">' +
-                                '<img class="itemPicture" src="/ProjectCMS/assets' + val.images + '">' +
+                                '<img class="itemPicture" src="/ProjectCMS/assets/' + val.images + '">' +
                                 '</div>' +
                                 '<div class="itemInfoHide caption">' +
                                 '<div class="transitionInformation">' +
                                 '<h4>' +
                                 '<strong>' + val.name + '</strong>' +
                                 '</h4>' +
-                                '<div class="otherInformation">' +
-                                'Price:<strong>' + val.price + ' DKK</strong><br />' +
-
-                                'Size:<strong>' + val.size + '</strong><br>' +
-                                'Color:<strong>' + val.color + '</strong><br>' +
-                                'From:<strong>' + val.manufacture + '</strong><br>' +
-                                'Category:<strong>' + val.material + '</strong><br>' +
-                                'Tags:<strong>' + val.tags + '</strong><br>' +
+                                '<h4>' + val.price + ' DKK</h4>' +
+                                '<h4>' + val.upVote + '</h4>' +
+                                '<h5>';
+                            for(var i = 0; i < 4; i++){
+                                output += "<span class='label label-default'>" + tags[i] + "</span> ";
+                            }
+                            output +=
+                                '</h5>' +
                                 '</div>' +
                                 '</div>' +
                                 '</div>' +

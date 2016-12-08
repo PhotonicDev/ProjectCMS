@@ -1,6 +1,7 @@
 <?php
     class message{
         static function note($type){
+            main::index();
             echo "
                 <div class='container'>
                     <div class='errorResponse alert alert-dismissible alert-success' role='alert'>
@@ -9,8 +10,11 @@
                     </div>
                 </div>
 ";
+            url::redir("/ProjectCMS/main/index");
+
         }
         static function error($msg){
+            main::index();
             echo '
                 <div class="container">
                     <div class="errorResponse alert alert-dismissible alert-danger" role="alert">
@@ -18,5 +22,6 @@
                         <strong>Oh Snap! '. $msg .'</strong>
                     </div>
                 </div>';
+
         }
     }

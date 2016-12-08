@@ -110,7 +110,6 @@
                  <h4><strong>' . $product->price . ' DKK</strong></h4>
                  <h4>' . $product->upVote . '</h4>
                  <h4>'. $product->tags .'</h4>
-                 <button class="btn btn-success btn-group-justified"  type="button">Add to Cart</button>
                 </div>
             </div>
         </a>

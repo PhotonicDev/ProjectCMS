@@ -1,7 +1,7 @@
 <?php
 class main extends controller {
 
-    function index(){
+    static function index(){
 
         $posts = new main_model();
         $news = $posts->posts(3);
@@ -14,7 +14,7 @@ class main extends controller {
         load::view("main::index",$data);
         main::foot();
     }
-    private function ajax(){
+    static function ajax(){
         if(isset($_POST["add_to_cart"])){
              $data = session::get("LOC");
              $cart = session::get("cart");
@@ -44,14 +44,10 @@ class main extends controller {
             }
         }
     }
-    private function head(){
+    static function head(){
         $posts = new main_model();
         $main = new admins_login();
         main::ajax();
-        if(isset($_POST["login"])) {
-
-            $main->user_auth(url::post("username"),url::post("password"));
-        }
         if(isset($_POST["login"])) {
 
             $main->user_auth(url::post("username"),url::post("password"));
@@ -117,7 +113,7 @@ class main extends controller {
         main::foot();
     }
 
-    private function recommend(){
+    static function recommend(){
         $ran = rand(0,2);
         $model = new main_model();
 
@@ -193,4 +189,5 @@ class main extends controller {
             $msg = $main->updatePassword(url::post("current_pass"),url::post("new_pass"),url::post("renew_pass"));
         }
     }
+
 }

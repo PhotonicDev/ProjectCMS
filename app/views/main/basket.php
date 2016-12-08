@@ -1,11 +1,10 @@
 <?php
 $cart = session::get("cart");
-if(isset($basket)) {
+if(session::check("cart")) {
+    if(count($basket) > 0){
 
-    ?>
 
-    <?php
-    foreach( $basket as $count) {
+       foreach( $basket as $count) {
         echo ' <div class="well">
             <div class="row">
             <div class="col-md-1">
@@ -27,8 +26,8 @@ if(isset($basket)) {
            <strong>Manufacture:</strong>' . $count['manufacture'] . '<br />
             </div>
             <div class="col-md-6 text-right">
-            <h4>Price for each: '. $count["price"] .'</h4>
-            <h4>Amount:</h4><input type="number" name="amount" />
+            <h4>Price for each: '. $count["price"] .' DKK</h4>
+            <h4>Amount: <input type="number" name="amount" /></h4>
             </div>
             </div>
             </div>
@@ -73,6 +72,8 @@ if(isset($basket)) {
     </form>
 
     <?php
+    }
+
 }
 else {
     echo '<div class="container-fluid">

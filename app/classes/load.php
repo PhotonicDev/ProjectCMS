@@ -8,11 +8,6 @@ class load{
         }
         $viewFile = str_replace("::","/", $viewFile);
         $filename = $GLOBALS["config"]["path"]["app"]. "views/{$viewFile}";
-        if(file_exists($filename)){
             require_once $filename;
-        }
-        else {
-            die("trying to load non existing view");
-        }
     }
 }

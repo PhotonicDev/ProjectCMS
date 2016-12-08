@@ -14,6 +14,12 @@ class admins_login extends model{
         $this->model->query("SELECT * FROM `customers` WHERE `name`=? LIMIT 1",array($username));
         if($row = $this->model->fetch_assoc()){
             if(password_verify($password,$row['password'])){
+                $cart = session::get("cart");
+                $user_cart = explode(",",$row["basket"]);
+                $user_up = explode(",",$row["up_votes"]);
+
+                session::set("up",$user_up);
+                session::set("cart",array_merge($cart,$user_cart));
                 session::set("username",$username);
                 session::set("user_id",$row['customer_id']);
                 return "logged in!";

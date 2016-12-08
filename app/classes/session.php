@@ -38,6 +38,13 @@
             }
         }
         static function endSession() {
+            if(common::isUserLoggedIn()){
+                $main = new main_model();
+                $cart = session::get("cart");
+                $user = session::get("user_id");
+                $up = session::get("up");
+                $main->saveSession($cart,$user,$up);
+            }
             $_SESSION = array();
             if(isset($_COOKIE[session_name()])) {
                 setcookie(session_name(), '', time()-42000, '/', $_SERVER["HTTP_HOST"]);

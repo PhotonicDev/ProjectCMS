@@ -2,5 +2,5 @@ RewriteEngine On
 RewriteBase /ProjectCMS/
 
 #Other rules
-RewriteCond %{REQUEST_URI} !^.*\.(css|jpe?g|gif|png|js|ico)$ [NC]
+RewriteCond %{REQUEST_URI} !^.*\.(css|jpe?g|gif|png|js|ico|json)$ [NC]
 RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
