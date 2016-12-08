@@ -11,7 +11,7 @@ $GLOBALS['config'] = array(
         "index" => "index.php",
         "cache" => "caches/",
         "session" => "app/sessions",
-        "basePath" => "C:/wamp64/www/ProjectCMS/"
+        "basePath" => "C:/WAMP/wamp64/www/ProjectCMS/"
     ),
     "default" => array(
         "controller" => "main",
@@ -21,7 +21,7 @@ $GLOBALS['config'] = array(
     "database" => array(
         "host" => "localhost",
         "username" => "root",
-        "password" => "123",
+        "password" => "lpokji12",
         "name" => "db_cms"
     )
 );
