@@ -9,7 +9,7 @@ while ($product = mysqli_fetch_array($newsSelected)){
 
         <div class="row well">
             <div class="col-md-6">
-                <img class="img-responsive thumbnail" src="<?php echo $product['Image']; ?>"><br />
+                <img alt="News - <?php$product['Image']?>" class="img-responsive thumbnail" src="<?php echo $product['Image']; ?>"><br />
             </div>
             <div class="col-md-6">
                 <div class="well">

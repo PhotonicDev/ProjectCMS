@@ -1,7 +1,7 @@
 <?php
 class admins_login extends model{
     function auth($username, $password){
-        $this->model->query('SELECT * FROM `admin` WHERE `name`=?',
+        $this->model->query('SELECT * FROM `admin` WHERE `name`=? LIMIT 1',
             array($username)
         );
 
