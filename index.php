@@ -11,7 +11,7 @@ $GLOBALS['config'] = array(
         "index" => "index.php",
         "cache" => "caches/",
         "session" => "app/sessions",
-        "basePath" => "C:/WAMP/wamp64/www/ProjectCMS/"
+        "basePath" => "C:/wamp64/www/ProjectCMS/"
     ),
     "default" => array(
         "controller" => "main",
@@ -21,14 +21,13 @@ $GLOBALS['config'] = array(
     "database" => array(
         "host" => "localhost",
         "username" => "root",
-        "password" => "lpokji12",
+        "password" => "123",
         "name" => "db_cms"
     )
 );
 date_default_timezone_set("Europe/Copenhagen");
 $GLOBALS["instances"] = array();
 require_once $GLOBALS["config"]["path"]["app"]."autoload.php";
-
 ?>
 <html>
 <head>
@@ -95,7 +94,7 @@ new router();
                             var tags = val.tags.split(" ");
                             output += '<div class=" col-md-3 item-por">'+
                                 '<div class="items">' +
-                                '<a href="ProjectCMS/main/product?p=' + val.Product_ID + '">' +
+                                '<a href="/ProjectCMS/main/product?p=' + val.Product_ID + '">' +
                                 '<div class="itemWhite">' +
                                 '<img class="itemPicture" src="/ProjectCMS/assets/' + val.images + '">' +
                                 '</div>' +

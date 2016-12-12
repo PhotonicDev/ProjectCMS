@@ -1,10 +1,10 @@
 <?php
 $product = $products;
-$data = session::get("LOC");
-if(empty($data) || $data != $product['Product_ID']){
+$data["LOC"] = session::get("LOC");
+if(empty($data["LOC"]) || $data["LOC"] != $product['Product_ID']){
   //  $data["one"] = $product['upVote'];
-    $data = $product['Product_ID'];
-    session::set("LOC",$data);
+    $data["LOC"] = $product['Product_ID'];
+    session::set("LOC",$data["LOC"]);
 }
 ?>
 <div class="item container-fluid" xmlns="http://www.w3.org/1999/html">
@@ -16,7 +16,7 @@ if(empty($data) || $data != $product['Product_ID']){
                     <form method="post">
                         <button id="cart" name="add_to_cart" type="submit" class="btn-lg btn btn-success">Add to basket <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></button>
                         <?php
-                            if(common::isUserLoggedIn()){
+                            if(common::isUserLoggedIn() && session::check("up")){
                                 $array = session::get("up");
                                     if(empty($array)){
                                         $array = array();
@@ -112,11 +112,20 @@ if(empty($data) || $data != $product['Product_ID']){
 
                     if($comments != false || !empty($comments))
                     {
+
                     foreach($comments as $comment){
+                        if(common::isUserLoggedIn()){
+
 
                     $output .=	'
                     <div class="panel panel-default">
-                        <div class="panel-heading"><div class="row"><div class="col-md-6 text-left"><strong>'. $comment['name'] .'</strong></div> <div class="col-md-6 text-right">' . $comment['Likes'] . ' <button type="button" class="btn btn-success btn-sm" name="upComment">Up vote</button></div> </div>
+                        <div class="panel-heading"><div class="row">
+                            <div class="col-md-6 text-left"><strong>'. $comment['name'] .'</strong>
+                            </div> 
+                                <div class="col-md-6 text-right"><span class="label label-default">' . $comment['Likes'] . ' </span>
+                                    <button type="button" class="btn btn-success btn-sm" name="upComment">Up vote</button>
+                                </div> 
+                            </div>
                         </div>
                         <div class="panel-body">
                             <h5>'. $comment['Comments'] .'</h5>
@@ -125,7 +134,27 @@ if(empty($data) || $data != $product['Product_ID']){
                     </div>
                     ';
                     }
-                    echo $output;
+                    else {
+                        $output .=	'
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><div class="row">
+                            <div class="col-md-6 text-left"><strong>'. $comment['name'] .'</strong>
+                            </div> 
+                                <div class="col-md-6 text-right"><span class="label label-default">' . $comment['Likes'] . '</span> Up votes
+                                    
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <h5>'. $comment['Comments'] .'</h5>
+                        </div>
+
+                    </div>
+                    ';
+                    }
+                        }
+
+                        echo $output;
                     }
                     else
                     {

@@ -93,7 +93,7 @@
                         if ($num == 0) {
                             $output .= '<div class="row">';
                         }
-                        $tags = explode(' ', $product->tags);
+                        $tags = explode(' ', $product->tags, 3 );
 
                         $output .= '
 <div class="col-md-3 item-por">
@@ -109,7 +109,11 @@
     			 </h4>
                  <h4><strong>' . $product->price . ' DKK</strong></h4>
                  <h4>' . $product->upVote . '</h4>
-                 <h4>'. $product->tags .'</h4>
+                 ';
+                      foreach($tags as $tag){
+                          $output .= '<span class="label label-default">' . $tag . '</span> ';
+                      }
+                            $output .='
                 </div>
             </div>
         </a>

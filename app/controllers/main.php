@@ -16,18 +16,20 @@ class main extends controller {
     }
     static function ajax(){
         if(isset($_POST["add_to_cart"])){
-             $data = session::get("LOC");
+            unset($_POST["add_to_cart"]);
+            $data["LOC"] = session::get("LOC");
              $cart = session::get("cart");
             if(session::check("cart")){
-                array_push($cart, $data);
+                array_push($cart, $data["LOC"]);
             }
             else {
-                $cart = array();
-                array_push($cart, $data);
+                $cart = array($data["LOC"]);
+              //  array_push($cart, $data["LOC"]);
             }
             session::set("cart",$cart);
         }
         if(isset($_POST["up_vote"])){
+            unset($_POST["up_vote"]);
             if(common::isUserLoggedIn()){
                 $id = session::get("LOC");
                 $vote = session::get("up");
@@ -49,8 +51,9 @@ class main extends controller {
         $main = new admins_login();
         main::ajax();
         if(isset($_POST["login"])) {
-
+            unset($_POST["login"]);
             $main->user_auth(url::post("username"),url::post("password"));
+
         }
         if(isset($_POST["submit_comment"])){
             $mess = $posts->postComment(session::get("username"),url::get("p"), url::post("postName"),url::post("comment"));
@@ -77,7 +80,7 @@ class main extends controller {
         }
 
     }
-    private function foot(){
+    static function foot(){
         load::view("partial::foot");
     }
 
@@ -143,13 +146,19 @@ class main extends controller {
         }
     }
     function basket(){
-        $data = session::get("cart");
-        $main = new main_model();
-        $data["basket"]= $main->basket($data);
-
-        main::head();
-        load::view("main::basket",$data);
-        main::foot();
+        if(session::check("cart")){
+            $fata = session::get("cart");
+            $main = new main_model();
+            $data["basket"] = $main->basket($fata);
+            main::head();
+            load::view("main::basket",$data);
+            main::foot();
+        }
+        else {
+            main::head();
+            load::view("main::basket");
+            main::foot();
+        }
     }
     private static function prod(){
         $products = new main_model();

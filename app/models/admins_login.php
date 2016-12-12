@@ -20,22 +20,44 @@ class admins_login extends model{
         $this->model->query("SELECT * FROM `customers` WHERE `name`=? LIMIT 1",array($username));
         if($row = $this->model->fetch_assoc()){
             if(password_verify($password,$row['password'])){
-                $cart = session::get("cart");
-                $user_cart = explode(",",$row["basket"]);
-                $user_up = explode(",",$row["up_votes"]);
+                if(session::check("cart")){
+                    $cart = session::get("cart");
+                    if(!empty($row["basket"])){
+                        if($row["basket"]){
 
-                session::set("up",$user_up);
-                session::set("cart",array_merge($cart,$user_cart));
+                        }
+                        $user_cart = explode(" ",$row["basket"]);
+                        $super_cart = array_merge($cart,$user_cart);
+
+                    }
+                    else{
+                        $super_cart = $cart;
+                    }
+
+                }
+                elseif(empty($cart) && !empty($row["basket"])) {
+                    $super_cart = explode(" ",$row["basket"]);
+                }
+                else {
+                    $super_cart = array();
+                }
+                session::set("cart",$super_cart);
+                if(!empty($row["up_votes"])){
+                    $user_up = explode(" ",$row["up_votes"]);
+                    session::set("up",$user_up);
+
+                }
+
                 session::set("username",$username);
                 session::set("user_id",$row['customer_id']);
-                return "logged in!";
+                message::note("You are logged in!");
             }
             else {
-                return "Incorrect password";
+                message::error("Incorrect password, please try again!");
             }
             }
         else{
-            return false;
+            message::error("User does not exist!");
         }
     }
     function profile($username,$id){

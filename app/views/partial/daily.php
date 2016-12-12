@@ -4,13 +4,16 @@
 </div>
 
 <div class="container-fluid">
+
     <?php
     $output ='';
 
     foreach( $daily as $product) {
+        $tags = explode(" ",$product['tags'], 3);
         $output .='
+        <div class="item-por">
 <div class="items center-block">
-    <a href="index.php?product='. $product['name'].'">
+    <a href="/ProjectCMS/main/product?p='. $product['Product_ID'].'">
         <div class="itemWhite">
             <img class="itemPicture" src="/ProjectCMS/assets/'. $product['images'].'">
         </div>
@@ -29,10 +32,15 @@
             <h4>
                 ' . $product['upVote'] . '
             </h4>
-            <button class="btn btn-success btn-group-justified"  type="button">Add to Cart</button>
+            ';
+            foreach( $tags as $tag){
+                $output .= "<span class='label label-default'>" . $tag . "</span> ";
+            }
+        $output .= '
             </div>
         </div>
     </a>
+</div>
 </div>
 			';
 

@@ -11,14 +11,14 @@ class main_model extends model {
     }
     function saveSession($cart,$name,$up){
          if(is_array($cart)){
-             $cart = implode(",",$cart);
+             $cart = implode(" ",$cart);
          }
         if(is_array($up)){
-            $up = implode(",",$up);
+            $up = implode(" ",$up);
         }
         $date = $this->model->query("UPDATE `customers` SET `basket`=? AND `up_votes`=? WHERE `customer_id`=?",
-            array($cart,$name,$up));
-        return "Bye!";
+            array($cart,$up,$name));
+        message::note("Logged out! Have a nice day!");
     }
     function posts($limit){
          if($limit == 0) {
@@ -92,6 +92,7 @@ class main_model extends model {
     function basket($data){
         if(!empty($data)){
             $new = implode(",", $data);
+            var_dump($new);
             $this->model->query("SELECT * FROM `products` WHERE `Product_ID` IN($new)");
             $products = $this->model->fetch_all_kv();
             return $products;

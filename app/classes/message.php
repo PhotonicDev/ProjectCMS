@@ -10,8 +10,6 @@
                     </div>
                 </div>
 ";
-            url::redir("/ProjectCMS/main/index");
-
         }
         static function error($msg){
             main::index();

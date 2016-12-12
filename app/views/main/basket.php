@@ -1,6 +1,6 @@
 <?php
 $cart = session::get("cart");
-if(session::check("cart")) {
+if(!empty($basket)) {
     if(count($basket) > 0){
 
 
@@ -27,7 +27,7 @@ if(session::check("cart")) {
             </div>
             <div class="col-md-6 text-right">
             <h4>Price for each: '. $count["price"] .' DKK</h4>
-            <h4>Amount: <input type="number" name="amount" /></h4>
+            <h4>Amount: <input min="0" type="number" name="amount" /></h4>
             </div>
             </div>
             </div>
