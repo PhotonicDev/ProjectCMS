@@ -85,8 +85,10 @@ class admins_login extends model{
             }
         }
         else{
+            $iterations = ['cost' => 10]; // encrypting password - hashing it 10 times
+            $hashed_password = password_hash($password, PASSWORD_BCRYPT, $iterations);
         $this->model->query('INSERT INTO `customers` (`name`,`password`,`email`) VALUES (?,?,?)',
-            array($username,$password,$email));
+            array($username,$hashed_password,$email));
         return "Welcome to polyDuck ".$username."!";
         }
 
