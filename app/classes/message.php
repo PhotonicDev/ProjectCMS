@@ -1,7 +1,6 @@
 <?php
     class message{
         static function note($type){
-            main::index();
             echo "
                 <div class='container'>
                     <div class='errorResponse alert alert-dismissible alert-success' role='alert'>
@@ -12,7 +11,6 @@
 ";
         }
         static function error($msg){
-            main::index();
             echo '
                 <div class="container">
                     <div class="errorResponse alert alert-dismissible alert-danger" role="alert">
