@@ -40,15 +40,19 @@ VALUES (?,?,?,?,?,?,?,?,?,?,0,0)' ,
 
         }
 
-        function deleteProduct(){
-             $this->model->query("DELETE FROM `products` WHERE `Product_ID`=?",array(url::post("Product_ID")));
-             var_dump(url::post("Product_ID"));
+        function deleteProduct($id){
+            var_dump($id);
+        //    $var = $this->model->connect();
 
+             $msg = $this->model->query("DELETE FROM `products` WHERE `Product_ID`=?",
+                 array($id));
+            var_dump($this->model->error);
         }
 
 
         function delete_news($page) {
             $this->model->query("DELETE FROM `newspage` WHERE `Page_ID`=?",array($page));
+            url::reload();
         }
         function addNews(){
             $header = url::post("add_news_header");
@@ -137,11 +141,12 @@ VALUES (NULL, ?,?,NOW(),?)",array($filepath,$text,$header));
 
      function updating_news()
      {
-         if (isset($_FILES["uploadimage"])) {
+
+         if (file_exists($_FILES["uploadimage"]["name"] || is_uploaded_file($_FILES["uploadimage"]["tmp_name"]))) {
              $filepath = $this->pictureLink($_FILES["uploadimage"]);
          }
-         else{$filepath = url::post("spareImage");
-             var_dump(url::post("spareImage"));
+         else{
+             $filepath = url::post("spareImage");
          }
 
 
@@ -155,12 +160,12 @@ VALUES (NULL, ?,?,NOW(),?)",array($filepath,$text,$header));
 
 
 
-                 message::note('success!');
+         message::note('success!');
 
 
 
 
-             url::reload();
+         url::reload();
 
          }
 

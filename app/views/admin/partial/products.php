@@ -4,7 +4,7 @@
 $product = $products;
 
 
-   if(!session::check('LOC')|| session::get('LOC') != $product['Product_ID']){
+   if(session::check('LOC') == false || session::get('LOC') != $product['Product_ID']){
        session::set("LOC",$product['Product_ID']);
    }
 

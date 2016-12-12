@@ -5,6 +5,7 @@ class database{
     public $current_field = "";
     public $lengths = "";
     public $num_rows = "";
+    public $error = '';
 
     function connect($host,$username,$password,$database = null){
         if(is_null($database)){

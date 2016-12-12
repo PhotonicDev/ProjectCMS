@@ -1,41 +1,39 @@
 <?php
     class admin extends controller {
 
-
         function index(){
             if(common::isAdminLoggedIn()){
 
                admin::home();
 
             }
-            else{
-                if(url::post("username") && url::post("password")){
+            elseif(url::post("username") && url::post("password")){
                     $admins = new admins_login();
                     $user = $admins->auth(url::post("username"),url::post("password"));
-
+                    var_dump($_SESSION);
+                    unset($_POST["username"]);
+                    unset($_POST["password"]);
                     if(is_array($user)){
                         session::set("admin_id",$user["admin_id"]);
                         session::set("name",$user["name"]);
                         admin::home();
                     }
                     else{
-                        message::error("incorrect username");
+
+                        message::error_admin("incorrect username");
                         load::view("admin::login");
 
                     }
-                }
-                else {
-                    load::view("admin::login");
-                }
             }
-            admin::invoke();
-
+            else{
+                load::view("admin::login");
+            }
         }
-        private function invoke(){
+        static function invoke(){
             $edit = new edit();
             if(isset($_POST["logout"])){
                 common::doAdminLogout();
-                url::redir("index");
+                url::redir("/ProjectCMS/admin/index");
             }
 
             if(isset($_POST["btn_insert_new"])){
@@ -69,7 +67,8 @@
             }
 
             if(isset($_POST["btn_delete"])){
-                $edit->deleteProduct();
+                $edit->deleteProduct(url::post("Product_ID"));
+                //url::redir("/ProjectCMS/admin/index");
             }
 
         }
@@ -77,65 +76,66 @@
 
 
         private function permission(){
-            if(!common::isAdminLoggedIn()){
-                url::redir("admin");
+            if(common::isAdminLoggedIn() == false){
+                url::redir("/ProjectCMS/admin/index");
             }
         }
 
-        private function home(){
-            $main = new main_model();
+         function home(){
+             admin::permission();
+             $main = new main_model();
             $data["items"] = $main->allProducts();
             load::view("admin::index",$data);
             admin::invoke();
-            admin::permission();
         }
         function contacts(){
+            admin::permission();
             $posts = new main_model();
             $data["contacts"] = $posts->contacts();
             load::view("admin::partial::panel");
             load::view("admin::partial::contacts",$data);
             admin::invoke();
-            admin::permission();
 
         }
         function description(){
+            admin::permission();
             $posts = new main_model();
             $data["description"] = $posts->description();
             load::view("admin::partial::panel");
             load::view("admin::partial::description",$data);
             admin::invoke();
-            admin::permission();
 
 
         }
         function newsfeed(){
+            admin::permission();
             $posts = new main_model();
             $data["news"] = $posts->posts(0);
             load::view("admin::partial::panel");
             load::view("admin::partial::newsfeed",$data);
             admin::invoke();
-            admin::permission();
 
 
         }
         function product(){
+            admin::permission();
             if(url::get("p")){
                 $posts = new main_model();
                 $data["products"] = $posts->productId(url::get("p"));
                 load::view("admin::partial::panel");
                 load::view("admin::partial::products",$data);
                 admin::invoke();
-                admin::permission();
 
 
             }
 
         }
         function add_new(){
+            admin::permission();
+
             load::view("admin::partial::panel");
             load::view("admin::partial::add");
             admin::invoke();
-            admin::permission();
 
         }
 

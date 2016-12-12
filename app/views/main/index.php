@@ -37,7 +37,7 @@
 
                                             $output .=  "<!-- Wrapper for slides -->
         <div class='item active'>
-            <img class='bound-img' src='/ProjectCMS/assets/web_images/" .  $new['Image'] . "' alt='...'>
+            <img class='bound-img' src='/ProjectCMS/assets/" .  $new['Image'] . "' alt='...'>
             <div class='carousel-caption'>
                 <h3>" .  $new['Header'] . "</h3>
                 <p>" . $new['Description'].  "</p>
@@ -48,7 +48,7 @@
                                         else {
                                             $output .=  "<!-- Wrapper for slides -->
         <div class='item'>
-            <img class='bound-img' src='/ProjectCMS/assets/web_images/" .  $new['Image'] . "' alt='...'>
+            <img class='bound-img' src='/ProjectCMS/assets/" .  $new['Image'] . "' alt='...'>
             <div class='carousel-caption'>
                 <h3>" .  $new['Header'] . "</h3>
                 <p>" . $new['Description'].  "</p>

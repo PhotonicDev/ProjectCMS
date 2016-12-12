@@ -91,8 +91,8 @@ class main_model extends model {
     }
     function basket($data){
         if(!empty($data)){
+            var_dump($data);
             $new = implode(",", $data);
-            var_dump($new);
             $this->model->query("SELECT * FROM `products` WHERE `Product_ID` IN($new)");
             $products = $this->model->fetch_all_kv();
             return $products;

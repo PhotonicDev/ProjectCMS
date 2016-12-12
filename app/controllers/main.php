@@ -21,10 +21,12 @@ class main extends controller {
              $cart = session::get("cart");
             if(session::check("cart")){
                 array_push($cart, $data["LOC"]);
+
             }
             else {
-                $cart = array($data["LOC"]);
-              //  array_push($cart, $data["LOC"]);
+                $cart = array(
+                    0 => $data["LOC"]
+                );
             }
             session::set("cart",$cart);
         }
@@ -64,7 +66,7 @@ class main extends controller {
     }
     function logout(){
         common::doUserLogout();
-        url::redir("/ProjectCMS/main/index");
+        message::note("You are logged out!");
     }
     function product(){
         $posts = new main_model();
@@ -76,7 +78,7 @@ class main extends controller {
             main::foot();
         }
         else{
-            url::redir("/ProjectCMS/main/index");
+            message::error("Something went wrong or you tried to access a page that does not exist!");
         }
 
     }

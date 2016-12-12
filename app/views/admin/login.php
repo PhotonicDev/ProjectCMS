@@ -1,4 +1,6 @@
-
+<?php
+    var_dump($_SESSION);
+?>
 
 <div class="container-fluid jumbotron">
     <div class="container">

@@ -26,9 +26,6 @@ class admins_login extends model{
                 if(session::check("cart")){
                     $cart = session::get("cart");
                     if(!empty($row["basket"])){
-                        if($row["basket"]){
-
-                        }
                         $user_cart = explode(" ",$row["basket"]);
                         $super_cart = array_merge($cart,$user_cart);
 
@@ -81,18 +78,18 @@ class admins_login extends model{
         if($this->model->num_rows > 0){
             $row = $this->model->fetch_assoc();
             if(!empty($row["name"])){
-                return "Name is already used by someone else";
+                message::error("Name is already in use!");
             }
             else {
-                return "Email is already used by someone else";
+                message::error("Email is already used by someone else");
             }
         }
         else{
             $iterations = ['cost' => 10]; // encrypting password - hashing it 10 times
             $hashed_password = password_hash($password, PASSWORD_BCRYPT, $iterations);
-        $this->model->query('INSERT INTO `customers` (`name`,`password`,`email`) VALUES (?,?,?)',
+            $this->model->query('INSERT INTO `customers` (`name`,`password`,`email`) VALUES (?,?,?)',
             array($username,$hashed_password,$email));
-        return "Welcome to polyDuck ".$username."!";
+            message::note("Welcome to polyDuck" . $username . "!");
         }
 
 
