@@ -1,16 +1,19 @@
 <div class="col-md-9">
 <?php
 
-
 $product = $products;
-    $_SESSION['LOC'][1] = $product['Product_ID'];
+
+
+   if(!session::check('LOC')|| session::get('LOC') != $product['Product_ID']){
+       session::set("LOC",$product['Product_ID']);
+   }
 
 echo '   <form id="adminform" method="post" enctype="multipart/form-data">
 	<div class="item container-fluid">
 		<div class="row">
 			<div class="col-md-6">
 				<div class="itemImageFrame">
-					<img class="itemPictureBig thumbnail" src="/ProjectCMS/assets/' . $product['images'] . '">
+					<img class="itemPictureBig thumbnail" alt="Duck - '. $product['images'] .'" src="/ProjectCMS/assets/' . $product['images'] . '">
 					<br>
 					<input class="input-group" type="file" name="uploadimage"/>
 				</div>
@@ -65,9 +68,7 @@ echo '   <form id="adminform" method="post" enctype="multipart/form-data">
             <div class="row" id="commentsection">
                 <div class="col-md-9">
                     <div id="commentSection" class="container">
-                        <div id="loader-icon">
-                            <img src="view/web_images/LoaderIcon.gif" />
-                        </div>
+
                         <div id="rowcount">
 
                         </div>

@@ -50,9 +50,10 @@
             <div class="row">
             <div class="col-md-6">
                <input style="display:none;" type="text" name="Page_ID" value="'.$post['Page_ID'].'">
-                <img class="postImage img-responsive" src="/ProjectCMS/assets/web_images/'.$post['Image'].'">
+                <img alt="News - '. $post['images'] .'" class="postImage img-responsive" src="/ProjectCMS/assets/'.$post['Image'].'">
                 <br>
                 <input class="input-group" type="file" name="uploadimage"/>
+                <input type="hidden" value="'.$post['Image'].'" name="spareImage"/>
             </div>
             <div class="col-md-6">
               <h1><input type="text" name="update_news_header" value="'.$post['Header'].'"></h1>

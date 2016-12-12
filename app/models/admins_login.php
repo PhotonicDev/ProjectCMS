@@ -4,9 +4,12 @@ class admins_login extends model{
         $this->model->query('SELECT * FROM `admin` WHERE `name`=?',
             array($username)
         );
-        if($row = $this->model->fetch_assoc()){
+
+       $row = $this->model->fetch_assoc();
+
+        if($this->model->num_rows != 0){
             if(password_verify($password,$row['password'])){
-                return "logged in!";
+                return $row;
             }
             else {
                 return "Incorrect password";
