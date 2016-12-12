@@ -60,4 +60,10 @@ class url{
             die();
         }
     }
+
+    static function reload(){
+        $server = $_SERVER['REQUEST_URI'];
+        url::redir($server);
+
+    }
 }

@@ -2,9 +2,7 @@
 
 <div class="container-fluid jumbotron">
     <div class="container">
-        <div style="color:#F00"><?php
-            var_dump($_SESSION);
-            ?></div>
+        <div style="color:#F00"></div>
         <div class="row admin-row">
             <div class="col-md-4">
                 <form method="post">
