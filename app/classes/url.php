@@ -49,27 +49,31 @@ class url{
         }
         return $prefix;
     }
-    static function redir($to, $message = '' ,$exit = true){
-
-        if(headers_sent()){
-            echo "<script>window.location = '{$to}';</script>";
-            if(!empty($message)){
-                message::error($message);
+    static function redir($to,$error = "", $exit = true){
+        if($error != "") {
+            if (headers_sent()) {
+                session::set("error",$error);
+                echo "<script>window.location = '{$to}';</script>";
+            } else {
+                session::set("error",$error);
+                header("location: {$to}");
             }
         }
         else {
-            header("location: {$to}");
-            if(!empty($message)){
-                message::error($message);
+            if (headers_sent()) {
+
+                echo "<script>window.location = '{$to}';</script>";
+            } else {
+                header("location: {$to}");
             }
         }
         if($exit){
             die();
         }
     }
-    static function reload($message = ''){
+    static function reload($message = ""){
         $server = $_SERVER['REQUEST_URI'];
-        url::redir($server, $message);
+        url::redir($server,$message);
 
     }
 }

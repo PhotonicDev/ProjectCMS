@@ -4,14 +4,14 @@ ini_set("display_errors",1);
 $GLOBALS['config'] = array(
     "appName" => "polyDuck",
     "version" => "0.0.1",
-    "domain" => "myOwn",
+    "domain" => "ProjectCMS",
     "cache_enabled" => true,
     "path" => array(
         "app" => "app/",
         "index" => "index.php",
         "cache" => "caches/",
         "session" => "app/sessions",
-        "basePath" => "C:/WAMP/wamp64/www/ProjectCMS/"
+        "basePath" => "C:/wamp64/www/ProjectCMS/"
     ),
     "default" => array(
         "controller" => "main",
@@ -21,7 +21,7 @@ $GLOBALS['config'] = array(
     "database" => array(
         "host" => "localhost",
         "username" => "root",
-        "password" => "lpokji12",
+        "password" => "123",
         "name" => "db_cms"
     )
 );
@@ -63,6 +63,48 @@ require_once $GLOBALS["config"]["path"]["app"]."autoload.php";
 new router();
 ?>
 </div>
+<?php
+if(session::get("error") != ""){
+    $output = "";
+    switch (session::get("error")) {
+        case 1;
+            $output = "Incorrect username or password";
+            break;
+        case 2;
+            $output = "Username does not exist";
+            break;
+        case 3;
+            $output = "Something went wrong or you tried to access a page that does not exist!";
+            break;
+        case 4;
+            $output = "Name is already in use!";
+            break;
+        case 5;
+            $output = "Email is already used by someone else";
+            break;
+        case 6;
+            $output = "Server internal error";
+            break;
+        case 7;
+            $output = "You must be logged in to update your profile";
+            break;
+        case 8;
+            $output = "Passwords doesn't match!";
+            break;
+        case 9;
+            $output = "You've entered wrong password!";
+            break;
+
+    }
+    session::set("error","");
+    echo "<div class='container'>
+                    <div class='errorResponse alert alert-dismissible alert-danger' role='alert'>
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                        <strong>Oh Snap! " . $output . "!</strong>
+                    </div>
+                </div>";
+}
+?>
 <script type="application/javascript">
     function swingIn(output){
         $('#static').hide( 500 ,"swing");

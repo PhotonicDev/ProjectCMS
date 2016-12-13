@@ -41,12 +41,23 @@
                     if(session::check("username")){
                         echo "
                           <li><a href='/ProjectCMS/main/profile'><span class='glyphicon glyphicon-user' aria-hidden='true'></span></a></li>
-                          <li><a href='/ProjectCMS/main/basket'><span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span></a></li>
-                          <li><a href='/ProjectCMS/main/logout' ><span class='glyphicon glyphicon-log-out' aria-hidden='true'></span></a></li>";
+                          <li><a href='/ProjectCMS/main/logout' ><span class='glyphicon glyphicon-log-out' aria-hidden='true'></span></a></li>
+                          ";
                     }
                     else {
                         echo   "<li><a data-toggle='modal' data-target='.bs-example-modal-lg' class='loginModal'><span class='glyphicon glyphicon-log-in' aria-hidden='true'></span></a></li>
-                         <li><a href='/ProjectCMS/main/basket'><span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span></a></li>";
+                         ";
+                    }
+                    if(session::check("cart") && count(session::get("cart")) > 0){
+                        $count = count(session::get("cart"));
+                        echo "
+                                                 <li><a href='/ProjectCMS/main/basket'><span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span><span class='badge basket-badge'>$count</span></a></li>
+                        ";
+                    }
+                    else {
+                        echo "
+                                                 <li><a href='/ProjectCMS/main/basket'><span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span></a></li>
+                        ";
                     }
 
                     ?>

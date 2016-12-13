@@ -19,8 +19,7 @@
                     }
                     else{
 
-                        message::error_admin("incorrect username");
-                        load::view("admin::login");
+                        url::redir("/ProjectCMS/admin/index",1);
 
                     }
             }

@@ -1,7 +1,7 @@
 <?php
-    class message{
-        static function note($type){
-            echo "
+class message{
+    static function note($type){
+        echo "
                 <div class='container'>
                     <div class='errorResponse alert alert-dismissible alert-success' role='alert'>
                         <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
@@ -9,27 +9,5 @@
                     </div>
                 </div>
 ";
-        }
-        static function error($msg){
-            url::reload($msg);
-            echo "
-                <div class='container'>
-                    <div class='errorResponse alert alert-dismissible alert-danger' role='alert'>
-                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-                        <strong>Oh Snap! {$msg}</strong>
-                    </div>
-                </div>";
-
-        }
-        static function error_admin($msg){
-            load::view("admin::login");
-            echo "
-                <div class='container'>
-                    <div class='errorResponse alert alert-dismissible alert-danger' role='alert'>
-                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-                        <strong>Oh Snap! {$msg}</strong>
-                    </div>
-                </div>";
-
-        }
     }
+}

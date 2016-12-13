@@ -68,10 +68,10 @@ class main_model extends model {
         $data = $this->model->fetch_assoc();
         return $data;
     }
-    function postComment($username, $id,$name, $comment)
+    function postComment($username, $id, $comment)
     {
         $this->model->query("INSERT INTO `social_pages` (`name`,`Product_ID`,`Comments`,`Likes`) VALUES(?,?,?,'0')",
-            array($username, $id, $comment));
+            array( common::clean($username),  common::clean($id),  common::clean($comment)));
         return "posted";
     }
     function upVote($id){

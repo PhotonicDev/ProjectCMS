@@ -43,7 +43,7 @@ spl_autoload_register(function($class){
 
     }
     else{
-        message::error("Page not found 404");
+       url::redir("/ProjectCMS/main/index",3);
     }
     if($instantiable){
         foreach($GLOBALS["instances"] as $instance){

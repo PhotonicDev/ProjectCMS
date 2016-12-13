@@ -17,7 +17,7 @@
             return common::isUserLoggedIn();
         }
         static function clean($var){
-            $new = mysqli::real_escape_string($var);
+            $new = htmlspecialchars($var);
             return $new;
         }
     }

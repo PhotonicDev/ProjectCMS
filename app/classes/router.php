@@ -12,11 +12,11 @@
                       $controller->$route["method"]();
                 }
                 else {
-                    message::error("Page not found 404");
+                    url::redir("/ProjectCMS",3);
                 }
             }
             else{
-                message::error("Page not found 404");
+                url::redir("/ProjectCMS",3);
             }
         }
         private function routePart($route){

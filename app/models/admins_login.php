@@ -12,15 +12,15 @@ class admins_login extends model{
                 return $row;
             }
             else {
-                return "Incorrect password";
+                url::reload(1);
             }
 
         }else{
-            return false;
+            url::reload(2);
         }
     }
     function user_auth($username,$password){
-        $this->model->query("SELECT * FROM `customers` WHERE `name`=? LIMIT 1",array($username));
+        $this->model->query("SELECT * FROM `customers` WHERE `name`=? LIMIT 1",array(common::clean($username)));
         if($row = $this->model->fetch_assoc()){
             if(password_verify($password,$row['password'])){
                 if(session::check("cart")){
@@ -50,14 +50,14 @@ class admins_login extends model{
 
                 session::set("username",$username);
                 session::set("user_id",$row['customer_id']);
-                message::note("You are logged in!");
+                message::note("You are logged in! Welcome back " . $username . "!");
             }
             else {
-                message::error("Incorrect password, please try again!");
+                url::reload(1);
             }
             }
         else{
-            message::error("User does not exist!");
+            url::reload(2);
         }
     }
     function profile($username,$id){
@@ -73,22 +73,22 @@ class admins_login extends model{
     }
     function register($username,$password,$email){
         $this->model->query("SELECT `name`,`email` FROM `customers` WHERE `name`=? OR `email`=? ",
-            array($username,$email));
+            array( common::clean($username), common::clean($email)));
 
         if($this->model->num_rows > 0){
             $row = $this->model->fetch_assoc();
             if(!empty($row["name"])){
-                message::error("Name is already in use!");
+                url::reload(4);
             }
             else {
-                message::error("Email is already used by someone else");
+                url::reload(5);
             }
         }
         else{
             $iterations = ['cost' => 10]; // encrypting password - hashing it 10 times
             $hashed_password = password_hash($password, PASSWORD_BCRYPT, $iterations);
             $this->model->query('INSERT INTO `customers` (`name`,`password`,`email`) VALUES (?,?,?)',
-            array($username,$hashed_password,$email));
+            array( common::clean($username),$hashed_password, common::clean($email)));
             message::note("Welcome to polyDuck" . $username . "!");
         }
 
@@ -98,18 +98,17 @@ class admins_login extends model{
         if(common::isUserLoggedIn()){
             $user = session::get("user_id");
             $msg = $this->model->query("UPDATE `customers` SET `firstName`=? ,`lastName`=?, `Address`=?, `birth`=? WHERE `customer_id`=?"
-                        ,array($firstName,$lastName,$address,$birthDay,$user));
+                        ,array(common::clean($firstName),common::clean($lastName),common::clean($address),common::clean($birthDay),common::clean($user)));
             if($msg == false){
-                return "Server internal error";
+                url::reload(6);
             }
             else {
-                return "Success!";
+                message::note("Your profile information has been updated!");
 
             }
         }
         else{
-            url::redir("/ProjectCMS/main/index");
-            return "you must be logged in to update your profile";
+            url::redir("/ProjectCMS/main/index",7);
 
         }
     }
@@ -123,20 +122,19 @@ class admins_login extends model{
                 if(password_verify($current,$row['password'])){
                     $this->model->query("UPDATE `customers` SET `password`=? WHERE `customer_id`=?",
                         array($new,$user));
-                    return "You've updated your password!";
+                    message::note("You have updated your password!");
                 }
                 else {
-                    return "You've entered wrong password!";
+                    url::reload(9);
                 }
             }
             else{
-                return "Passwords doesn't match!";
+                url::reload(8);
             }
 
         }
         else {
-            url::redir("/ProjectCMS/main/index");
-            return "you must be logged in to update your password";
+            url::redir("/ProjectCMS/main/index",7);
 
         }
     }

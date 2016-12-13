@@ -58,7 +58,7 @@ class main extends controller {
 
         }
         if(isset($_POST["submit_comment"])){
-            $mess = $posts->postComment(session::get("username"),url::get("p"), url::post("postName"),url::post("comment"));
+            $mess = $posts->postComment(session::get("username"),url::get("p"),url::post("comment"));
             echo $mess;
         }
         load::view("partial::nav");
@@ -66,8 +66,7 @@ class main extends controller {
     }
     function logout(){
         common::doUserLogout();
-        message::note("You are logged out!");
-        url::redir("/ProjectCMS/main/index");
+        url::redir("/ProjectCMS/main");
     }
     function product(){
         $posts = new main_model();
@@ -79,7 +78,7 @@ class main extends controller {
             main::foot();
         }
         else{
-            message::error("Something went wrong or you tried to access a page that does not exist!");
+            url::redir("/ProjectCMS/",3);
         }
 
     }
@@ -105,9 +104,7 @@ class main extends controller {
 
         if(isset($_POST["register"])) {
             $posts = new admins_login();
-           $mess = $posts->register(url::post("username"),url::post("password"),url::post("email"));
-            echo $mess;
-            url::redir("/ProjectCMS/main/index");
+            $posts->register(url::post("username"),url::post("password"),url::post("email"));
         }
     }
     function info(){
@@ -187,11 +184,11 @@ class main extends controller {
                 main::foot();
             }
             else {
-                url::redir("/ProjectCMS/main/index");
+                url::redir("/ProjectCMS/main/index",7);
             }
         }
         else{
-            url::redir("/ProjectCMS/main/index");
+            url::redir("/ProjectCMS/main/index",7);
         }
         if(isset($_POST["update_profile"])){
             $msg = $main->updateProfile(url::post("firstName"),url::post("lastName"),url::post("Address"),url::post("birthDay"));
