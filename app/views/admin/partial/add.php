@@ -13,7 +13,10 @@
 					<br>
 
 					<input class="input-group" type="file" name="uploadimage"/>
-
+					<Br>
+					<div class="panel panel-default">
+						<li class="list-group-item">Image alt tag<strong><input name="alt_tag" id="product_input" type="text"></strong></li>
+					</div>
 				</div>
 			</div>
 			<div class="col-md-6">

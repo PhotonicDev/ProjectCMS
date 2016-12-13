@@ -12,6 +12,9 @@
                     <a class="btn btn-sm btn-primary" href="/ProjectCMS/admin/index">Products<span class="glyphicon glyphicon-th" aria-hidden="true"></span> </a>
                 </li>
                 <li>
+                    <a class="btn btn-sm btn-primary" href="/ProjectCMS/admin/daily">Daily Products<span class="glyphicon glyphicon-th" aria-hidden="true"></span> </a>
+                </li>
+                <li>
                     <a class="btn btn-sm btn-primary" href="/ProjectCMS/admin/newsfeed">Newsfeed</a>
                 </li>
                 <li>

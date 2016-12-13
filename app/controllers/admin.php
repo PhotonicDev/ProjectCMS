@@ -10,7 +10,6 @@
             elseif(url::post("username") && url::post("password")){
                     $admins = new admins_login();
                     $user = $admins->auth(url::post("username"),url::post("password"));
-                    var_dump($_SESSION);
                     unset($_POST["username"]);
                     unset($_POST["password"]);
                     if(is_array($user)){
@@ -61,7 +60,7 @@
                 $edit->updating_news();
             }
 
-            if(isset($_POST["update_news"])){
+            if(isset($_POST["btn_save_updates"])){
 
                 $edit->updateProduct();
             }
@@ -129,7 +128,18 @@
 
             }
 
+
+
         }
+        function daily(){
+            admin::permission();
+            $posts = new main_model();
+            $data["daily"] = $posts->Daily();
+            load::view("admin::partial::panel");
+            load::view("admin::partial::daily",$data);
+
+        }
+
         function add_new(){
             admin::permission();
 

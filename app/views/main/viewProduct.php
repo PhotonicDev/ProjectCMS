@@ -11,7 +11,7 @@ if(empty($data["LOC"]) || $data["LOC"] != $product['Product_ID']){
     <div class="row">
         <div class="col-md-6">
             <div class="itemImageFrame panel panel-default">
-                <img class="itemPictureBig thumbnail" src="/ProjectCMS/assets/<?php echo $product['images']; ?>"><br />
+                <img class="itemPictureBig thumbnail" alt="<?php echo $product['alt'] ?>" src="/ProjectCMS/assets/<?php echo $product['images']; ?>"><br />
                 <div class="btn-group productControl text-center">
                     <form method="post">
                         <button id="cart" name="add_to_cart" type="submit" class="btn-lg btn btn-success">Add to basket <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></button>

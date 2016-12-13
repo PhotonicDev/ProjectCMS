@@ -67,6 +67,7 @@ class main extends controller {
     function logout(){
         common::doUserLogout();
         message::note("You are logged out!");
+        url::redir("/ProjectCMS/main/index");
     }
     function product(){
         $posts = new main_model();

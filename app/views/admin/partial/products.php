@@ -13,9 +13,14 @@ echo '   <form id="adminform" method="post" enctype="multipart/form-data">
 		<div class="row">
 			<div class="col-md-6">
 				<div class="itemImageFrame">
-					<img class="itemPictureBig thumbnail" alt="Duck - '. $product['images'] .'" src="/ProjectCMS/assets/' . $product['images'] . '">
+					<img class="itemPictureBig thumbnail" alt="'.$product['alt'].'" src="/ProjectCMS/assets/' . $product['images'] . '">
 					<br>
 					<input class="input-group" type="file" name="uploadimage"/>
+					<br>
+					<div class="panel panel-default">
+					  <li class="list-group-item">Image alt tag<strong><input name="update_alt_tag" id="product_input" type="text" value="' . $product['alt'] . '"></strong></li>	
+					</div>
+					<input type="hidden"  value="'.$product['images'].'" name="spareImage"/>
 				</div>
 			</div>
 			<div class="col-md-6">

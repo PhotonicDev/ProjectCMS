@@ -21,6 +21,10 @@
                                     <textarea class="form-control" id="userComment" rows="4" cols="100" name="add_news_text" placeholder="Add text"></textarea>
                                      <br>
                                     <input class="input-group" type="file" name="uploadimage"/>
+                                    <br>
+                                    <div class="panel panel-default">
+                                        <li class="list-group-item">Image alt tag<strong><input name="news_alt_tag" id="product_input" type="text"></strong></li>
+                                    </div>
 
                                 </div>
                             </div>
@@ -50,9 +54,13 @@
             <div class="row">
             <div class="col-md-6">
                <input style="display:none;" type="text" name="Page_ID" value="'.$post['Page_ID'].'">
-                <img alt="News - '. $post['Image'] .'" class="postImage img-responsive" src="/ProjectCMS/assets/'.$post['Image'].'">
+                <img alt="'. $post['alt'] .'" class="postImage img-responsive" src="/ProjectCMS/assets/'.$post['Image'].'">
                 <br>
                 <input class="input-group" type="file" name="uploadimage"/>
+                <br>
+                <div class="panel panel-default">
+					  <li class="list-group-item">Image alt tag<strong><input name="news_update_alt_tag" id="product_input" type="text" value="' . $post['alt'] . '"></strong></li>	
+					</div>
                 <input type="hidden" value="'.$post['Image'].'" name="spareImage"/>
             </div>
             <div class="col-md-6">

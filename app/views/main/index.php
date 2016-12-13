@@ -37,7 +37,7 @@
 
                                             $output .=  "<!-- Wrapper for slides -->
         <div class='item active'>
-            <img class='bound-img' src='/ProjectCMS/assets/" .  $new['Image'] . "' alt='...'>
+            <img class='bound-img' src='/ProjectCMS/assets/" .  $new['Image'] . "' alt='".$new['alt']."'>
             <div class='carousel-caption'>
                 <h3>" .  $new['Header'] . "</h3>
                 <p>" . $new['Description'].  "</p>
@@ -100,7 +100,7 @@
     <div class="items">
         <a href="/ProjectCMS/main/product?p=' . $product->Product_ID . '">
             <div class="itemWhite">
-                <img class="itemPicture" src="/ProjectCMS/assets/' . $product->images . '">
+                <img class="itemPicture" alt="'.$product->alt.'" src="/ProjectCMS/assets/' . $product->images . '">
             </div>
             <div class="itemInfoHide caption">
                 <div class="transitionInformation">

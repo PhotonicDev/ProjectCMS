@@ -20,7 +20,7 @@
             <div class="panel-body">
             <div class="row">
             <div class="col-md-6">
-                <img class="postImage img-responsive" src="/ProjectCMS/assets/'.$post['Image'].'">
+                <img alt="'. $post['alt'] .'" class="postImage img-responsive" src="/ProjectCMS/assets/'.$post['Image'].'">
             </div>
             <div class="col-md-6">
               <h1>'.$post['Header'].'</h1>

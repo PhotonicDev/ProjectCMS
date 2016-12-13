@@ -3,8 +3,8 @@
 
         function newProduct(){
             $filepath = $this->pictureLink($_FILES["uploadimage"]);
-            $this->model->query('INSERT INTO `products` (name, price, description, manufacture, color, size, material ,stock, tags, images,views,upVote) 
-VALUES (?,?,?,?,?,?,?,?,?,?,0,0)' ,
+            $this->model->query('INSERT INTO `products` (name, price, description, manufacture, color, size, material ,stock, tags, images,views,upVote,alt) 
+VALUES (?,?,?,?,?,?,?,?,?,?,0,0,?)' ,
                 array(
                     url::post("product_name"),
                     url::post("product_price"),
@@ -15,13 +15,21 @@ VALUES (?,?,?,?,?,?,?,?,?,?,0,0)' ,
                     url::post("product_category"),
                     url::post("product_stock"),
                     url::post("product_tags"),
-                    $filepath
+                    $filepath,
+                    url::post("alt_tag")
                 ));
         }
 
         function updateProduct(){
-            $filepath = $this->pictureLink($_FILES["uploadimage"]);
-            $this->model->query("UPDATE `products` SET `name`=?, `price`=?, `description`=?, `manufacture`=?, `color`=?, `size`=?, `material`=? ,`stock`=?, `tags`=?, `images`=? WHERE `Product_ID`=?",
+
+            if (file_exists($_FILES["uploadimage"]["name"] || is_uploaded_file($_FILES["uploadimage"]["tmp_name"]))) {
+                $filepath = $this->pictureLink($_FILES["uploadimage"]);
+            }
+            else{
+                $filepath = url::post("spareImage");
+            }
+
+            $msg=$this->model->query("UPDATE `products` SET `name`=?, `price`=?, `description`=?, `manufacture`=?, `color`=?, `size`=?, `material`=?,`stock`=?, `tags`=?, `images`=?, `alt`=? WHERE `Product_ID`=?",
                 array( url::post("product_name"),
                     url::post("product_price"),
                     url::post("product_description"),
@@ -32,21 +40,26 @@ VALUES (?,?,?,?,?,?,?,?,?,?,0,0)' ,
                     url::post("product_stock"),
                     url::post("product_tags"),
                     $filepath,
+                    url::post("update_alt_tag"),
                     url::post("Product_ID")
+
 
 
 
                 ));
 
+              message::note('success');
+            url::reload();
         }
 
         function deleteProduct($id){
-            var_dump($id);
+
         //    $var = $this->model->connect();
 
              $msg = $this->model->query("DELETE FROM `products` WHERE `Product_ID`=?",
                  array($id));
-            var_dump($this->model->error);
+
+
         }
 
 
@@ -57,11 +70,12 @@ VALUES (?,?,?,?,?,?,?,?,?,?,0,0)' ,
         function addNews(){
             $header = url::post("add_news_header");
             $text = url::post("add_news_text");
+            $alt = url::post("news_alt_tag");
 
             $filepath = $this->pictureLink($_FILES["uploadimage"]);
             $this->model->query("INSERT INTO `newspage` 
-(`Page_ID`, `Image`, `Description`, `DATE`, `Header`) 
-VALUES (NULL, ?,?,NOW(),?)",array($filepath,$text,$header));
+(`Page_ID`, `Image`, `Description`, `DATE`, `Header`, `alt`) 
+VALUES (NULL, ?,?,NOW(),?,?)",array($filepath,$text,$header,$alt));
 
         }
         private function pictureLink($file)
@@ -94,22 +108,32 @@ VALUES (NULL, ?,?,NOW(),?)",array($filepath,$text,$header));
 
      // UPDATE COMPANY DESCRIPTION
      function company_desc(){
+         if (file_exists($_FILES["uploadimage"]["name"] || is_uploaded_file($_FILES["uploadimage"]["tmp_name"]))) {
          $filepath = $this->pictureLink($_FILES["uploadimage"]);
-
-        $msg = $this->model->query("UPDATE `company_desc` SET `title` =?, `Description`=?, `pictures`=?  WHERE `id` = 1"
+         }
+         else{
+             $filepath = url::post("spareImage");
+         }
+        $msg = $this->model->query("UPDATE `company_desc` SET `title` =?, `Description`=?, `pictures`=?, `alt`=?  WHERE `id` = 1"
              ,array(url::post("desc_title"),
                     url::post("desc_text"),
-                    $filepath
+                    $filepath,
+                    url::post("desc_update_alt_tag")
+
+
                                               ));
          message::note('success');
 
 
+         url::reload();
 
 
 
      }
 
      function contact_update(){
+
+
 
          $msg = $this->model->query("UPDATE `contact_info` SET `Street`=?,`description`=?,`email`=?,`city`=?,
                                             `country`=?,`Phone`=?,`zipcode`=?,`monday`=?,`tuesday`=?,`wednesday`=?,
@@ -151,11 +175,13 @@ VALUES (NULL, ?,?,NOW(),?)",array($filepath,$text,$header));
 
 
 
-             $msg = $this->model->query("UPDATE newspage SET Image=?, Description=?, Header=?  WHERE  Page_ID=?"
+             $msg = $this->model->query("UPDATE newspage SET Image=?, Description=?, Header=?, alt=?  WHERE  Page_ID=?"
                  , array($filepath,
                      url::post("update_news_text"),
                      url::post("update_news_header"),
+                     url::post("news_update_alt_tag"),
                      url::post("Page_ID")
+
                  ));
 
 

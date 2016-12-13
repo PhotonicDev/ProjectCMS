@@ -13,7 +13,7 @@
 <a  href="/ProjectCMS/admin/product?p='.$product['Product_ID'].'">
            <div class="itemWhite">
            
-            <img class="itemPicture" src="/ProjectCMS/assets/' . $product['images'] . '">
+            <img class="itemPicture" alt="'.$product['alt'].'" src="/ProjectCMS/assets/' . $product['images'] . '">
             </div>
            
     <div class="itemInfoHide caption">
