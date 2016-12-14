@@ -19,6 +19,7 @@ class admins_login extends model{
             url::reload(2);
         }
     }
+
     function user_auth($username,$password){
         $this->model->query("SELECT * FROM `customers` WHERE `name`=? LIMIT 1",array(common::clean($username)));
         if($row = $this->model->fetch_assoc()){
@@ -47,7 +48,6 @@ class admins_login extends model{
                     session::set("up",$user_up);
 
                 }
-
                 session::set("username",$username);
                 session::set("user_id",$row['customer_id']);
                 message::note("You are logged in! Welcome back " . $username . "!");
@@ -100,11 +100,11 @@ class admins_login extends model{
             $msg = $this->model->query("UPDATE `customers` SET `firstName`=? ,`lastName`=?, `Address`=?, `birth`=? WHERE `customer_id`=?"
                         ,array(common::clean($firstName),common::clean($lastName),common::clean($address),common::clean($birthDay),common::clean($user)));
             if($msg == false){
-                url::reload(6);
-            }
-            else {
                 message::note("Your profile information has been updated!");
 
+            }
+            else {
+                url::reload(6);
             }
         }
         else{
@@ -120,8 +120,10 @@ class admins_login extends model{
                     array($user));
                 $row = $this->model->fetch_assoc();
                 if(password_verify($current,$row['password'])){
+                    $iterations = ['cost' => 10]; // encrypting password - hashing it 10 times
+                    $hashed_password = password_hash($new, PASSWORD_BCRYPT, $iterations);
                     $this->model->query("UPDATE `customers` SET `password`=? WHERE `customer_id`=?",
-                        array($new,$user));
+                        array($hashed_password,$user));
                     message::note("You have updated your password!");
                 }
                 else {

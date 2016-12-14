@@ -5,11 +5,11 @@ if(!empty($basket)) {
 
 
        foreach( $basket as $count) {
-        echo ' <div class="well">
+        echo ' <form method="post"><div class="well">
             <div class="row">
             <div class="col-md-1">
-                <button type="button" class="btn btn-danger">X</button><br />
-
+                <button type="submit" name="deleteItem" class="btn btn-danger">X</button><br />
+                <input type="hidden" name="Product_ID" value="' . $count["Product_ID"] . '" />
             </div>
             <div class="col-md-2">
             <img class="img-responsive" src="/ProjectCMS/assets/' . $count['images'] . '"  />
@@ -27,10 +27,14 @@ if(!empty($basket)) {
             </div>
             <div class="col-md-6 text-right">
             <h4>Price for each: '. $count["price"] .' DKK</h4>
-            <h4>Amount: <input min="0" type="number" name="amount" /></h4>
+            <div class="calc">
+            Amount: <input min="0" class="amount" data-unit="' . $count["price"] . '" value="1" type="number" name="amount" /><br />
+            Sum: <span class="label label-default">' . $count["price"] . '</span><br/>
             </div>
             </div>
             </div>
+            </div>
+            </form>
         ';
     }
     ?>
@@ -42,35 +46,40 @@ if(!empty($basket)) {
                     <?php print_r($cart); ?>
                 </div>
                 <div class="col-md-4 text-right">
-                    <button type="button" class="btn btn-success  pull-right">Checkout</button>
-                    <div class="pull-right">
-                        <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" name="frmPayPal1">
-                            <input type="hidden" name="business" value="businessducks@gmail.com">
-                            <input type="hidden" name="cmd" value="_xclick">
-                            <input type="hidden" name="item_name" value="' . $count['name'] . '"> <!-- product name -->
-                            <!--<input type="hidden" name="description" value="'.$count['description'].'"> NOT WORKING -->
-                            <input type="hidden" name="item_number" value="1">  <!-- item number - how much -->
-                            <input type="hidden" name="credits" value="510">
-                            <input type="hidden" name="userid" value="">
-                            <input type="hidden" name="amount" value="' . $count['price'] . '"> <!-- price-->
-                            <input type="hidden" name="cpp_header_image" value="http://examserver38.dk/user_images/dcuk-logo.png">
-                            <input type="hidden" name="no_shipping" value="0">
-                            <input type="hidden" name="currency_code" value="DKK">
-                            <input type="hidden" name="handling" value="0"> <!-- shipping cost -->
-                            <input type="hidden" name="cancel_return" value="http://examserver38.dk">
-                            <input type="hidden" name="return" value="http://examserver38.dk">
-                            <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                            <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-                        </form>
-                    </div>
-                </div>
-                <div class="col-md-4">
 
+
+            </div>
+                <div class="col-md-4">
+                    <button type="button" class="btn btn-success  pull-right">Checkout</button>
+                    <h4 class="pull-right" style="margin-right:20px;"> <span id="sum" class="label label-default">0</span> DKK  </h4>
                 </div>
             </div>
         </div>
     </form>
+<script>
+    $(".amount").on("change",function(){
+        var bt = 0;
+        var calc = 1;
+         $(".calc").each(function(){
+             var q = $(this).children(".amount");
+             var amount = $(q).val();
+             $(".pay_item").each(function(){
+                 var iter = $(this).data("iteration");
+                if(iter == calc ){
+                    $(this).val(amount);
+                }
+             });
+            var up = $(q).data("unit");
+            var st = (amount * up);
+            bt += st;
+              $(this).children(".label").html(st.toFixed(2));
+              calc++;
+        });
 
+        $("#sum").html(bt.toFixed(2));
+        $(".pay_price").val(bt.toFixed(2));
+    });
+</script>
     <?php
     }
 

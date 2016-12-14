@@ -13,6 +13,10 @@ class main extends controller {
         main::head();
         load::view("main::index",$data);
         main::foot();
+        if(isset($_POST["lead"])){
+            $posts->discounted("");
+            load::view("main::discount");
+        }
     }
     static function ajax(){
         if(isset($_POST["add_to_cart"])){
@@ -61,12 +65,13 @@ class main extends controller {
             $mess = $posts->postComment(session::get("username"),url::get("p"),url::post("comment"));
             echo $mess;
         }
+
         load::view("partial::nav");
 
     }
     function logout(){
         common::doUserLogout();
-        url::redir("/ProjectCMS/main");
+        url::redir("/ProjectCMS/main/index");
     }
     function product(){
         $posts = new main_model();
@@ -159,6 +164,24 @@ class main extends controller {
             load::view("main::basket");
             main::foot();
         }
+        if(isset($_POST["deleteItem"])){
+            unset($_POST["deleteItem"]);
+            $id = url::post("Product_ID");
+            $cart = session::get("cart");
+            if(($key = array_search($id,$cart)) !== false){
+                unset($cart[$key]);
+                session::set("cart",$cart);
+                url::reload();
+            }
+            else {
+                url::reload(11);
+            }
+        }
+        if(isset($_POST["clear_all"])){
+            unset($_POST["clear_all"]);
+            session::set("cart",array());
+            url::reload();
+        }
     }
     private static function prod(){
         $products = new main_model();
@@ -195,7 +218,7 @@ class main extends controller {
 
         }
         if(isset($_POST["update_password"])){
-            $msg = $main->updatePassword(url::post("current_pass"),url::post("new_pass"),url::post("renew_pass"));
+            $msg = $main->updatePassword(url::post("current_pass"),url::post("new_pass"),url::post("new_pass_re"));
         }
     }
 

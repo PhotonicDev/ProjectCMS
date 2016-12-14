@@ -24,14 +24,12 @@
                 <li><a href="/ProjectCMS/main/info"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a></li>
 
             </ul>
-            <form class="navbar-form navbar-left"> <!-- search bar-->
+            <form class="navbar-form navNav navbar-left"> <!-- search bar-->
                 <div class="input-group">
                     <div class="form-group">
                         <input type="text" name="search_text" id="search_text" class="form-control" placeholder="I'm searching for...">
                     </div>
-                    <span class="input-group-btn">
-        <button type="button" class="search_button btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                </span>
+                    
                 </div>
             </form><!-- search bar-->
             <form method="post">
@@ -93,7 +91,7 @@
                             </div>
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox"> Remember me
+                                    <input type="checkbox" name="remember"> Remember me
                                 </label>
                             </div>
                             <button name="login" type="submit" class="btn btn-default">Login</button>
@@ -106,7 +104,6 @@
                 </div>
                 <div class="modal-footer">
                     <a class="additionalLogin" href="/ProjectCMS/main/register">Don't have an account?</a>
-                    <a class="additionalLogin" href="/ProjectCMS/main/forgot">Forgot your password?</a>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->

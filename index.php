@@ -28,6 +28,7 @@ $GLOBALS['config'] = array(
 date_default_timezone_set("Europe/Copenhagen");
 $GLOBALS["instances"] = array();
 require_once $GLOBALS["config"]["path"]["app"]."autoload.php";
+
 ?>
 <html>
 <head>
@@ -89,10 +90,16 @@ if(session::get("error") != ""){
             $output = "You must be logged in to update your profile";
             break;
         case 8;
-            $output = "Passwords doesn't match!";
+            $output = "Passwords doesn't match";
             break;
         case 9;
-            $output = "You've entered wrong password!";
+            $output = "You've entered wrong password";
+            break;
+        case 10;
+            $output = "Complete the reCAPTCHA first";
+            break;
+        case 11;
+            $output = "No item selected";
             break;
 
     }

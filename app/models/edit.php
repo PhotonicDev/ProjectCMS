@@ -194,7 +194,17 @@ VALUES (NULL, ?,?,NOW(),?,?)",array($filepath,$text,$header,$alt));
          url::reload();
 
          }
-
+     function addDaily($id){
+         var_dump($id);
+         $msg = $this->model->query("INSERT INTO daily_product (`Product_ID`,`date`) VALUES(?,NOW())",
+             array($id));
+         url::reload();
+     }
+     function deleteDaily($id){
+         $msg = $this->model->query("DELETE FROM daily_product WHERE `Product_ID`=?",
+             array($id));
+         url::reload();
+     }
 
  }
 

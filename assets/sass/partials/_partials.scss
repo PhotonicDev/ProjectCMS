@@ -16,10 +16,8 @@ $light : white;
   margin-top: 11%;
 }
 .fancyNav {
-
-    background-color: white;
-    transition:ease-in-out 1s;
-
+    background-color: white !important;
+    transition:ease-in-out 1s !important;
         .navbar-toggle {
             border: solid 1px darkgrey;
             span {
@@ -28,55 +26,83 @@ $light : white;
             }
         }
         a {
-            color: darkgrey;
-            &:hover {
-                background-color: lightgray;
-
-            }
-        }
-    .form-groups {
-        #search_text {
             color: darkgrey !important;
-            border: lightgray solid 1px !important;
+            &:hover {
+                background-color: lightgray !important;
+
+            }
         }
+
+}
+.navFancy  {
+
+    #search_text {
+      width: 10vw;
+      color: darkgrey !important;
+        border: darkgray solid 1px !important;
+      background-color: lightgrey !important;
+      transition: ease-in-out,width .35s ease-in-out !important;
+        &:focus {
+            width: 30vw !important;
+        }
+    }
+
+}
+.navNav {
+  margin-top: 5px;
+  margin-bottom:0;
+    #search_text {
+
+        width: 10vw;
+        transition: ease-in-out,width .35s ease-in-out;
+        &:focus {
+            width: 30vw;
+        }
+        color: $light;
+        background:none;
+        border: $light solid 1.5px;
+    }
+    .input-group-btn{
+        padding-top:0;
+        padding-bottom:0;
         .search_button {
-            border-radius:0 !important;
-            border: darkgrey solid 1px !important;
+            background: none;
+            border-radius:0;
+            border: $light solid 1px;
             span {
-                background-color:darkgrey !important;
-                color: darkgrey !important;
+                color: $light;
+                text-shadow: none;
             }
         }
     }
-
 }
+
 #navigation {
-  border-bottom: white solid 1px !important;
-
-}
-
-nav {
+  min-height:45px;
     background-color: rgba(0,0,0,0.1);
-
+    border-bottom: white solid 1px !important;
   .navbar-toggle {
-        border: solid 1px white;
-        span {
-            background-color: white;
-        }
+    border: solid 1px white;
+    span {
+      background-color: white;
     }
-    a {
-        color:white;
-        font-weight: 700;
-        &:hover {
-            background-color: lightgrey;
-            color: darkgrey;
-            opacity: 0.8;
-            transition-duration: 0.5s;
-        }
+  }
+  a {
+    color:white;
+    font-weight: 700;
+    height: 44px;
+    &:hover {
+      background-color: lightgrey;
+      color: darkgrey;
+      opacity: 0.8;
+      transition-duration: 0.5s;
+    }
+
+  }
 
     }
 
-}
+
 ::-webkit-input-placeholder {
     color: $light;
 }
@@ -91,37 +117,11 @@ nav {
 :-ms-input-placeholder {
     color: $light;
 }
-.navbar-form {
-    #search_text {
-        width: 10vw;
-        transition: ease-in-out,width .35s ease-in-out;
-        &:focus {
-            width: 30vw;
-        }
-        color: $light;
-        background:none;
-        border: $light solid 1.5px;
-    }
-    .input-group-btn{
-        padding-top:0;
-        padding-bottom:0;
-             .search_button {
-                 background: none;
-                 border-radius:0;
-                 border: $light solid 1px;
-                 span {
-                     color: $light;
-                     text-shadow: none;
-                 }
-             }
-         }
 
-
-}
 
 body   {
     overflow-x: hidden;
-    padding-top: 50px;
+    padding-top: 90px;
     background-color: black;
     a {
         cursor:pointer;
@@ -149,34 +149,6 @@ body   {
         .sideOpen {
             width:20% !important;
             left: 80% !important;
-        }
-    .sideNavigation {
-
-        position:fixed;
-        left: 100%;
-        transition-duration: 1s;
-        ul {
-            padding-top: 25px;
-            list-style-type: none;
-        }
-        float:left;
-        width: 20%;
-        height: 100vh;
-        background-color:rgb(0,204,102);
-        .sideWrap {
-            padding: 0 5%;
-            width:90%;
-        }
-        .categoryTitle {
-            margin-top: 32px;
-            color:white;
-
-        }
-
-
-        }
-        .sideClosed {
-            width: 80% !important;
         }
         .mainTile {
 
@@ -267,10 +239,6 @@ $dark-tint: rgba(0,0,0,0.9);
     -ms-filter: blur($blur);
     filter: blur($blur);
 }*/
-.question {font-weight:bold;background-color:#FFF;padding:7px 0px  0px 15px;}
-.answer{font-style:italic;background-color:#FFF;padding:0px 0px 7px 15px;}
-#faq-result{margin: -10px auto 0px;width:50%;line-height:30px;border-radius:5px;min-height:300px;}
-#loader-icon {position: fixed;top: 50%;width:100%;height:100%;text-align:center;display:none;}
 
 .item-par {
     margin: 15px !important;

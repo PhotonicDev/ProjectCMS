@@ -21,9 +21,12 @@
                 scroll_start = $(this).scrollTop();
                 if(scroll_start > offset.top) {
                     $("#navigation").addClass("fancyNav");
+                    $(".navNav").addClass("navFancy");
                 }
                 else {
                     $("#navigation").removeClass("fancyNav");
+                    $(".navNav").removeClass("navFancy");
+
                 }
             });
         }

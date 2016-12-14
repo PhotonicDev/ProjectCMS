@@ -14,7 +14,6 @@
                 foreach($news as $post){
 
                     $output .=	'
-    <a href="index.php?news='.$post['Page_ID'].'">
 
         <div class="panel panel-default">
             <div class="panel-body">
@@ -32,7 +31,6 @@
                 '.$post['DATE'].'
             </div>
         </div>
-    </a>
 			';
                 }
                 echo $output;

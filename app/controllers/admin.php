@@ -66,7 +66,7 @@
 
             if(isset($_POST["btn_delete"])){
                 $edit->deleteProduct(url::post("Product_ID"));
-                //url::redir("/ProjectCMS/admin/index");
+                url::redir("/ProjectCMS/admin/index");
             }
 
         }
@@ -133,9 +133,27 @@
         function daily(){
             admin::permission();
             $posts = new main_model();
+            $get = new edit();
             $data["daily"] = $posts->Daily();
             load::view("admin::partial::panel");
+            if(isset($_POST["add_daily"])){
+                unset($_POST["add_daily"]);
+                $data["products"] = $posts->allProducts();
+
+            }
             load::view("admin::partial::daily",$data);
+            if(isset($_POST["add_item"])){
+                unset($_POST["add_item"]);
+                $id = url::post("Product_ID");
+                $get->addDaily($id);
+            }
+            if(isset($_POST["deleteDaily"])){
+                unset($_POST["deleteDaily"]);
+                $id = url::post("deleteID");
+                $get->deleteDaily($id);
+            }
+            admin::invoke();
+
 
         }
 

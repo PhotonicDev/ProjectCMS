@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2016 at 02:59 AM
+-- Generation Time: Dec 14, 2016 at 08:27 PM
 -- Server version: 5.7.11
 -- PHP Version: 5.6.19
 
@@ -134,12 +134,9 @@ CREATE TABLE `customers` (
 INSERT INTO `customers` (`customer_id`, `name`, `password`, `email`, `firstName`, `lastName`, `Address`, `birth`, `basket`, `up_votes`) VALUES
 (13, 'wentox', '$2y$10$.1sBIZ9VxOppK34yIkibDe5LZiwomJ.EGe/ZQ6t6G32wf2yQYWFU6', 'dovydastt@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL),
 (14, 'anonim', '$2y$10$VioSrbFLAsnpAvn2G9xsBuKXgm.U5HVyKbZhNK7919ernqFLuhwIW', 'dsd@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL),
-(15, 'admin', '$2y$10$UpBjkOC5Fv9Dg4Pasxm44.ccATpnKYRD4Qykij3l29r2ET55gUDDG', 'admin@admin.com', 'gfdsgfdshgggf', 'ffgfdgfsd', 'gdshgdshgdsgfds', '1982-05-25', '1', '4'),
-(16, 'adminas', 'adminas', 'adminas@adminas.com', NULL, NULL, NULL, NULL, NULL, NULL),
-(17, 'adminasas', 'adminasas', 'adminas@adminas.as', NULL, NULL, NULL, NULL, NULL, NULL),
-(18, 'adminaitis', 'adminas', 'adminaitis@adminas.com', NULL, NULL, NULL, NULL, NULL, NULL),
 (19, 'bfdsfds', '$2y$10$Y031l/gAxqGSqBPEOgEGU.QbGrSpGrnpw2swQIjcsiiT18RKonhkS', 'gfdsgf@hdgshgsd.com', NULL, NULL, NULL, NULL, NULL, NULL),
-(20, 'naujas', '$2y$10$vygU.xJIqf1Y.UT1VtRzbe7u77qLS6pjqGrmYnIYxkOdyHKaEjPVK', 'naujas@naujas.naujas', NULL, NULL, NULL, NULL, NULL, NULL);
+(20, 'naujas', '$2y$10$vygU.xJIqf1Y.UT1VtRzbe7u77qLS6pjqGrmYnIYxkOdyHKaEjPVK', 'naujas@naujas.naujas', NULL, NULL, NULL, NULL, NULL, NULL),
+(21, 'admin', '$2y$10$nzAp0d/j0nbN0QqdNn2upezh.iteGT2GBbkOIhLWZ2EYzjmEVV6Om', 'admin@admin.com', 'Nerijus', 'Pamedytis', 'Thulevej 50', '2016-12-14', '7', '');
 
 -- --------------------------------------------------------
 
@@ -149,19 +146,20 @@ INSERT INTO `customers` (`customer_id`, `name`, `password`, `email`, `firstName`
 
 CREATE TABLE `daily_product` (
   `date` timestamp NOT NULL,
-  `Product_ID` int(20) NOT NULL
+  `Product_ID` int(20) NOT NULL,
+  `daily_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `daily_product`
 --
 
-INSERT INTO `daily_product` (`date`, `Product_ID`) VALUES
-('2016-11-15 13:19:40', 1),
-('2016-11-15 13:19:51', 2),
-('2016-11-15 13:19:57', 3),
-('2016-11-15 13:20:02', 4),
-('2016-11-15 13:20:08', 5);
+INSERT INTO `daily_product` (`date`, `Product_ID`, `daily_id`) VALUES
+('2016-12-13 08:22:28', 15, 18),
+('2016-12-13 17:37:26', 5, 21),
+('2016-12-13 17:37:37', 19, 23),
+('2016-12-13 17:37:42', 14, 24),
+('2016-12-13 17:37:47', 18, 25);
 
 -- --------------------------------------------------------
 
@@ -228,22 +226,22 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`Product_ID`, `name`, `price`, `description`, `color`, `size`, `material`, `images`, `stock`, `tags`, `manufacture`, `views`, `upVote`, `alt`) VALUES
-(1, 'Blue duck', 6.99, 'Description of blue duck', 'Blue', 'S', 'rubber', 'user_images/duck_blue.png', 888, 'small china rubber rare blue', 'China', 312, 27, ''),
-(2, 'Blue duck', 6.99, 'Description of blue duck', 'Blue', 'SM', 'Iron', 'user_images/duck_blue.png', 106, 'blue iron china sm', 'China', 337, 13, ''),
-(3, 'Green duck', 15.99, 'awesome duck description', 'Green', 'XXL', 'Pvc', 'user_images/duck_green.png', 123, 'germany pvc green xxl', 'Germany', 81, 9, ''),
-(5, 'Purple duck', 6.99, 'description of purple duck', 'purple', 'SM small', 'small pruple', 'user_images/duck_purple.png', 12, 'purple-sm', 'china', 28, 0, 'Purple duck'),
+(1, 'Blue duck', 6.99, 'Description of blue duck', 'Blue', 'S', 'rubber', 'user_images/duck_blue.png', 888, 'small china rubber rare blue', 'China', 316, 28, ''),
+(2, 'Blue duck', 6.99, 'Description of blue duck', 'Blue', 'SM', 'Iron', 'user_images/duck_blue.png', 106, 'blue iron china sm', 'China', 347, 13, ''),
+(3, 'Green duck', 15.99, 'awesome duck description', 'Green', 'XXL', 'Pvc', 'user_images/duck_green.png', 123, 'germany pvc green xxl', 'Germany', 96, 9, ''),
+(5, 'Purple duck', 6.99, 'description of purple duck', 'purple', 'SM small', 'small pruple', 'user_images/duck_purple.png', 12, 'purple-sm', 'china', 36, 0, 'Purple duck'),
 (6, 'Green duck', 15.99, 'awesome duck description', 'green', 'XXL', 'rubber', 'user_images/duck_green.png', 4, 'rubber xxl china green', 'china', 18, 2, ''),
-(7, 'Yellow duck', 14.99, 'awesome duck description', 'yellow', 'Big XXL', 'wood', 'user_images/duck_yellow.png', 56, 'wood xxl yellow china', 'china', 20, 2, ''),
-(8, 'Yellow duck', 7.55, 'awesome duck description', 'yellow', 'XXL', 'plastic', 'user_images/duck_yellow.png', 56, 'xxl china yellow plastic', 'china', 12, 2, ''),
-(14, 'NiceDuck', 45.99, 'Very nice but expensive duck', 'colorful', 'XS', 'saphire', 'user_images/duck_blue.png', 68, 'rare saphire xs portugal', 'Portugal', 4, 0, ''),
-(15, 'Duckuyyy', 5.99, 'something awesome', 'yellow', 'L', 'valerian', 'user_images/duck_yellow.png', 455, 'l valerian denmark yellow', 'Denmark', 13, 0, ''),
-(16, 'Psy Duck', 99.99, 'Psycho duck from pokemon.', 'yellow', 'L', 'cobalt', 'user_images/duck_yellow.png', 2, 'special psy pokemon duck yellow limited edition', 'Japan', 4, 0, ''),
-(17, 'Polymorph duck', 26, 'polymorph', 'red', 'XS', 'demaskus', 'user_images/duck_purple.png', 5, 'rare poly morph duck red', 'China', 6, 0, ''),
+(7, 'Yellow duck', 14.99, 'awesome duck description', 'yellow', 'Big XXL', 'wood', 'user_images/duck_yellow.png', 56, 'wood xxl yellow china', 'china', 31, 2, ''),
+(8, 'Yellow duck', 7.55, 'awesome duck description', 'yellow', 'XXL', 'plastic', 'user_images/duck_yellow.png', 56, 'xxl china yellow plastic', 'china', 22, 2, ''),
+(14, 'NiceDuck', 45.99, 'Very nice but expensive duck', 'colorful', 'XS', 'saphire', 'user_images/duck_blue.png', 68, 'rare saphire xs portugal', 'Portugal', 8, 0, ''),
+(15, 'Duckuyyy', 5.99, 'something awesome', 'yellow', 'L', 'valerian', 'user_images/duck_yellow.png', 455, 'l valerian denmark yellow', 'Denmark', 14, 0, ''),
+(16, 'Psy Duck', 99.99, 'Psycho duck from pokemon.', 'yellow', 'L', 'cobalt', 'user_images/duck_yellow.png', 2, 'special psy pokemon duck yellow limited edition', 'Japan', 5, 0, ''),
+(17, 'Polymorph duck', 26, 'polymorph', 'red', 'XS', 'demaskus', 'user_images/duck_purple.png', 5, 'rare poly morph duck red', 'China', 8, 0, ''),
 (18, 'Giarados duck', 999.99, 'Evolved from magickarp', 'water blue', 'XL', 'Meat', 'user_images/duck_blue.png', 99, 'pokemon giarados blue water Ash magickarp', 'Ash', 4, 1, ''),
 (19, 'Bulbasourus', 99, 'Not a first choice', 'green', 'S', 'meat', 'user_images/duck_green.png', 45, 'leaf green grass pokemon never gets old', 'america', 3, 0, ''),
 (20, 'Sick duck', 995, 'Something is wrong with this one', 'Violet', 'M', ' meat', 'user_images/duck_purple.png', 78, 'vodka sick duck hangover', 'Russia', 4, 0, ''),
-(21, 'Ordinary duck', 45, ' Very first choice of any collector', 'Yellow', 'M', ' Iron', 'user_images/duck_yellow.png', 23, 'ordinary common first collecting casual', 'Denmark', 4, 1, ''),
-(22, 'Blet duck', 100000000, 'blet duck awesome', 'crimson', 'XXXL', 'iron', 'user_images/duck_blue.png', 99, 'crimson duck awesome blet xxxl', 'china ', 0, 0, '');
+(21, 'Ordinary duck', 45, ' Very first choice of any collector', 'Yellow', 'M', ' Iron', 'user_images/duck_yellow.png', 23, 'ordinary common first collecting casual', 'Denmark', 6, 1, ''),
+(22, 'Blet duck', 100000000, 'blet duck awesome', 'crimson', 'XXXL', 'iron', 'user_images/duck_blue.png', 99, 'crimson duck awesome blet xxxl', 'china ', 17, 1, '');
 
 -- --------------------------------------------------------
 
@@ -321,7 +319,10 @@ INSERT INTO `social_pages` (`Likes`, `Comments`, `name`, `comment_id`, `Product_
 (0, 'whatever\r\n\r\n', 'admin', 16, 4),
 (0, 'whatever\r\n\r\n', 'admin', 17, 4),
 (0, 'whatever\r\n', 'admin', 18, 3),
-(0, 'whatever\r\n', 'admin', 19, 3);
+(0, 'whatever\r\n', 'admin', 19, 3),
+(0, 'gfagfrdagrdsq', 'admin', 20, 3),
+(0, 'gfdsgfdsgfds', 'admin', 21, 22),
+(0, 'whatever', 'admin', 22, 7);
 
 -- --------------------------------------------------------
 
@@ -386,6 +387,7 @@ ALTER TABLE `customers`
 -- Indexes for table `daily_product`
 --
 ALTER TABLE `daily_product`
+  ADD PRIMARY KEY (`daily_id`),
   ADD KEY `Product_ID` (`Product_ID`);
 
 --
@@ -462,7 +464,12 @@ ALTER TABLE `contact_info`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `customer_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+--
+-- AUTO_INCREMENT for table `daily_product`
+--
+ALTER TABLE `daily_product`
+  MODIFY `daily_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `newspage`
 --
@@ -487,7 +494,7 @@ ALTER TABLE `product_order`
 -- AUTO_INCREMENT for table `social_pages`
 --
 ALTER TABLE `social_pages`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `sold_products`
 --

@@ -31,7 +31,7 @@ if(empty($data["LOC"]) || $data["LOC"] != $product['Product_ID']){
 
                             }
                             else {
-                                echo '<button type="submit" disabled="disabled" class="btn-lg btn btn-success">Up vote <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button>';
+                                echo '';
                             }
                         ?>
                     </form>
@@ -90,6 +90,9 @@ if(empty($data["LOC"]) || $data["LOC"] != $product['Product_ID']){
 						<label for="userComment">Comment:</label>
 						<textarea class="form-control" id="userComment" rows="4" name="comment" placeholder="What do you think about product?"></textarea>
 					</div>
+					<div class="g-recaptcha" data-sitekey="6LcGRQwUAAAAACSHXYarFIy5rp_iat0ymtFQnaHD"></div>
+     <!-- <div class="g-recaptcha" data-sitekey="6LcDRQwUAAAAAOgAEugcGPzAui8LOAakDd0huLn_"></div> - for examserver38.dk -->
+					<br />
 					<input type="submit" class="btn btn-primary" name="submit_comment">
 				';
                     }
@@ -120,11 +123,9 @@ if(empty($data["LOC"]) || $data["LOC"] != $product['Product_ID']){
                     $output .=	'
                     <div class="panel panel-default">
                         <div class="panel-heading"><div class="row">
-                            <div class="col-md-6 text-left"><strong>'. $comment['name'] .'</strong>
+                            <div class="col-md-12 text-left"><strong>'. $comment['name'] .'</strong>
                             </div> 
-                                <div class="col-md-6 text-right"><span class="label label-default">' . $comment['Likes'] . ' </span>
-                                    <button type="button" class="btn btn-success btn-sm" name="upComment">Up vote</button>
-                                </div> 
+                               
                             </div>
                         </div>
                         <div class="panel-body">
@@ -138,11 +139,9 @@ if(empty($data["LOC"]) || $data["LOC"] != $product['Product_ID']){
                         $output .=	'
                     <div class="panel panel-default">
                         <div class="panel-heading"><div class="row">
-                            <div class="col-md-6 text-left"><strong>'. $comment['name'] .'</strong>
+                            <div class="col-md-12 text-left"><strong>'. $comment['name'] .'</strong>
                             </div> 
-                                <div class="col-md-6 text-right"><span class="label label-default">' . $comment['Likes'] . '</span> Up votes
-                                    
-                                </div> 
+                                
                             </div>
                         </div>
                         <div class="panel-body">
